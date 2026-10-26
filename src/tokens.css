@@ -1,0 +1,139 @@
+/* Design tokens from the "Studiu App Design" canvas, imported by style.css. */
+
+:root {
+  --font-ui: "Nunito Variable", system-ui, sans-serif;
+  --font-code: ui-monospace, "Cascadia Code", Consolas, monospace; /* math uses KaTeX's own fonts */
+
+  --text-display: 900 32px/38px var(--font-ui);
+  --text-title: 900 24px/30px var(--font-ui);
+  --text-body: 700 17px/24px var(--font-ui);
+  --text-small: 700 14px/20px var(--font-ui);
+  --text-label: 900 13px/16px var(--font-ui); /* uppercase, letter-spacing: var(--label-tracking) */
+  --label-tracking: .08em;
+
+  --r-sm: 10px;   /* chips, keys */
+  --r-md: 16px;   /* buttons, inputs */
+  --r-lg: 22px;   /* cards, answer choices */
+  --r-xl: 28px;   /* feedback sheet */
+  --r-pill: 999px;
+
+  --tap-min: 44px;
+  --gutter: 16px;
+
+  /* until App.tsx sets data-subject */
+  --accent: var(--analiza);
+  --accent-deep: var(--analiza-deep);
+  --accent-ink: var(--analiza-ink);
+  --accent-tint: var(--analiza-tint);
+
+  /* 3D look: a solid bottom edge in the element's "deep" shade */
+  --shadow-btn: 0 4px 0 var(--accent-deep);
+  --shadow-node: 0 6px 0 var(--accent-deep);
+
+  /* light theme (default) */
+  --bg: #f6f7fb;
+  --surface: #ffffff;
+  --surface-2: #eceff5;
+  --border: #dfe3ec;
+  --ink: #16181f;
+  --ink-2: #4a5163;
+  --ink-3: #5f6678;
+
+  /* subjects: white text on the base color passes AA (4.8-5.2:1); *-ink is for colored text on surface or tint */
+  --analiza: #1874c4;
+  --analiza-deep: #0f5596;
+  --analiza-ink: #1566ad;
+  --analiza-tint: #e3effa;
+  --algebra: #8a3ffc;
+  --algebra-deep: #6420d0;
+  --algebra-ink: #7a2fe8;
+  --algebra-tint: #efe6ff;
+  --prog: #c2410c;
+  --prog-deep: #8f2f08;
+  --prog-ink: #a8380a;
+  --prog-tint: #fdeadf;
+
+  --gold: #f2a900;
+  --gold-deep: #c08400;
+  --gold-ink: #5c3b00;
+  --correct: #1a7f3c;
+  --correct-deep: #115c2a;
+  --correct-ink: #15692f;
+  --correct-tint: #dcf3e2;
+  --wrong: #c62828;
+  --wrong-deep: #8e1b1b;
+  --wrong-ink: #a51f1f;
+  --wrong-tint: #fde3e3;
+
+  --streak-ink: #c2410c;
+  --streak-fill: #c2410c; /* studied calendar days, white numbers */
+  --streak-tint: #fdeadf;
+  --freeze-ink: #0b5f80;
+  --freeze-tint: #dcf1fa;
+  --xp-ink: #a16207;
+  --xp-tint: #fff1c7;
+  --locked: #e3e6ee;
+  --locked-deep: #c9ceda;
+  --locked-ink: #687085;
+  --code-bg: #1e2230;
+  --code-ink: #e6e9f2;
+
+  --shadow-card: 0 2px 0 var(--border);
+  --shadow-sheet: 0 -10px 30px rgb(22 24 31 / .14);
+  --shadow-float: 0 10px 28px rgb(22 24 31 / .14);
+
+  color-scheme: light dark;
+}
+
+/* dark theme: base subject colors, --correct and --wrong stay the same so white text keeps its contrast */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #11131a;
+    --surface: #1b1e28;
+    --surface-2: #272b37;
+    --border: #333847;
+    --ink: #f2f4f8;
+    --ink-2: #b9bfcc;
+    --ink-3: #9aa1b2;
+
+    --analiza-deep: #0d4a82;
+    --analiza-ink: #6cb0f0;
+    --analiza-tint: #14273d;
+    --algebra-deep: #5a1cc0;
+    --algebra-ink: #b48cff;
+    --algebra-tint: #261b3f;
+    --prog-deep: #7f2906;
+    --prog-ink: #fb8a55;
+    --prog-tint: #3a1d10;
+
+    --gold: #f2b51c;
+    --gold-deep: #a87700;
+    --gold-ink: #4a2f00;
+    --correct-deep: #0e4d23;
+    --correct-ink: #6fdc8f;
+    --correct-tint: #12301d;
+    --wrong-deep: #7a1616;
+    --wrong-ink: #ff8a80;
+    --wrong-tint: #3a1515;
+
+    --streak-ink: #ff8a4c;
+    --streak-tint: #3a1d10;
+    --freeze-ink: #7fd3f5;
+    --freeze-tint: #12303d;
+    --xp-ink: #ffc93c;
+    --xp-tint: #3a2e0c;
+    --locked: #2a2e3a;
+    --locked-deep: #1a1d25;
+    --locked-ink: #8f96a8;
+    --code-bg: #0c0e14;
+
+    --shadow-card: 0 2px 0 #0a0b10;
+    --shadow-sheet: 0 -10px 30px rgb(0 0 0 / .5);
+    --shadow-float: 0 10px 28px rgb(0 0 0 / .45);
+  }
+}
+
+/* the active subject sets the accent: <main data-subject="analiza"> */
+[data-subject="analiza"] { --accent: var(--analiza); --accent-deep: var(--analiza-deep); --accent-ink: var(--analiza-ink); --accent-tint: var(--analiza-tint); }
+[data-subject="algebra"] { --accent: var(--algebra); --accent-deep: var(--algebra-deep); --accent-ink: var(--algebra-ink); --accent-tint: var(--algebra-tint); }
+[data-subject="c"] { --accent: var(--prog); --accent-deep: var(--prog-deep); --accent-ink: var(--prog-ink); --accent-tint: var(--prog-tint); }
