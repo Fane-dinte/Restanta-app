@@ -45,6 +45,12 @@ export function App() {
   const [lesson, setLesson] = useState<Lesson | null>(null)
   const [done, setDone] = useState<{ xp: number; secs: number; acc: number; first: boolean } | null>(null)
   useEffect(() => { try { localStorage.setItem(KEY, JSON.stringify(saved)) } catch { /* blocked: progress lives in memory only */ } }, [saved])
+  // another tab (the browser copy next to the installed app) saved: take its progress instead of overwriting it later
+  useEffect(() => {
+    const sync = (e: StorageEvent) => { if (e.key === KEY) setSaved(load()) }
+    addEventListener('storage', sync)
+    return () => removeEventListener('storage', sync)
+  }, [])
   useEffect(() => {
     document.documentElement.lang = lang
     try { localStorage.setItem(KEY + '.lang', lang) } catch { /* blocked: back to Romanian next time */ }
