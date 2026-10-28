@@ -12,7 +12,11 @@ export type Course = { id: string; title: string; icon: string; color: string; h
 
 export type Day = 'study' | 'freeze'
 export type Result = { l: string; xp: number; s: number; miss: string[]; best?: number } // best: longest run of correct answers
-export type Progress = { days: Record<string, Day>; done: Record<string, number>; xp: number; freezes: number; log: (Result & { d: string })[] }
+// owned/equip: shop items; ch: days the daily challenge was finished
+export type Progress = {
+  days: Record<string, Day>; done: Record<string, number>; xp: number; freezes: number; log: (Result & { d: string })[]
+  owned?: string[]; equip?: { palette?: string; frame?: string }; ch?: Record<string, 1>
+}
 
 // shortcut: everyone starts with 2 freezes and can't earn more, until the v0.2 shop
 export const GOAL = 30 // daily XP goal

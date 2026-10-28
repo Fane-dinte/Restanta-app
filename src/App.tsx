@@ -8,6 +8,10 @@ import c from './content/c.json'
 import { Confetti, LessonPlayer } from './Lesson'
 import { setSound, soundOn } from './fx'
 import { Dev } from './Dev'
+import { Shop } from './Shop'
+import { Profile } from './Profile'
+import { colorOf, equipped } from './store'
+import { CH_REWARD, CH_SIZE, finishChallenge, isChallenge, pickChallenge } from './challenge'
 import { MIN_CODE, cleanCode, getCode, isAnon, push, setAnon, setCode as saveCode } from './sync'
 import { Icon, type IconName } from './icons'
 import { GOAL, dailyXp, dayKey, finishLesson, fresh, level, levelStart, localize, prepare, settle, streak, type Course, type Lang, type Lesson, type Progress } from './logic'
@@ -15,6 +19,8 @@ import { strings, type Strings } from './strings'
 
 const COURSES = [analiza, algebra, c] // text is {ro, en}; localize() picks one
 const KEY = 'study-app'
+const TABS = ['learn', 'tracker', 'shop', 'profile'] as const // also the swipe order
+type Tab = typeof TABS[number]
 
 function load(): Progress {
   let raw: string | null = null
@@ -79,12 +85,21 @@ export function App() {
   const [lang, setLang] = useState(loadLang)
   const courses: Course[] = useMemo(() => localize(COURSES, lang), [lang])
   const t = strings(lang)
-  const [tab, setTab] = useState<'learn' | 'tracker'>('learn')
+  const [tab, setTab] = useState<Tab>('learn')
+  const touch = useRef<[number, number] | null>(null)
+  const swipe = (e: React.TouchEvent) => {
+    const [x, y] = touch.current ?? [0, 0]
+    const dx = e.changedTouches[0].clientX - x, dy = e.changedTouches[0].clientY - y
+    touch.current = null
+    if (Math.abs(dx) < 70 || Math.abs(dy) > 50) return
+    const i = TABS.indexOf(tab) + (dx < 0 ? 1 : -1)
+    if (i >= 0 && i < TABS.length) { setTab(TABS[i]); scrollTo(0, 0) }
+  }
   const [courseId, setCourseId] = useState('analiza')
   const [sheet, setSheet] = useState(false)
   const [sound, setSoundState] = useState(soundOn)
   const [lesson, setLesson] = useState<Lesson | null>(null)
-  const [done, setDone] = useState<{ xp: number; secs: number; acc: number; first: boolean; best: number; up: boolean; goal: boolean } | null>(null)
+  const [done, setDone] = useState<{ xp: number; secs: number; acc: number; first: boolean; best: number; up: boolean; goal: boolean; ch: boolean } | null>(null)
   useEffect(() => { try { localStorage.setItem(KEY, JSON.stringify(saved)) } catch { /* blocked: progress lives in memory only */ } }, [saved])
   // another tab (the browser copy next to the installed app) saved: take its progress instead of overwriting it later
   useEffect(() => {
@@ -101,6 +116,14 @@ export function App() {
   const fire = streak(p.days, today)
   const course = courses.find(x => x.id === courseId)!
   useEffect(() => { document.documentElement.dataset.subject = course.id }, [course]) // tokens.css maps it to --accent
+  // shop: the equipped palette overrides the subject accent, the frame colors the border of perfect lessons
+  useEffect(() => {
+    const root = document.documentElement
+    const pal = colorOf(equipped(saved, 'palette')), fr = colorOf(equipped(saved, 'frame'))
+    if (pal) root.style.setProperty('--accent', pal); else root.style.removeProperty('--accent')
+    if (fr) root.style.setProperty('--frame', fr); else root.style.removeProperty('--frame')
+    root.toggleAttribute('data-palette', !!pal)
+  }, [saved.equip])
 
   if (hash === '#dev') return <Dev />
 
@@ -108,20 +131,23 @@ export function App() {
     <LessonPlayer lesson={lesson} hint={course.hint} t={t} onQuit={() => setLesson(null)} onDone={r => {
       const n = lesson.exercises.length
       const before = dailyXp(p, today)
-      setDone({ xp: r.xp, secs: r.s, acc: Math.round((100 * n) / (n + r.miss.length)), first: p.days[today] !== 'study', best: r.best ?? 0,
-        up: level(p.xp + r.xp) > level(p.xp), goal: before < GOAL && before + r.xp >= GOAL })
-      setSaved(finishLesson(p, today, { l: lesson.id, ...r }))
+      const ch = isChallenge(lesson)
+      const xp = ch ? r.xp + CH_REWARD : r.xp
+      setDone({ xp, secs: r.s, acc: Math.round((100 * n) / (n + r.miss.length)), first: p.days[today] !== 'study', best: r.best ?? 0,
+        up: level(p.xp + xp) > level(p.xp), goal: before < GOAL && before + xp >= GOAL, ch })
+      setSaved(ch ? finishChallenge(p, today, r) : finishLesson(p, today, { l: lesson.id, ...r }))
       setLesson(null)
     }} />
   )
 
   if (done) return (
-    <div className="done">
+    <div className="finish">
       <Confetti />
       <div className="badge" aria-hidden><Icon name={done.first ? 'fire' : 'star'} size={72} /></div>
       <h1>{t.lessonDone}</h1>
       {done.up && <p className="perk">{t.levelUp} {t.level(level(p.xp))}, {t.levels[Math.min(level(p.xp), t.levels.length) - 1]}</p>}
       {done.goal && <p className="perk">{t.goalHit}</p>}
+      {done.ch && <p className="perk">{t.chalPerk}</p>}
       <div className="pills">
         <div className="pill xp"><span>XP</span><b>+{done.xp}</b></div>
         <div className="pill time"><span>{t.time}</span><b>{Math.floor(done.secs / 60)}:{String(done.secs % 60).padStart(2, '0')}</b></div>
@@ -141,7 +167,7 @@ export function App() {
         <div className="brand">
           <h1>Restanță</h1>
           <div className="tools">
-          <button className="snd" aria-label={code ? t.codeIs(code) : t.codeTitle} onClick={() => setPop(true)}><Icon name="user" size={22} /></button>
+          <button className="snd" aria-label={t.profile} onClick={() => setTab('profile')}><Icon name="user" size={22} /></button>
           <button className="snd" aria-label={sound ? t.sound : t.muted} onClick={() => { setSound(!sound); setSoundState(!sound) }}><Icon name={sound ? 'sound' : 'mute'} size={22} /></button>
           <button className="lang" aria-label={t.langSwitch} onClick={() => setLang(lang === 'ro' ? 'en' : 'ro')}>
             {(['ro', 'en'] as const).map(l => <span key={l} className={l === lang ? 'on' : undefined}>{l.toUpperCase()}</span>)}
@@ -194,9 +220,10 @@ export function App() {
           </div>
         </div>
       )}
-      <main>
+      <main onTouchStart={e => { touch.current = [e.touches[0].clientX, e.touches[0].clientY] }} onTouchEnd={swipe}>
         {tab === 'learn' ? <>
           <Goal p={p} today={today} t={t} />
+          <Challenge p={p} today={today} t={t} start={() => { const l = pickChallenge(courses, p, today, t.chalTitle); if (l) setLesson(l) }} />
           {course.units.map(u => (
             <section key={u.id}>
               <div className="unit"><h2>{u.title}</h2><p>{u.desc}</p></div>
@@ -204,13 +231,14 @@ export function App() {
                 {u.lessons.map(l => {
                   const i = flat.indexOf(l)
                   const state = p.done[l.id] ? 'done' : i === cur ? 'current' : 'locked'
+                  const perfect = state === 'done' && p.log.some(e => e.l === l.id && e.miss.length === 0) // black border: finished with no mistakes
                   return (
-                    <button key={l.id} className={'lk chunky ' + state} disabled={state === 'locked'} onClick={() => setLesson(prepare(l, l === flat[0]))}>
-                      <span className="ico" aria-hidden><Icon name={state === 'done' ? 'check' : state === 'current' ? 'play' : 'lock'} size={28} /></span>
+                    <button key={l.id} className={'lk chunky ' + state + (perfect ? ' perfect' : '')} disabled={state === 'locked'} onClick={() => setLesson(prepare(l, l === flat[0]))}>
+                      <span className="ico" aria-hidden><Icon name={perfect ? 'star' : state === 'done' ? 'check' : state === 'current' ? 'play' : 'lock'} size={28} /></span>
                       <span className="txt">
                         <b>{l.title}{state !== 'current' && <span className="sr">{state === 'done' ? t.doneSr : t.lockedSr}</span>}</b>
                         {state === 'current' && <small>{t.exercises(l.pick ?? l.exercises.length)}</small>}
-                        {state === 'done' && <small>{t.done}</small>}
+                        {state === 'done' && <small>{perfect ? t.perfect : t.done}</small>}
                       </span>
                       {state === 'current' && <span className="go" aria-hidden>{t.start}</span>}
                     </button>
@@ -219,15 +247,16 @@ export function App() {
               </div>
             </section>
           ))}
-        </> : <Tracker p={p} today={today} fire={fire} t={t} />}
+        </> : tab === 'tracker' ? <Tracker p={p} today={today} fire={fire} t={t} />
+          : tab === 'shop' ? <Shop p={p} lang={lang} t={t} update={setSaved} />
+          : <Profile p={p} courses={courses} lang={lang} t={t} code={code} openCode={() => setPop(true)} />}
       </main>
       <nav className="nav">
-        <button aria-current={tab === 'learn' ? 'page' : undefined} onClick={() => setTab('learn')}>
-          <Icon name="home" size={26} />{t.learn}
-        </button>
-        <button aria-current={tab === 'tracker' ? 'page' : undefined} onClick={() => setTab('tracker')}>
-          <Icon name="cal" size={26} />{t.tracker}
-        </button>
+        {([['learn', 'home', t.learn], ['tracker', 'cal', t.tracker], ['shop', 'shop', t.shop], ['profile', 'user', t.profile]] as const).map(([id, icon, label]) => (
+          <button key={id} aria-current={tab === id ? 'page' : undefined} onClick={() => { setTab(id); scrollTo(0, 0) }}>
+            <Icon name={icon} size={26} />{label}
+          </button>
+        ))}
       </nav>
     </>
   )
@@ -242,6 +271,18 @@ function Goal({ p, today, t }: { p: Progress; today: string; t: Strings }) {
       <div className="meter" role="progressbar" aria-valuemin={0} aria-valuemax={span} aria-valuenow={p.xp - lo}><i style={{ width: `${((p.xp - lo) / span) * 100}%` }} /></div>
       <div className="row"><b>{t.goal}</b><span>{day >= GOAL && <Icon name="check" size={16} />} {Math.min(day, GOAL)}/{GOAL} XP</span></div>
       <div className="meter gold" role="progressbar" aria-valuemin={0} aria-valuemax={GOAL} aria-valuenow={Math.min(day, GOAL)}><i style={{ width: `${(Math.min(day, GOAL) / GOAL) * 100}%` }} /></div>
+    </div>
+  )
+}
+
+function Challenge({ p, today, t, start }: { p: Progress; today: string; t: Strings; start: () => void }) {
+  const finished = !!p.ch?.[today]
+  const ready = Object.keys(p.done).length > 0 // needs a finished lesson to take mistakes from
+  return (
+    <div className={'chal' + (finished ? ' fin' : '')}>
+      <span className="ico" aria-hidden><Icon name={finished ? 'check' : 'bolt'} size={26} /></span>
+      <div className="txt"><b>{t.chalTitle}</b><small>{finished ? t.chalDone : ready ? t.chalDesc(CH_SIZE, CH_REWARD) : t.chalNone}</small></div>
+      {!finished && ready && <button className="chunky go2" onClick={start}>{t.start}</button>}
     </div>
   )
 }

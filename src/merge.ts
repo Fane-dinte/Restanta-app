@@ -10,5 +10,10 @@ export function merge(a: Progress, b: Progress): Progress {
   const seen = new Set<string>()
   const log = [...a.log, ...b.log].filter(e => { const k = `${e.d}|${e.l}|${e.s}|${e.xp}`; return !seen.has(k) && seen.add(k) })
     .sort((x, y) => x.d.localeCompare(y.d))
-  return { days, done, log, xp: Math.max(a.xp, b.xp), freezes: Math.min(a.freezes, b.freezes) }
+  return {
+    days, done, log, xp: Math.max(a.xp, b.xp), freezes: Math.min(a.freezes, b.freezes),
+    owned: [...new Set([...(a.owned ?? []), ...(b.owned ?? [])])],
+    equip: { ...a.equip, ...b.equip }, // the device that syncs last decides what is equipped
+    ch: { ...a.ch, ...b.ch },
+  }
 }
