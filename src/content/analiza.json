@@ -52,7 +52,7 @@
              "answer": "ln([[a]])",
              "explain": {"ro": "Limita remarcabilă $\\frac{a^{x_n}-1}{x_n}\\to\\ln a$, aici cu $a=[[a]]$: rezultatul e $\\ln [[a]]$.", "en": "Notable limit $\\frac{a^{x_n}-1}{x_n}\\to\\ln a$, here with $a=[[a]]$: the answer is $\\ln [[a]]$."}},
             {"type": "mc", "skill": "1-infinit",
-             "prompt": {"ro": "Cazul $1^\\infty$: dacă $x_n\\to 0$ și $y_n\\to\\infty$, atunci $(1+x_n)^{y_n}\\to$ ?", "en": "The $1^\\infty$ case: if $x_n\\to 0$ and $y_n\\to\\infty$, then $(1+x_n)^{y_n}\\to$ ?"},
+             "prompt": {"ro": "Cazul $1^\\infty$: dacă $x_n\\to 0$ și $y_n\\to\\infty$, atunci:\n$$(1+x_n)^{y_n}\\to\\ ?$$", "en": "The $1^\\infty$ case: if $x_n\\to 0$ and $y_n\\to\\infty$, then:\n$$(1+x_n)^{y_n}\\to\\ ?$$"},
              "choices": ["$e^{\\lim x_n y_n}$", "$1$", "$\\infty$", "$e^{\\lim y_n}$"], "answer": 0,
              "explain": {"ro": "Scrii baza ca $1+x_n$, calculezi $\\lim x_n y_n$, iar limita e $e$ la puterea aceea.", "en": "Write the base as $1+x_n$, compute $\\lim x_n y_n$, and the limit is $e$ to that power."}},
             {"type": "input", "check": "number", "skill": "1-infinit", "vars": {"a": [2, 9]},
@@ -80,7 +80,7 @@
              "choices": ["$1^\\infty$", "$2^\\infty$", "$0^\\infty$", "$\\frac{1}{\\infty}$"], "answer": 0,
              "explain": {"ro": "$2^\\infty=\\infty$, $0^\\infty=0$, $\\frac1\\infty=0$ au rezultat clar. Doar $1^\\infty$ depinde de cât de repede baza tinde la $1$.", "en": "$2^\\infty=\\infty$, $0^\\infty=0$, $\\frac1\\infty=0$ have a clear result. Only $1^\\infty$ depends on how fast the base approaches $1$."}},
             {"type": "mc", "skill": "limita-remarcabila",
-             "prompt": {"ro": "Dacă $x_n\\to0$, $x_n\\neq0$, atunci $(1+x_n)^{1/x_n}\\to$ ?", "en": "If $x_n\\to0$, $x_n\\neq0$, then $(1+x_n)^{1/x_n}\\to$ ?"},
+             "prompt": {"ro": "Dacă $x_n\\to0$, $x_n\\neq0$, atunci:\n$$(1+x_n)^{1/x_n}\\to\\ ?$$", "en": "If $x_n\\to0$, $x_n\\neq0$, then:\n$$(1+x_n)^{1/x_n}\\to\\ ?$$"},
              "choices": ["$e$", "$1$", "$0$", "$\\infty$"], "answer": 0,
              "explain": {"ro": "E forma generală a lui $\\left(1+\\frac1n\\right)^n\\to e$, cu $x_n$ în loc de $\\frac1n$.", "en": "It's the general form of $\\left(1+\\frac1n\\right)^n\\to e$, with $x_n$ instead of $\\frac1n$."}}
           ]

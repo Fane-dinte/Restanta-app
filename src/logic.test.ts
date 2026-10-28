@@ -2,7 +2,7 @@ import { test } from 'node:test'
 import assert from 'node:assert/strict'
 import { readdirSync, readFileSync } from 'node:fs'
 import katex from 'katex'
-import { addDays, answerTex, finishLesson, fresh, instantiate, isCorrect, localize, prepare, settle, split, streak } from './logic.ts'
+import { addDays, level, levelStart, answerTex, finishLesson, fresh, instantiate, isCorrect, localize, prepare, settle, split, streak } from './logic.ts'
 import type { Course, Day, Exercise, Question } from './logic.ts'
 
 const q = (check: 'number' | 'expr' | 'text', answer: string): Question => ({ type: 'input', prompt: '', check, answer })
@@ -120,5 +120,18 @@ test('content is valid', () => {
         }
       }
     }
+  }
+})
+
+test('levels start at 100, 300, 600 XP', () => {
+  assert.deepEqual([0, 99, 100, 299, 300, 600].map(level), [1, 1, 2, 2, 3, 4])
+  assert.equal(levelStart(2), 100)
+})
+
+test('the first lesson of each course can be played with pick-an-answer only', () => {
+  for (const f of ['analiza', 'algebra', 'c']) {
+    const l = JSON.parse(readFileSync(`src/content/${f}.json`, 'utf8')).units[0].lessons[0]
+    const first = { ...l, title: l.title.ro, exercises: l.exercises }
+    assert.ok(prepare(first, true).exercises.every(e => e.type === 'mc'))
   }
 })

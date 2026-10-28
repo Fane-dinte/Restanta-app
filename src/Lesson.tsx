@@ -3,6 +3,16 @@ import katex from 'katex'
 import { answerTex, isCorrect, shuffle, split, type Lesson, type Result } from './logic'
 import type { Strings } from './strings'
 import { Icon } from './icons'
+import { sfx } from './fx'
+
+const CONFETTI = ['#1874c4', '#8a3ffc', '#c2410c', '#f2a900', '#1a7f3c']
+export function Confetti({ fixed }: { fixed?: boolean }) {
+  return (
+    <div className={'confetti' + (fixed ? ' fx' : '')} aria-hidden>
+      {Array.from({ length: 30 }, (_, i) => <i key={i} style={{ left: `${(i * 37) % 100}%`, animationDelay: `${(i % 7) * 0.09}s`, background: CONFETTI[i % CONFETTI.length] }} />)}
+    </div>
+  )
+}
 
 export function Rich({ text }: { text: string }) {
   return <>{split(text).map((p, i) =>
@@ -22,6 +32,8 @@ export function LessonPlayer({ lesson, hint, t, onDone, onQuit }: Props) {
   const [ok, setOk] = useState<boolean | null>(null)
   const [miss, setMiss] = useState<string[]>([])
   const [turn, setTurn] = useState(0)
+  const [combo, setCombo] = useState(0) // correct answers in a row
+  const [best, setBest] = useState(0)
   const [start] = useState(Date.now)
   const ex = queue[0]
   const q = ex.type === 'steps' ? ex.steps[step] : ex
@@ -38,11 +50,15 @@ export function LessonPlayer({ lesson, hint, t, onDone, onQuit }: Props) {
     if (empty) return
     const right = isCorrect(q, given)
     setOk(right)
-    navigator.vibrate?.(right ? 20 : [60, 40, 60])
+    const run = right ? combo + 1 : 0
+    setCombo(run)
+    setBest(Math.max(best, run))
+    if (right) sfx.right(run); else sfx.wrong()
+    navigator.vibrate?.(right ? (run >= 3 ? [20, 30, 20, 30, 40] : 20) : [60, 40, 60])
   }
   function next() {
     if (ok && ex.type === 'steps' && step < ex.steps.length - 1) setStep(step + 1)
-    else if (ok && queue.length === 1) return onDone({ xp: miss.length ? 10 : 15, s: Math.round((Date.now() - start) / 1000), miss })
+    else if (ok && queue.length === 1) { sfx.done(); return onDone({ xp: (miss.length ? 10 : 15) + (best >= 3 ? best * 2 : 0), best, s: Math.round((Date.now() - start) / 1000), miss }) }
     else {
       if (!ok) setMiss([...miss, ex.skill ?? lesson.id])
       setQueue(ok ? queue.slice(1) : [...queue.slice(1), ex]) // a wrong exercise comes back at the end
@@ -59,6 +75,7 @@ export function LessonPlayer({ lesson, hint, t, onDone, onQuit }: Props) {
       <div className="progress" role="progressbar" aria-label={t.progress} aria-valuemin={0} aria-valuemax={total} aria-valuenow={total - queue.length}>
         <div style={{ width: `${((total - queue.length) / total) * 100}%` }} />
       </div>
+      {combo >= 2 && <span className="combo" aria-label={t.combo(combo)}><Icon name="fire" size={18} />x{combo}</span>}
       {!reading && lesson.theory.length > 0 && <button aria-label={t.reread} onClick={() => go(0)}><Icon name="book" size={24} /></button>}
     </div>
   )
@@ -89,7 +106,7 @@ export function LessonPlayer({ lesson, hint, t, onDone, onQuit }: Props) {
       {ex.type === 'steps' && (
         <div className="steps">
           <div className="prompt"><Rich text={ex.prompt} /></div>
-          {ex.steps.slice(0, step).map((s, i) => <div key={i} className="step-done">✅ <Rich text={s.prompt} /></div>)}
+          {ex.steps.slice(0, step).map((s, i) => <div key={i} className="step-done"><Icon name="check" size={18} /> <Rich text={s.prompt} /></div>)}
         </div>
       )}
       <div className="kind">{ex.type === 'steps' ? t.step(step + 1, ex.steps.length) : q.type === 'mc' ? t.pickOne : t.typeIt}</div>
@@ -99,7 +116,7 @@ export function LessonPlayer({ lesson, hint, t, onDone, onQuit }: Props) {
           {order.map((i, n) => (
             <button key={i} className={'chunky choice' + (answered && i === q.answer ? ' right' : answered && i === given ? ' wrong' : '')}
               aria-pressed={given === i} disabled={answered} onClick={() => setGiven(i)}>
-              <span className="key" aria-hidden>{n + 1}</span><span><Rich text={q.choices[i]} /></span>
+              <span className="key" aria-hidden>{'ABCD'[n]}</span><span><Rich text={q.choices[i]} /></span>
             </button>
           ))}
         </div>
@@ -113,10 +130,11 @@ export function LessonPlayer({ lesson, hint, t, onDone, onQuit }: Props) {
           {hint && q.check !== 'text' && <div className="hint">{hint}</div>}
         </>
       )}
+      {ok && [3, 5, 8, 10].includes(combo) && <Confetti fixed key={turn} />}
       <div className={'footer' + (answered ? (ok ? ' ok' : ' bad') : '')}>
         <div>
           <div aria-live="polite">
-            {answered && <h3>{ok ? t.praise[turn % t.praise.length] : t.oops[turn % t.oops.length]}</h3>}
+            {answered && <h3>{ok ? t.praise[(turn * 7) % t.praise.length] : t.oops[turn % t.oops.length]}</h3>}
             {answered && (
               <div className="explain">
                 {!ok && <>

@@ -11,10 +11,15 @@ export type Lang = 'ro' | 'en'
 export type Course = { id: string; title: string; icon: string; color: string; hint?: string; units: { id: string; title: string; desc: string; lessons: Lesson[] }[] }
 
 export type Day = 'study' | 'freeze'
-export type Result = { l: string; xp: number; s: number; miss: string[] }
+export type Result = { l: string; xp: number; s: number; miss: string[]; best?: number } // best: longest run of correct answers
 export type Progress = { days: Record<string, Day>; done: Record<string, number>; xp: number; freezes: number; log: (Result & { d: string })[] }
 
 // shortcut: everyone starts with 2 freezes and can't earn more, until the v0.2 shop
+export const GOAL = 30 // daily XP goal
+export const levelStart = (n: number) => 50 * n * (n - 1) // XP at which level n begins
+export const level = (xp: number) => { let n = 1; while (xp >= levelStart(n + 1)) n++; return n }
+export const dailyXp = (p: Progress, today: string) => p.log.reduce((a, e) => a + (e.d === today ? e.xp : 0), 0)
+
 export const fresh = (): Progress => ({ days: {}, done: {}, xp: 0, freezes: 2, log: [] })
 
 export const dayKey = (d = new Date()) =>
@@ -124,7 +129,8 @@ export function instantiate(ex: Exercise): Exercise {
 
 export const shuffle = <T,>(a: T[]) => a.map(x => [Math.random(), x] as const).sort((p, q) => p[0] - q[0]).map(p => p[1])
 
-export const prepare = (l: Lesson): Lesson => ({ ...l, exercises: shuffle(l.exercises).slice(0, l.pick).map(instantiate) })
+// mcOnly: a course's first lesson has only pick-an-answer exercises
+export const prepare = (l: Lesson, mcOnly = false): Lesson => ({ ...l, exercises: shuffle(mcOnly ? l.exercises.filter(e => e.type === 'mc') : l.exercises).slice(0, l.pick).map(instantiate) })
 
 // Lesson text: plain text with $math$, $$display math$$, `code` and ```code blocks```.
 const RICH = /(```[\s\S]*?```|\$\$[\s\S]+?\$\$|\$[^$\n]+\$|`[^`\n]+`)/

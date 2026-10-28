@@ -5,14 +5,14 @@ import './style.css'
 import analiza from './content/analiza.json'
 import algebra from './content/algebra.json'
 import c from './content/c.json'
-import { LessonPlayer } from './Lesson'
+import { Confetti, LessonPlayer } from './Lesson'
+import { setSound, soundOn } from './fx'
 import { Icon, type IconName } from './icons'
-import { dayKey, finishLesson, fresh, localize, prepare, settle, streak, type Course, type Lang, type Lesson, type Progress } from './logic'
+import { GOAL, dailyXp, dayKey, finishLesson, fresh, level, levelStart, localize, prepare, settle, streak, type Course, type Lang, type Lesson, type Progress } from './logic'
 import { strings, type Strings } from './strings'
 
 const COURSES = [analiza, algebra, c] // text is {ro, en}; localize() picks one
 const KEY = 'study-app'
-const CONFETTI = ['#1874c4', '#8a3ffc', '#c2410c', '#f2a900', '#1a7f3c']
 
 function load(): Progress {
   let raw: string | null = null
@@ -38,8 +38,9 @@ export function App() {
   const [tab, setTab] = useState<'learn' | 'tracker'>('learn')
   const [courseId, setCourseId] = useState('analiza')
   const [sheet, setSheet] = useState(false)
+  const [sound, setSoundState] = useState(soundOn)
   const [lesson, setLesson] = useState<Lesson | null>(null)
-  const [done, setDone] = useState<{ xp: number; secs: number; acc: number; first: boolean } | null>(null)
+  const [done, setDone] = useState<{ xp: number; secs: number; acc: number; first: boolean; best: number; up: boolean; goal: boolean } | null>(null)
   useEffect(() => { try { localStorage.setItem(KEY, JSON.stringify(saved)) } catch { /* blocked: progress lives in memory only */ } }, [saved])
   // another tab (the browser copy next to the installed app) saved: take its progress instead of overwriting it later
   useEffect(() => {
@@ -60,7 +61,9 @@ export function App() {
   if (lesson) return (
     <LessonPlayer lesson={lesson} hint={course.hint} t={t} onQuit={() => setLesson(null)} onDone={r => {
       const n = lesson.exercises.length
-      setDone({ xp: r.xp, secs: r.s, acc: Math.round((100 * n) / (n + r.miss.length)), first: p.days[today] !== 'study' })
+      const before = dailyXp(p, today)
+      setDone({ xp: r.xp, secs: r.s, acc: Math.round((100 * n) / (n + r.miss.length)), first: p.days[today] !== 'study', best: r.best ?? 0,
+        up: level(p.xp + r.xp) > level(p.xp), goal: before < GOAL && before + r.xp >= GOAL })
       setSaved(finishLesson(p, today, { l: lesson.id, ...r }))
       setLesson(null)
     }} />
@@ -68,18 +71,17 @@ export function App() {
 
   if (done) return (
     <div className="done">
-      <div className="confetti" aria-hidden>
-        {Array.from({ length: 30 }, (_, i) => (
-          <i key={i} style={{ left: `${(i * 37) % 100}%`, animationDelay: `${(i % 7) * 0.09}s`, background: CONFETTI[i % CONFETTI.length] }} />
-        ))}
-      </div>
+      <Confetti />
       <div className="badge" aria-hidden><Icon name={done.first ? 'fire' : 'star'} size={72} /></div>
       <h1>{t.lessonDone}</h1>
+      {done.up && <p className="perk">{t.levelUp} {t.level(level(p.xp))}, {t.levels[Math.min(level(p.xp), t.levels.length) - 1]}</p>}
+      {done.goal && <p className="perk">{t.goalHit}</p>}
       <div className="pills">
         <div className="pill xp"><span>XP</span><b>+{done.xp}</b></div>
         <div className="pill time"><span>{t.time}</span><b>{Math.floor(done.secs / 60)}:{String(done.secs % 60).padStart(2, '0')}</b></div>
         <div className="pill acc"><span>{t.accuracy}</span><b>{done.acc}%</b></div>
       </div>
+      {done.best >= 3 && <p className="streak-msg"><Icon name="bolt" size={22} /> {t.bonus}: <b>{t.combo(done.best)} (+{done.best * 2} XP)</b></p>}
       {done.first && <p className="streak-msg"><Icon name="fire" size={22} /> {t.streak}: <b>{fire} {t.days(fire)}</b></p>}
       <button className="chunky big" onClick={() => setDone(null)}>{t.continue}</button>
     </div>
@@ -92,9 +94,12 @@ export function App() {
       <header className="top">
         <div className="brand">
           <h1>Restanță</h1>
+          <div className="tools">
+          <button className="snd" aria-label={sound ? t.sound : t.muted} onClick={() => { setSound(!sound); setSoundState(!sound) }}><Icon name={sound ? 'sound' : 'mute'} size={22} /></button>
           <button className="lang" aria-label={t.langSwitch} onClick={() => setLang(lang === 'ro' ? 'en' : 'ro')}>
             {(['ro', 'en'] as const).map(l => <span key={l} className={l === lang ? 'on' : undefined}>{l.toUpperCase()}</span>)}
           </button>
+          </div>
         </div>
         {tab === 'learn' && <>
           <button className="subj" aria-haspopup="dialog" aria-label={`${t.subject}: ${course.title}`} onClick={() => setSheet(true)}>
@@ -124,6 +129,7 @@ export function App() {
       )}
       <main>
         {tab === 'learn' ? <>
+          <Goal p={p} today={today} t={t} />
           {course.units.map(u => (
             <section key={u.id}>
               <div className="unit"><h2>{u.title}</h2><p>{u.desc}</p></div>
@@ -132,7 +138,7 @@ export function App() {
                   const i = flat.indexOf(l)
                   const state = p.done[l.id] ? 'done' : i === cur ? 'current' : 'locked'
                   return (
-                    <button key={l.id} className={'key chunky ' + state} disabled={state === 'locked'} onClick={() => setLesson(prepare(l))}>
+                    <button key={l.id} className={'lk chunky ' + state} disabled={state === 'locked'} onClick={() => setLesson(prepare(l, l === flat[0]))}>
                       <span className="ico" aria-hidden><Icon name={state === 'done' ? 'check' : state === 'current' ? 'play' : 'lock'} size={28} /></span>
                       <span className="txt">
                         <b>{l.title}{state !== 'current' && <span className="sr">{state === 'done' ? t.doneSr : t.lockedSr}</span>}</b>
@@ -157,6 +163,19 @@ export function App() {
         </button>
       </nav>
     </>
+  )
+}
+
+function Goal({ p, today, t }: { p: Progress; today: string; t: Strings }) {
+  const lv = level(p.xp), lo = levelStart(lv), span = levelStart(lv + 1) - lo
+  const day = dailyXp(p, today)
+  return (
+    <div className="prog">
+      <div className="row"><b>{t.level(lv)}, {t.levels[Math.min(lv, t.levels.length) - 1]}</b><span>{p.xp - lo}/{span} XP</span></div>
+      <div className="meter" role="progressbar" aria-valuemin={0} aria-valuemax={span} aria-valuenow={p.xp - lo}><i style={{ width: `${((p.xp - lo) / span) * 100}%` }} /></div>
+      <div className="row"><b>{t.goal}</b><span>{day >= GOAL && <Icon name="check" size={16} />} {Math.min(day, GOAL)}/{GOAL} XP</span></div>
+      <div className="meter gold" role="progressbar" aria-valuemin={0} aria-valuemax={GOAL} aria-valuenow={Math.min(day, GOAL)}><i style={{ width: `${(Math.min(day, GOAL) / GOAL) * 100}%` }} /></div>
+    </div>
   )
 }
 
