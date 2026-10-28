@@ -189,3 +189,19 @@ main { padding: 20px 16px 100px; }
 :not(.katex-display) > .katex { display: inline-block; white-space: nowrap; }
 /* an inline formula never breaks across lines */
 :not(.katex-display) > .katex { display: inline-block; white-space: nowrap; }
+
+/* sync code pop-up and the dev view */
+.scrim.center { align-items: center; padding: 16px; }
+.pop { position: relative; display: grid; gap: 12px; width: 100%; max-width: 340px; padding: 24px 20px 20px; border-radius: var(--r-xl); background: var(--bg); box-shadow: var(--shadow-float); animation: pop .25s ease-out; }
+.pop h2 { margin: 0; padding-right: 36px; font: var(--text-title); }
+.pop p { margin: 0; font: var(--text-small); color: var(--ink-2); }
+.pop .x { position: absolute; top: 8px; right: 8px; display: grid; place-items: center; width: var(--tap-min); height: var(--tap-min); border: 0; border-radius: var(--r-pill); background: none; color: var(--ink-3); }
+.err { color: var(--wrong-ink) !important; font-weight: 800; }
+.dev { padding: 20px 16px 40px; }
+.dev h1 { margin: 0 0 12px; font: var(--text-title); }
+.dev form { display: grid; gap: 10px; margin-bottom: 16px; }
+.dev table { width: 100%; border-collapse: collapse; font-size: 14px; }
+.dev th { text-align: left; color: var(--ink-3); font-weight: 800; }
+.dev th, .dev td { padding: 8px 6px; border-bottom: 1px solid var(--border); }
+.dev .del { min-height: var(--tap-min); padding: 0 10px; border: 0; background: none; color: var(--wrong-ink); font-weight: 800; }
+.dev a { color: var(--accent-ink); }

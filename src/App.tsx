@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import '@fontsource-variable/nunito'
 import 'katex/dist/katex.min.css'
 import './style.css'
@@ -7,6 +7,8 @@ import algebra from './content/algebra.json'
 import c from './content/c.json'
 import { Confetti, LessonPlayer } from './Lesson'
 import { setSound, soundOn } from './fx'
+import { Dev } from './Dev'
+import { MIN_CODE, cleanCode, getCode, isAnon, push, setAnon, setCode as saveCode } from './sync'
 import { Icon, type IconName } from './icons'
 import { GOAL, dailyXp, dayKey, finishLesson, fresh, level, levelStart, localize, prepare, settle, streak, type Course, type Lang, type Lesson, type Progress } from './logic'
 import { strings, type Strings } from './strings'
@@ -32,6 +34,44 @@ function loadLang(): Lang {
 export function App() {
   const today = dayKey()
   const [saved, setSaved] = useState(load)
+  const [code, setCode] = useState(getCode) // sync code, null = anonymous
+  const [pop, setPop] = useState(() => !getCode() && !isAnon())
+  const [codeIn, setCodeIn] = useState('')
+  const [codeErr, setCodeErr] = useState('')
+  const [tick, setTick] = useState(0)
+  const synced = useRef('') // last progress the server agreed on, so syncing doesn't loop
+  const [hash, setHash] = useState(location.hash)
+  useEffect(() => {
+    const on = () => setHash(location.hash)
+    const back = () => { if (document.visibilityState === 'visible') { synced.current = ''; setTick(n => n + 1) } } // pick up what another device saved
+    addEventListener('hashchange', on)
+    document.addEventListener('visibilitychange', back)
+    return () => { removeEventListener('hashchange', on); document.removeEventListener('visibilitychange', back) }
+  }, [])
+  useEffect(() => {
+    if (!code) return
+    const json = JSON.stringify(saved)
+    if (json === synced.current) return
+    const id = setTimeout(() => {
+      push(code, saved).then(m => {
+        synced.current = JSON.stringify(m)
+        if (synced.current !== json) setSaved(m)
+      }).catch(() => { /* offline: tries again on the next change or when the app comes back */ })
+    }, 800)
+    return () => clearTimeout(id)
+  }, [saved, code, tick])
+  async function join() {
+    const c = cleanCode(codeIn)
+    if (c.length < MIN_CODE) return setCodeErr(t.codeShort)
+    setCodeErr('')
+    try {
+      const m = await push(c, saved)
+      synced.current = JSON.stringify(m)
+      saveCode(c); setCode(c); setSaved(m); setPop(false); setCodeIn('')
+    } catch { setCodeErr(t.codeOffline) }
+  }
+  const skip = () => { setAnon(); setPop(false) }
+  const leave = () => { saveCode(null); setCode(null); setAnon(); synced.current = ''; setPop(false) }
   const [lang, setLang] = useState(loadLang)
   const courses: Course[] = useMemo(() => localize(COURSES, lang), [lang])
   const t = strings(lang)
@@ -57,6 +97,8 @@ export function App() {
   const fire = streak(p.days, today)
   const course = courses.find(x => x.id === courseId)!
   useEffect(() => { document.documentElement.dataset.subject = course.id }, [course]) // tokens.css maps it to --accent
+
+  if (hash === '#dev') return <Dev />
 
   if (lesson) return (
     <LessonPlayer lesson={lesson} hint={course.hint} t={t} onQuit={() => setLesson(null)} onDone={r => {
@@ -95,6 +137,7 @@ export function App() {
         <div className="brand">
           <h1>Restanță</h1>
           <div className="tools">
+          <button className="snd" aria-label={code ? t.codeIs(code) : t.codeTitle} onClick={() => setPop(true)}><Icon name="user" size={22} /></button>
           <button className="snd" aria-label={sound ? t.sound : t.muted} onClick={() => { setSound(!sound); setSoundState(!sound) }}><Icon name={sound ? 'sound' : 'mute'} size={22} /></button>
           <button className="lang" aria-label={t.langSwitch} onClick={() => setLang(lang === 'ro' ? 'en' : 'ro')}>
             {(['ro', 'en'] as const).map(l => <span key={l} className={l === lang ? 'on' : undefined}>{l.toUpperCase()}</span>)}
@@ -116,6 +159,21 @@ export function App() {
           </div>
         </>}
       </header>
+      {pop && (
+        <div className="scrim center" onClick={skip}>
+          <form className="pop" role="dialog" aria-label={t.codeTitle} onClick={e => e.stopPropagation()} onSubmit={e => { e.preventDefault(); void (code ? leave() : join()) }}>
+            <button type="button" className="x" aria-label={t.codeSkip} onClick={code ? () => setPop(false) : skip}><Icon name="close" size={22} /></button>
+            <h2>{code ? t.codeIs(code) : t.codeTitle}</h2>
+            {code ? <p>{t.codeSynced}</p> : <>
+              <p>{t.codeHelp}</p>
+              <input className="answer" value={codeIn} onChange={e => setCodeIn(e.target.value)} placeholder={t.codePlaceholder} aria-label={t.codePlaceholder} autoFocus
+                maxLength={40} autoComplete="off" autoCapitalize="off" autoCorrect="off" spellCheck={false} />
+              {codeErr && <p className="err" role="alert">{codeErr}</p>}
+            </>}
+            <button className="chunky big" type="submit">{code ? t.codeOut : t.codeSave}</button>
+          </form>
+        </div>
+      )}
       {sheet && (
         <div className="scrim" onClick={() => setSheet(false)}>
           <div className="sheet" role="dialog" aria-label={t.subject} onClick={e => e.stopPropagation()}>
