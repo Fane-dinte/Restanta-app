@@ -2,6 +2,7 @@ import { useMemo, useState } from 'react'
 import katex from 'katex'
 import { answerTex, isCorrect, shuffle, split, type Lesson, type Result } from './logic'
 import type { Strings } from './strings'
+import { Icon } from './icons'
 
 export function Rich({ text }: { text: string }) {
   return <>{split(text).map((p, i) =>
@@ -54,11 +55,11 @@ export function LessonPlayer({ lesson, hint, t, onDone, onQuit }: Props) {
 
   const bar = (
     <div className="bar">
-      <button aria-label={t.quit} onClick={() => confirm(t.quitConfirm) && onQuit()}><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" /></svg></button>
+      <button aria-label={t.quit} onClick={() => confirm(t.quitConfirm) && onQuit()}><Icon name="close" size={26} /></button>
       <div className="progress" role="progressbar" aria-label={t.progress} aria-valuemin={0} aria-valuemax={total} aria-valuenow={total - queue.length}>
         <div style={{ width: `${((total - queue.length) / total) * 100}%` }} />
       </div>
-      {!reading && lesson.theory.length > 0 && <button aria-label={t.reread} onClick={() => go(0)}>📖</button>}
+      {!reading && lesson.theory.length > 0 && <button aria-label={t.reread} onClick={() => go(0)}><Icon name="book" size={24} /></button>}
     </div>
   )
 

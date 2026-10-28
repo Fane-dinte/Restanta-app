@@ -6,18 +6,13 @@ import analiza from './content/analiza.json'
 import algebra from './content/algebra.json'
 import c from './content/c.json'
 import { LessonPlayer } from './Lesson'
+import { Icon, type IconName } from './icons'
 import { dayKey, finishLesson, fresh, localize, prepare, settle, streak, type Course, type Lang, type Lesson, type Progress } from './logic'
 import { strings, type Strings } from './strings'
 
 const COURSES = [analiza, algebra, c] // text is {ro, en}; localize() picks one
 const KEY = 'study-app'
 const CONFETTI = ['#1874c4', '#8a3ffc', '#c2410c', '#f2a900', '#1a7f3c']
-// icons from the "Studiu App Design" canvas
-const NODE_ICON = {
-  done: <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3.2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5" /></svg>,
-  current: <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.8l2.8 5.7 6.3.9-4.55 4.43 1.07 6.27L12 17.1l-5.62 2.96 1.07-6.27L2.9 9.4l6.3-.9z" /></svg>,
-  locked: <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round"><rect x="5" y="11" width="14" height="10" rx="2.5" /><path d="M8 11V8a4 4 0 0 1 8 0v3" /></svg>,
-}
 
 function load(): Progress {
   let raw: string | null = null
@@ -42,6 +37,7 @@ export function App() {
   const t = strings(lang)
   const [tab, setTab] = useState<'learn' | 'tracker'>('learn')
   const [courseId, setCourseId] = useState('analiza')
+  const [sheet, setSheet] = useState(false)
   const [lesson, setLesson] = useState<Lesson | null>(null)
   const [done, setDone] = useState<{ xp: number; secs: number; acc: number; first: boolean } | null>(null)
   useEffect(() => { try { localStorage.setItem(KEY, JSON.stringify(saved)) } catch { /* blocked: progress lives in memory only */ } }, [saved])
@@ -77,14 +73,14 @@ export function App() {
           <i key={i} style={{ left: `${(i * 37) % 100}%`, animationDelay: `${(i % 7) * 0.09}s`, background: CONFETTI[i % CONFETTI.length] }} />
         ))}
       </div>
-      <div className="emoji" aria-hidden>{done.first ? '🔥' : '🎉'}</div>
+      <div className="badge" aria-hidden><Icon name={done.first ? 'fire' : 'star'} size={72} /></div>
       <h1>{t.lessonDone}</h1>
       <div className="pills">
         <div className="pill xp"><span>XP</span><b>+{done.xp}</b></div>
         <div className="pill time"><span>{t.time}</span><b>{Math.floor(done.secs / 60)}:{String(done.secs % 60).padStart(2, '0')}</b></div>
         <div className="pill acc"><span>{t.accuracy}</span><b>{done.acc}%</b></div>
       </div>
-      {done.first && <p className="streak-msg">🔥 {t.streak}: <b>{fire} {t.days(fire)}</b></p>}
+      {done.first && <p className="streak-msg"><Icon name="fire" size={22} /> {t.streak}: <b>{fire} {t.days(fire)}</b></p>}
       <button className="chunky big" onClick={() => setDone(null)}>{t.continue}</button>
     </div>
   )
@@ -94,22 +90,40 @@ export function App() {
   return (
     <>
       <header className="top">
-        <span className={p.days[today] === 'study' ? 'fire on' : 'fire'} aria-label={`${t.streak}: ${fire} ${t.days(fire)}`}>🔥 {fire}</span>
-        <span aria-label={`${p.freezes} ${t.freezes}`}>🧊 {p.freezes}</span>
-        <span aria-label={`${p.xp} XP`}>⭐ {p.xp}</span>
-        <button className="lang" aria-label={t.langSwitch} onClick={() => setLang(lang === 'ro' ? 'en' : 'ro')}>
-          {(['ro', 'en'] as const).map(l => l === lang ? <b key={l}>{l.toUpperCase()}</b> : <span key={l}>{l.toUpperCase()}</span>)}
-        </button>
+        <div className="brand">
+          <h1>Restanță</h1>
+          <button className="lang" aria-label={t.langSwitch} onClick={() => setLang(lang === 'ro' ? 'en' : 'ro')}>
+            {(['ro', 'en'] as const).map(l => <span key={l} className={l === lang ? 'on' : undefined}>{l.toUpperCase()}</span>)}
+          </button>
+        </div>
+        {tab === 'learn' && <>
+          <button className="subj" aria-haspopup="dialog" aria-label={`${t.subject}: ${course.title}`} onClick={() => setSheet(true)}>
+            <span className="mark"><Icon name={course.id as IconName} size={28} /></span>
+            <span className="who"><b>{course.title}</b><small>{course.units[0].title}</small></span>
+            <Icon name="down" size={22} />
+          </button>
+          <div className="tiles">
+            <div className={'tile fire' + (p.days[today] === 'study' ? ' on' : '')} aria-label={`${t.streak}: ${fire} ${t.days(fire)}`}>
+              <i><Icon name="fire" size={20} /></i><b>{fire}</b><span>{t.streakStat(fire)}</span>
+            </div>
+            <div className="tile freeze" aria-label={`${p.freezes} ${t.freezes}`}><i><Icon name="freeze" size={20} /></i><b>{p.freezes}</b><span>{t.freezes}</span></div>
+            <div className="tile xp" aria-label={`${p.xp} XP`}><i><Icon name="bolt" size={20} /></i><b>{p.xp}</b><span>XP</span></div>
+          </div>
+        </>}
       </header>
-      <main>
-        {tab === 'learn' ? <>
-          <div className="chips" role="group" aria-label={t.subject}>
+      {sheet && (
+        <div className="scrim" onClick={() => setSheet(false)}>
+          <div className="sheet" role="dialog" aria-label={t.subject} onClick={e => e.stopPropagation()}>
             {courses.map(x => (
-              <button key={x.id} className="chunky" data-subject={x.id} aria-pressed={x.id === courseId} onClick={() => setCourseId(x.id)}>
-                {x.icon} {x.title}
+              <button key={x.id} className="opt chunky" data-subject={x.id} aria-pressed={x.id === courseId} onClick={() => { setCourseId(x.id); setSheet(false) }}>
+                <span className="mark"><Icon name={x.id as IconName} size={28} /></span><b>{x.title}</b>
               </button>
             ))}
           </div>
+        </div>
+      )}
+      <main>
+        {tab === 'learn' ? <>
           {course.units.map(u => (
             <section key={u.id}>
               <div className="unit"><h2>{u.title}</h2><p>{u.desc}</p></div>
@@ -118,11 +132,14 @@ export function App() {
                   const i = flat.indexOf(l)
                   const state = p.done[l.id] ? 'done' : i === cur ? 'current' : 'locked'
                   return (
-                    <button key={l.id} className={'node ' + state} disabled={state === 'locked'} onClick={() => setLesson(prepare(l))}
-                      style={{ transform: `translateX(${Math.round(Math.sin(i * 1.2) * 70)}px)` }}>
-                      {state === 'current' && <span className="bubble" aria-hidden>{t.start}</span>}
-                      <span className="dot" aria-hidden>{NODE_ICON[state]}</span>
-                      <span>{l.title}{state !== 'current' && <span className="sr">{state === 'done' ? t.doneSr : t.lockedSr}</span>}</span>
+                    <button key={l.id} className={'key chunky ' + state} disabled={state === 'locked'} onClick={() => setLesson(prepare(l))}>
+                      <span className="ico" aria-hidden><Icon name={state === 'done' ? 'check' : state === 'current' ? 'play' : 'lock'} size={28} /></span>
+                      <span className="txt">
+                        <b>{l.title}{state !== 'current' && <span className="sr">{state === 'done' ? t.doneSr : t.lockedSr}</span>}</b>
+                        {state === 'current' && <small>{t.exercises(l.pick ?? l.exercises.length)}</small>}
+                        {state === 'done' && <small>{t.done}</small>}
+                      </span>
+                      {state === 'current' && <span className="go" aria-hidden>{t.start}</span>}
                     </button>
                   )
                 })}
@@ -133,10 +150,10 @@ export function App() {
       </main>
       <nav className="nav">
         <button aria-current={tab === 'learn' ? 'page' : undefined} onClick={() => setTab('learn')}>
-          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M3.5 10.5L12 3.5l8.5 7" /><path d="M5.5 9v11h13V9" /><path d="M10 20v-5h4v5" /></svg>{t.learn}
+          <Icon name="home" size={26} />{t.learn}
         </button>
         <button aria-current={tab === 'tracker' ? 'page' : undefined} onClick={() => setTab('tracker')}>
-          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15.5" rx="3" /><path d="M3.5 10h17M8 3v4M16 3v4" /><path d="M9 15l2 2 4-4" /></svg>{t.tracker}
+          <Icon name="cal" size={26} />{t.tracker}
         </button>
       </nav>
     </>
@@ -150,15 +167,15 @@ function Tracker({ p, today, fire, t }: { p: Progress; today: string; fire: numb
   const shift = (n: number) => setMonth(dayKey(new Date(y, m - 1 + n, 1)).slice(0, 7))
   return <>
     <div className="stats">
-      <div className="stat"><b>🔥 {fire}</b>{t.streakStat(fire)}</div>
-      <div className="stat"><b>🧊 {p.freezes}</b>{t.freezes}</div>
-      <div className="stat"><b>⭐ {p.xp}</b>{t.xpTotal}</div>
-      <div className="stat"><b>📚 {p.log.length}</b>{t.lessons}</div>
+      <div className="stat"><i className="f"><Icon name="fire" size={20} /></i><b>{fire}</b>{t.streakStat(fire)}</div>
+      <div className="stat"><i className="z"><Icon name="freeze" size={20} /></i><b>{p.freezes}</b>{t.freezes}</div>
+      <div className="stat"><i className="x"><Icon name="bolt" size={20} /></i><b>{p.xp}</b>{t.xpTotal}</div>
+      <div className="stat"><i className="l"><Icon name="book" size={20} /></i><b>{p.log.length}</b>{t.lessons}</div>
     </div>
     <div className="cal-head">
-      <button className="chunky" onClick={() => shift(-1)} aria-label={t.prevMonth}>‹</button>
+      <button className="chunky" onClick={() => shift(-1)} aria-label={t.prevMonth}><Icon name="left" size={22} /></button>
       <h2>{first.toLocaleDateString(t.locale, { month: 'long', year: 'numeric' })}</h2>
-      <button className="chunky" onClick={() => shift(1)} aria-label={t.nextMonth}>›</button>
+      <button className="chunky" onClick={() => shift(1)} aria-label={t.nextMonth}><Icon name="right" size={22} /></button>
     </div>
     <div className="cal">
       {t.weekdays.map((d, i) => <div key={i} className="wd">{d}</div>)}

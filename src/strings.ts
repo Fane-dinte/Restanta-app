@@ -5,6 +5,8 @@ const UI = {
   locale: { ro: 'ro-RO', en: 'en-GB' },
   langSwitch: { ro: 'Limba: română. Treci pe engleză', en: 'Language: English. Switch to Romanian' },
   subject: { ro: 'Materie', en: 'Subject' },
+  done: { ro: 'Terminat', en: 'Done' },
+  exercises: { ro: (n: number) => `${n} exerciții`, en: (n: number) => `${n} exercises` },
   start: { ro: 'ÎNCEPE', en: 'START' },
   doneSr: { ro: ' (terminat)', en: ' (done)' },
   lockedSr: { ro: ' (blocat)', en: ' (locked)' },
@@ -30,7 +32,7 @@ const UI = {
   quit: { ro: 'Ieși din lecție', en: 'Quit lesson' },
   quitConfirm: { ro: 'Ieși din lecție? Progresul ei se pierde.', en: 'Quit the lesson? Its progress will be lost.' },
   progress: { ro: 'Progres', en: 'Progress' },
-  theory: { ro: (a: number, b: number) => `📖 Teorie ${a} din ${b}`, en: (a: number, b: number) => `📖 Theory ${a} of ${b}` },
+  theory: { ro: (a: number, b: number) => `Teorie ${a} din ${b}`, en: (a: number, b: number) => `Theory ${a} of ${b}` },
   reread: { ro: 'Recitește teoria', en: 'Reread the theory' },
   back: { ro: 'Înapoi', en: 'Back' },
   next: { ro: 'Mai departe', en: 'Next' },
@@ -40,8 +42,8 @@ const UI = {
   typeIt: { ro: 'Scrie răspunsul', en: 'Type the answer' },
   yourAnswer: { ro: 'Răspunsul tău', en: 'Your answer' },
   correctAnswer: { ro: 'Răspuns corect:', en: 'Correct answer:' },
-  praise: { ro: ['Corect! 🎉', 'Bravo! 💪', 'Excelent! ✨', 'Perfect! 🔥', 'Super! 🚀'], en: ['Correct! 🎉', 'Nice! 💪', 'Excellent! ✨', 'Perfect! 🔥', 'Great! 🚀'] },
-  oops: { ro: ['Nu chiar 😅', 'Aproape! 🤏', 'Mai încearcă 💡'], en: ['Not quite 😅', 'Almost! 🤏', 'Keep trying 💡'] },
+  praise: { ro: ['Corect!', 'Bravo!', 'Excelent!', 'Perfect!', 'Super!'], en: ['Correct!', 'Nice!', 'Excellent!', 'Perfect!', 'Great!'] },
+  oops: { ro: ['Nu chiar', 'Aproape!', 'Mai încearcă'], en: ['Not quite', 'Almost!', 'Keep trying'] },
 }
 
 type Tr<T> = { [K in keyof T]: T[K] extends { ro: infer V } ? V : never }
