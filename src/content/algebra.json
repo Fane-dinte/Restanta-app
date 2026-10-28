@@ -8275,6 +8275,3118 @@
           ]
         }
       ]
+    },
+    {
+      "id": "al-7",
+      "title": {
+        "ro": "Vectori în spațiu",
+        "en": "Vectors in space"
+      },
+      "desc": {
+        "ro": "Operații cu vectori, produs scalar, vectorial, mixt și dublu: unghiuri, proiecții, arii și volume",
+        "en": "Vector operations, dot, cross, scalar triple and double products: angles, projections, areas and volumes"
+      },
+      "lessons": [
+        {
+          "id": "al-7-1",
+          "title": {
+            "ro": "Teoria vectorilor în spațiu, pe scurt",
+            "en": "The theory of vectors in space, in brief"
+          },
+          "pick": 6,
+          "theory": [
+            {
+              "ro": "Vectori liberi și coordonate\nUn segment orientat $[A,B]$ are origine și extremitate; vectorul $\\overline{AB}$ este clasa tuturor segmentelor cu aceeași direcție, același sens și aceeași lungime.\n$$\\overline{AB}=(x_B-x_A,\\ y_B-y_A,\\ z_B-z_A)$$\nLungimea: $\\|\\overline{AB}\\|=\\sqrt{x^2+y^2+z^2}=d(A,B)$. Un versor are lungimea $1$; versorul lui $v$ este $\\frac{v}{\\|v\\|}$.",
+              "en": "Free vectors and coordinates\nA directed segment $[A,B]$ has an origin and an endpoint; the vector $\\overline{AB}$ is the class of all segments with the same direction, the same sense and the same length.\n$$\\overline{AB}=(x_B-x_A,\\ y_B-y_A,\\ z_B-z_A)$$\nLength: $\\|\\overline{AB}\\|=\\sqrt{x^2+y^2+z^2}=d(A,B)$. A unit vector has length $1$; the unit vector of $v$ is $\\frac{v}{\\|v\\|}$."
+            },
+            {
+              "ro": "Adunare și înmulțire cu scalari\n• Pe componente: $(x_1,y_1,z_1)+(x_2,y_2,z_2)=(x_1+x_2,\\ y_1+y_2,\\ z_1+z_2)$ și $\\alpha(x,y,z)=(\\alpha x,\\alpha y,\\alpha z)$.\n• Regula triunghiului: $\\overline{AB}+\\overline{BC}=\\overline{AC}$.\n• $\\|\\alpha v\\|=|\\alpha|\\,\\|v\\|$; sensul rămâne dacă $\\alpha>0$, se inversează dacă $\\alpha<0$.",
+              "en": "Addition and multiplication by scalars\n• Componentwise: $(x_1,y_1,z_1)+(x_2,y_2,z_2)=(x_1+x_2,\\ y_1+y_2,\\ z_1+z_2)$ and $\\alpha(x,y,z)=(\\alpha x,\\alpha y,\\alpha z)$.\n• Triangle rule: $\\overline{AB}+\\overline{BC}=\\overline{AC}$.\n• $\\|\\alpha v\\|=|\\alpha|\\,\\|v\\|$; the sense is kept if $\\alpha>0$, reversed if $\\alpha<0$."
+            },
+            {
+              "ro": "Vectori coliniari\nDoi vectori nenuli sunt coliniari $\\iff v_2=\\alpha v_1\\iff\\frac{x_1}{x_2}=\\frac{y_1}{y_2}=\\frac{z_1}{z_2}\\iff v_1\\times v_2=\\overline0$.\nPunctele $A,B,C$ sunt coliniare $\\iff\\overline{AB}\\times\\overline{AC}=\\overline0$ (adică $\\overline{AB}$ și $\\overline{AC}$ sunt coliniari).",
+              "en": "Collinear vectors\nTwo nonzero vectors are collinear $\\iff v_2=\\alpha v_1\\iff\\frac{x_1}{x_2}=\\frac{y_1}{y_2}=\\frac{z_1}{z_2}\\iff v_1\\times v_2=\\overline0$.\nThe points $A,B,C$ are collinear $\\iff\\overline{AB}\\times\\overline{AC}=\\overline0$ (that is, $\\overline{AB}$ and $\\overline{AC}$ are collinear vectors)."
+            },
+            {
+              "ro": "Produsul scalar\n$$v_1\\cdot v_2=\\|v_1\\|\\|v_2\\|\\cos\\theta=x_1x_2+y_1y_2+z_1z_2$$\nRezultatul este un NUMĂR. Proprietăți: comutativ, distributiv, $(\\alpha v_1)\\cdot v_2=\\alpha(v_1\\cdot v_2)$, $v\\cdot v=\\|v\\|^2$.\n$\\cos\\theta=\\frac{v_1\\cdot v_2}{\\|v_1\\|\\|v_2\\|}$. Semn: $>0$ unghi ascuțit, $<0$ obtuz, $=0$ drept (vectori perpendiculari).",
+              "en": "The dot product\n$$v_1\\cdot v_2=\\|v_1\\|\\|v_2\\|\\cos\\theta=x_1x_2+y_1y_2+z_1z_2$$\nThe result is a NUMBER. Properties: commutative, distributive, $(\\alpha v_1)\\cdot v_2=\\alpha(v_1\\cdot v_2)$, $v\\cdot v=\\|v\\|^2$.\n$\\cos\\theta=\\frac{v_1\\cdot v_2}{\\|v_1\\|\\|v_2\\|}$. Sign: $>0$ acute angle, $<0$ obtuse, $=0$ right angle (perpendicular vectors)."
+            },
+            {
+              "ro": "Proiecția\nLungimea proiecției lui $v_1$ pe $v_2$:\n$$\\|\\mathrm{pr}_{v_2}v_1\\|=\\frac{|v_1\\cdot v_2|}{\\|v_2\\|}$$\nSe împarte la norma vectorului PE CARE se proiectează. Vectorul proiecție este $\\frac{v_1\\cdot v_2}{\\|v_2\\|^2}\\,v_2$.",
+              "en": "The projection\nLength of the projection of $v_1$ onto $v_2$:\n$$\\|\\mathrm{pr}_{v_2}v_1\\|=\\frac{|v_1\\cdot v_2|}{\\|v_2\\|}$$\nYou divide by the norm of the vector you project ONTO. The projection vector is $\\frac{v_1\\cdot v_2}{\\|v_2\\|^2}\\,v_2$."
+            },
+            {
+              "ro": "Produsul vectorial\n$$v_1\\times v_2=\\begin{vmatrix}\\overline i&\\overline j&\\overline k\\\\x_1&y_1&z_1\\\\x_2&y_2&z_2\\end{vmatrix}$$\nRezultatul este un VECTOR, perpendicular pe planul lui $v_1,v_2$, cu $\\|v_1\\times v_2\\|=\\|v_1\\|\\|v_2\\|\\sin\\theta$ (aria paralelogramului).\nProprietăți: $v_1\\times v_2=-v_2\\times v_1$, distributiv, $(\\alpha v_1)\\times v_2=\\alpha(v_1\\times v_2)$, $v\\times v=\\overline0$.\nAria triunghiului: $\\frac12\\|\\overline{AB}\\times\\overline{AC}\\|$.",
+              "en": "The cross product\n$$v_1\\times v_2=\\begin{vmatrix}\\overline i&\\overline j&\\overline k\\\\x_1&y_1&z_1\\\\x_2&y_2&z_2\\end{vmatrix}$$\nThe result is a VECTOR, perpendicular to the plane of $v_1,v_2$, with $\\|v_1\\times v_2\\|=\\|v_1\\|\\|v_2\\|\\sin\\theta$ (the area of the parallelogram).\nProperties: $v_1\\times v_2=-v_2\\times v_1$, distributive, $(\\alpha v_1)\\times v_2=\\alpha(v_1\\times v_2)$, $v\\times v=\\overline0$.\nArea of the triangle: $\\frac12\\|\\overline{AB}\\times\\overline{AC}\\|$."
+            },
+            {
+              "ro": "Produsul mixt\n$$(v_1,v_2,v_3)=v_1\\cdot(v_2\\times v_3)=\\begin{vmatrix}x_1&y_1&z_1\\\\x_2&y_2&z_2\\\\x_3&y_3&z_3\\end{vmatrix}$$\n• Coplanari $\\iff(v_1,v_2,v_3)=0$.\n• Volumul paralelipipedului: $|(v_1,v_2,v_3)|$.\n• Volumul tetraedrului $ABCD$: $\\frac16|(\\overline{AB},\\overline{AC},\\overline{AD})|$.\nSchimbarea a doi vectori schimbă semnul; permutările circulare nu schimbă nimic.",
+              "en": "The scalar triple product\n$$(v_1,v_2,v_3)=v_1\\cdot(v_2\\times v_3)=\\begin{vmatrix}x_1&y_1&z_1\\\\x_2&y_2&z_2\\\\x_3&y_3&z_3\\end{vmatrix}$$\n• Coplanar $\\iff(v_1,v_2,v_3)=0$.\n• Volume of the parallelepiped: $|(v_1,v_2,v_3)|$.\n• Volume of the tetrahedron $ABCD$: $\\frac16|(\\overline{AB},\\overline{AC},\\overline{AD})|$.\nSwapping two vectors changes the sign; cyclic permutations change nothing."
+            },
+            {
+              "ro": "Produsul dublu vectorial\n$$a\\times(b\\times c)=b\\,(a\\cdot c)-c\\,(a\\cdot b)$$\nRezultatul este un vector din planul lui $b$ și $c$. Nu e asociativ: $(a\\times b)\\times c=b\\,(a\\cdot c)-a\\,(b\\cdot c)$ în general diferă de $a\\times(b\\times c)$.",
+              "en": "The double cross product\n$$a\\times(b\\times c)=b\\,(a\\cdot c)-c\\,(a\\cdot b)$$\nThe result is a vector in the plane of $b$ and $c$. It is not associative: $(a\\times b)\\times c=b\\,(a\\cdot c)-a\\,(b\\cdot c)$ in general differs from $a\\times(b\\times c)$."
+            },
+            {
+              "ro": "Ce test aplic?\n• perpendicular $\\to$ produs scalar $=0$\n• coliniar $\\to$ produs vectorial $=\\overline0$\n• coplanar $\\to$ produs mixt $=0$\n• unghi $\\to$ produs scalar și norme\n• arie $\\to$ produs vectorial; volum $\\to$ produs mixt",
+              "en": "Which test do I use?\n• perpendicular $\\to$ dot product $=0$\n• collinear $\\to$ cross product $=\\overline0$\n• coplanar $\\to$ scalar triple product $=0$\n• angle $\\to$ dot product and norms\n• area $\\to$ cross product; volume $\\to$ scalar triple product"
+            }
+          ],
+          "exercises": [
+            {
+              "type": "mc",
+              "skill": "perpendicular",
+              "prompt": {
+                "ro": "Ce relație au vectorii $u=(1,2,3)$ și $v=(2,-1,0)$?",
+                "en": "What is the relationship between the vectors $u=(1,2,3)$ and $v=(2,-1,0)$?"
+              },
+              "choices": [
+                {
+                  "ro": "perpendiculari",
+                  "en": "perpendicular"
+                },
+                {
+                  "ro": "coliniari",
+                  "en": "collinear"
+                },
+                {
+                  "ro": "unghi ascuțit, dar nu drept",
+                  "en": "acute angle, but not right"
+                },
+                {
+                  "ro": "unghi obtuz",
+                  "en": "obtuse angle"
+                }
+              ],
+              "answer": 0,
+              "explain": {
+                "ro": "$u\\cdot v=2-2+0=0$, deci sunt perpendiculari.\nCapcană: coliniari ar însemna rapoarte egale, dar $\\frac12\\neq\\frac{2}{-1}$.\nRegula: $u\\cdot v=0\\iff u\\perp v$.",
+                "en": "$u\\cdot v=2-2+0=0$, so they are perpendicular.\nTrap: collinear would mean equal ratios, but $\\frac12\\neq\\frac{2}{-1}$.\nRule: $u\\cdot v=0\\iff u\\perp v$."
+              }
+            },
+            {
+              "type": "mc",
+              "skill": "lungime-segment",
+              "prompt": {
+                "ro": "Care este lungimea segmentului $AB$ pentru $A(1,0,2)$ și $B(4,-4,2)$?",
+                "en": "What is the length of the segment $AB$ for $A(1,0,2)$ and $B(4,-4,2)$?"
+              },
+              "choices": [
+                "$5$",
+                "$7$",
+                "$25$",
+                "$1$"
+              ],
+              "answer": 0,
+              "explain": {
+                "ro": "$\\overline{AB}=(3,-4,0)$, $\\|\\overline{AB}\\|=\\sqrt{9+16+0}=5$.\nCapcană: $7$ vine din $3+4$ (fără rădăcină), $25$ e pătratul lungimii.\nRegula: $\\|v\\|=\\sqrt{x^2+y^2+z^2}$.",
+                "en": "$\\overline{AB}=(3,-4,0)$, $\\|\\overline{AB}\\|=\\sqrt{9+16+0}=5$.\nTrap: $7$ comes from $3+4$ (no square root), $25$ is the square of the length.\nRule: $\\|v\\|=\\sqrt{x^2+y^2+z^2}$."
+              }
+            },
+            {
+              "type": "mc",
+              "skill": "coliniaritate",
+              "prompt": {
+                "ro": "Vectorii $v_1=(2,-4,6)$ și $v_2=(-1,2,-3)$ sunt:",
+                "en": "The vectors $v_1=(2,-4,6)$ and $v_2=(-1,2,-3)$ are:"
+              },
+              "choices": [
+                {
+                  "ro": "coliniari, de sens opus",
+                  "en": "collinear, of opposite sense"
+                },
+                {
+                  "ro": "coliniari, de același sens",
+                  "en": "collinear, of the same sense"
+                },
+                {
+                  "ro": "necoliniari",
+                  "en": "non-collinear"
+                },
+                {
+                  "ro": "perpendiculari",
+                  "en": "perpendicular"
+                }
+              ],
+              "answer": 0,
+              "explain": {
+                "ro": "$v_2=-\\frac12v_1$ pe toate componentele, deci coliniari, iar $\\alpha=-\\frac12<0$ dă sens opus.\nCapcană: coliniar nu înseamnă automat același sens. Perpendicular ar cere $v_1\\cdot v_2=0$, dar $v_1\\cdot v_2=-2-8-18=-28$.\nRegula: $v_2=\\alpha v_1$; semnul lui $\\alpha$ dă sensul.",
+                "en": "$v_2=-\\frac12v_1$ on all components, so they are collinear, and $\\alpha=-\\frac12<0$ gives opposite sense.\nTrap: collinear does not automatically mean the same sense. Perpendicular would require $v_1\\cdot v_2=0$, but $v_1\\cdot v_2=-2-8-18=-28$.\nRule: $v_2=\\alpha v_1$; the sign of $\\alpha$ gives the sense."
+              }
+            },
+            {
+              "type": "mc",
+              "skill": "produs-vectorial",
+              "prompt": {
+                "ro": "Cât este $a\\times b$ pentru $a=(1,0,2)$ și $b=(0,3,1)$?",
+                "en": "What is $a\\times b$ for $a=(1,0,2)$ and $b=(0,3,1)$?"
+              },
+              "choices": [
+                "$(-6,-1,3)$",
+                "$(6,1,-3)$",
+                "$(-6,1,3)$",
+                "$(6,-1,3)$"
+              ],
+              "answer": 0,
+              "explain": {
+                "ro": "$\\overline i(0\\cdot1-2\\cdot3)-\\overline j(1\\cdot1-2\\cdot0)+\\overline k(1\\cdot3-0\\cdot0)=-6\\overline i-\\overline j+3\\overline k$.\nCapcană: componenta de la $\\overline j$ are semn minus în dezvoltare, deci $-(1)=-1$, nu $+1$.\nRegula: $+,-,+$ pe prima linie.",
+                "en": "$\\overline i(0\\cdot1-2\\cdot3)-\\overline j(1\\cdot1-2\\cdot0)+\\overline k(1\\cdot3-0\\cdot0)=-6\\overline i-\\overline j+3\\overline k$.\nTrap: the $\\overline j$ component has a minus sign in the expansion, so $-(1)=-1$, not $+1$.\nRule: $+,-,+$ along the first row."
+              }
+            },
+            {
+              "type": "mc",
+              "skill": "volum-tetraedru",
+              "prompt": {
+                "ro": "Un tetraedru are muchiile din vârful $O$ egale cu $(2,0,0)$, $(1,3,0)$, $(4,5,6)$. Care este volumul lui?",
+                "en": "A tetrahedron has the edges from the vertex $O$ equal to $(2,0,0)$, $(1,3,0)$, $(4,5,6)$. What is its volume?"
+              },
+              "choices": [
+                "$6$",
+                "$36$",
+                "$12$",
+                "$3$"
+              ],
+              "answer": 0,
+              "explain": {
+                "ro": "Determinantul este triunghiular: $2\\cdot3\\cdot6=36$, deci volumul paralelipipedului este $36$ și al tetraedrului $\\frac{36}{6}=6$.\nCapcană: $36$ e volumul paralelipipedului; $12$ ar fi $\\frac13$ din el (formula piramidei, fără aria bazei).\nRegula: $V_{tetraedru}=\\frac16|\\det|$.",
+                "en": "The determinant is triangular: $2\\cdot3\\cdot6=36$, so the volume of the parallelepiped is $36$ and that of the tetrahedron is $\\frac{36}{6}=6$.\nTrap: $36$ is the volume of the parallelepiped; $12$ would be $\\frac13$ of it (the pyramid formula, without the area of the base).\nRule: $V_{tetrahedron}=\\frac16|\\det|$."
+              }
+            },
+            {
+              "type": "mc",
+              "skill": "coplanaritate",
+              "prompt": {
+                "ro": "Vectorii $(1,2,3)$, $(2,1,0)$, $(4,5,6)$ sunt:",
+                "en": "The vectors $(1,2,3)$, $(2,1,0)$, $(4,5,6)$ are:"
+              },
+              "choices": [
+                {
+                  "ro": "coplanari",
+                  "en": "coplanar"
+                },
+                {
+                  "ro": "necoplanari, determinantul este $6$",
+                  "en": "non-coplanar, the determinant is $6$"
+                },
+                {
+                  "ro": "necoplanari, determinantul este $-6$",
+                  "en": "non-coplanar, the determinant is $-6$"
+                },
+                {
+                  "ro": "coliniari",
+                  "en": "collinear"
+                }
+              ],
+              "answer": 0,
+              "explain": {
+                "ro": "Determinantul: $1(6-0)-2(12-0)+3(10-4)=6-24+18=0$. Într-adevăr $(4,5,6)=2(1,2,3)+(2,1,0)$.\nCapcană: nu sunt coliniari (primii doi nu sunt proporționali); coplanar este mai slab decât coliniar.\nRegula: produs mixt $0\\iff$ coplanari.",
+                "en": "The determinant: $1(6-0)-2(12-0)+3(10-4)=6-24+18=0$. Indeed $(4,5,6)=2(1,2,3)+(2,1,0)$.\nTrap: they are not collinear (the first two are not proportional); coplanar is weaker than collinear.\nRule: scalar triple product $0\\iff$ coplanar."
+              }
+            },
+            {
+              "type": "mc",
+              "skill": "unghi",
+              "prompt": {
+                "ro": "Care este cosinusul unghiului dintre $a=(1,2,2)$ și $b=(2,3,6)$?",
+                "en": "What is the cosine of the angle between $a=(1,2,2)$ and $b=(2,3,6)$?"
+              },
+              "choices": [
+                "$\\frac{20}{21}$",
+                "$\\frac{20}{3}$",
+                "$\\frac{20}{10}$",
+                "$\\frac{11}{21}$"
+              ],
+              "answer": 0,
+              "explain": {
+                "ro": "$a\\cdot b=2+6+12=20$, $\\|a\\|=3$, $\\|b\\|=\\sqrt{4+9+36}=7$, deci $\\cos\\theta=\\frac{20}{21}$.\nCapcană: trebuie împărțit la AMBELE norme, nu doar la una.\nRegula: $\\cos\\theta=\\frac{a\\cdot b}{\\|a\\|\\|b\\|}$.",
+                "en": "$a\\cdot b=2+6+12=20$, $\\|a\\|=3$, $\\|b\\|=\\sqrt{4+9+36}=7$, so $\\cos\\theta=\\frac{20}{21}$.\nTrap: you must divide by BOTH norms, not just one.\nRule: $\\cos\\theta=\\frac{a\\cdot b}{\\|a\\|\\|b\\|}$."
+              }
+            },
+            {
+              "type": "mc",
+              "skill": "aria-triunghi",
+              "prompt": {
+                "ro": "Aria triunghiului cu $\\overline{AB}=(1,0,2)$ și $\\overline{AC}=(0,3,1)$ este:",
+                "en": "The area of the triangle with $\\overline{AB}=(1,0,2)$ and $\\overline{AC}=(0,3,1)$ is:"
+              },
+              "choices": [
+                "$\\frac{\\sqrt{46}}{2}$",
+                "$\\sqrt{46}$",
+                "$23$",
+                "$\\frac{\\sqrt{10}}{2}$"
+              ],
+              "answer": 0,
+              "explain": {
+                "ro": "$\\overline{AB}\\times\\overline{AC}=(-6,-1,3)$, norma $\\sqrt{36+1+9}=\\sqrt{46}$, aria $=\\frac{\\sqrt{46}}2$.\nCapcană: $\\sqrt{46}$ este aria paralelogramului, fără $\\frac12$.\nRegula: aria triunghiului $=\\frac12\\|\\overline{AB}\\times\\overline{AC}\\|$.",
+                "en": "$\\overline{AB}\\times\\overline{AC}=(-6,-1,3)$, norm $\\sqrt{36+1+9}=\\sqrt{46}$, area $=\\frac{\\sqrt{46}}2$.\nTrap: $\\sqrt{46}$ is the area of the parallelogram, without the $\\frac12$.\nRule: area of the triangle $=\\frac12\\|\\overline{AB}\\times\\overline{AC}\\|$."
+              }
+            },
+            {
+              "type": "mc",
+              "skill": "produs-dublu",
+              "prompt": {
+                "ro": "Pentru $a=(1,1,0)$, $b=(2,0,1)$, $c=(0,3,1)$, cât este $a\\times(b\\times c)$?",
+                "en": "For $a=(1,1,0)$, $b=(2,0,1)$, $c=(0,3,1)$, what is $a\\times(b\\times c)$?"
+              },
+              "choices": [
+                "$(6,-6,1)$",
+                "$(-6,6,-1)$",
+                "$(6,6,1)$",
+                "$(2,-3,1)$"
+              ],
+              "answer": 0,
+              "explain": {
+                "ro": "$a\\cdot c=3$, $a\\cdot b=2$, deci $b(a\\cdot c)-c(a\\cdot b)=(6,0,3)-(0,6,2)=(6,-6,1)$.\nCapcană: ordinea contează: $c(a\\cdot b)-b(a\\cdot c)$ dă semnul opus $(-6,6,-1)$.\nRegula: $b$ înmulțit cu produsul scalar al celorlalți doi, minus $c$ la fel.",
+                "en": "$a\\cdot c=3$, $a\\cdot b=2$, so $b(a\\cdot c)-c(a\\cdot b)=(6,0,3)-(0,6,2)=(6,-6,1)$.\nTrap: order matters: $c(a\\cdot b)-b(a\\cdot c)$ gives the opposite sign $(-6,6,-1)$.\nRule: $b$ times the dot product of the other two, minus $c$ in the same way."
+              }
+            }
+          ]
+        },
+        {
+          "id": "al-7-2",
+          "title": {
+            "ro": "Vectori liberi: operații și coliniaritate",
+            "en": "Free vectors: operations and collinearity"
+          },
+          "pick": 6,
+          "theory": [
+            {
+              "ro": "Coordonate și operații\n$\\overline{AB}=(x_B-x_A,y_B-y_A,z_B-z_A)$. Operațiile se fac pe componente, iar $\\overline{AB}+\\overline{BC}=\\overline{AC}$ (regula triunghiului). $\\|\\alpha v\\|=|\\alpha|\\|v\\|$.",
+              "en": "Coordinates and operations\n$\\overline{AB}=(x_B-x_A,y_B-y_A,z_B-z_A)$. Operations are done componentwise, and $\\overline{AB}+\\overline{BC}=\\overline{AC}$ (the triangle rule). $\\|\\alpha v\\|=|\\alpha|\\|v\\|$."
+            },
+            {
+              "ro": "Coliniaritate\n$v_2=\\alpha v_1\\iff$ rapoartele componentelor sunt egale. Pentru puncte: $A,B,C$ coliniare $\\iff\\overline{AC}=\\alpha\\overline{AB}$. Mijlocul lui $[AB]$: $\\frac12(r_A+r_B)$.",
+              "en": "Collinearity\n$v_2=\\alpha v_1\\iff$ the ratios of the components are equal. For points: $A,B,C$ collinear $\\iff\\overline{AC}=\\alpha\\overline{AB}$. Midpoint of $[AB]$: $\\frac12(r_A+r_B)$."
+            }
+          ],
+          "exercises": [
+            {
+              "type": "input",
+              "check": "number",
+              "skill": "lungime",
+              "prompt": {
+                "ro": "Calculează lungimea segmentului $AB$ pentru $A(1,-2,3)$ și $B(4,2,15)$.",
+                "en": "Compute the length of the segment $AB$ for $A(1,-2,3)$ and $B(4,2,15)$."
+              },
+              "answer": "13",
+              "explain": {
+                "ro": "$\\overline{AB}=(3,4,12)$, $\\|\\overline{AB}\\|=\\sqrt{9+16+144}=\\sqrt{169}=13$.\nCapcană: $12^2=144$, nu $24$. Regula: rădăcina sumei pătratelor diferențelor.",
+                "en": "$\\overline{AB}=(3,4,12)$, $\\|\\overline{AB}\\|=\\sqrt{9+16+144}=\\sqrt{169}=13$.\nTrap: $12^2=144$, not $24$. Rule: the square root of the sum of the squares of the differences."
+              }
+            },
+            {
+              "type": "input",
+              "check": "number",
+              "skill": "combinatie-liniara",
+              "prompt": {
+                "ro": "Dacă $u=(2,-1,3)$ și $v=(1,4,-2)$, care este coordonata pe $\\overline k$ a vectorului $2u-3v$?",
+                "en": "If $u=(2,-1,3)$ and $v=(1,4,-2)$, what is the $\\overline k$ coordinate of the vector $2u-3v$?"
+              },
+              "answer": "12",
+              "explain": {
+                "ro": "$z=2\\cdot3-3\\cdot(-2)=6+6=12$.\nCapcană: $-3\\cdot(-2)=+6$, nu $-6$. Regula: scalarul înmulțește fiecare componentă, apoi aduni.",
+                "en": "$z=2\\cdot3-3\\cdot(-2)=6+6=12$.\nTrap: $-3\\cdot(-2)=+6$, not $-6$. Rule: the scalar multiplies each component, then you add."
+              }
+            },
+            {
+              "type": "input",
+              "check": "number",
+              "skill": "norma-scalar",
+              "prompt": {
+                "ro": "Cât este $\\|\\alpha v\\|$ pentru $v=(2,3,6)$ și $\\alpha=-3$?",
+                "en": "What is $\\|\\alpha v\\|$ for $v=(2,3,6)$ and $\\alpha=-3$?"
+              },
+              "answer": "21",
+              "explain": {
+                "ro": "$\\|v\\|=\\sqrt{4+9+36}=7$, deci $\\|{-3}v\\|=|-3|\\cdot7=21$.\nCapcană: lungimea nu poate fi negativă ($-21$ e greșit). Regula: $\\|\\alpha v\\|=|\\alpha|\\|v\\|$.",
+                "en": "$\\|v\\|=\\sqrt{4+9+36}=7$, so $\\|{-3}v\\|=|-3|\\cdot7=21$.\nTrap: a length cannot be negative ($-21$ is wrong). Rule: $\\|\\alpha v\\|=|\\alpha|\\|v\\|$."
+              }
+            },
+            {
+              "type": "input",
+              "check": "number",
+              "skill": "regula-triunghiului",
+              "prompt": {
+                "ro": "Fie $A(1,0,0)$, $B(2,1,1)$, $C(0,3,1)$, $D(1,2,5)$. Calculează $\\|\\overline{AB}+\\overline{BC}+\\overline{CD}\\|^2$.",
+                "en": "Let $A(1,0,0)$, $B(2,1,1)$, $C(0,3,1)$, $D(1,2,5)$. Compute $\\|\\overline{AB}+\\overline{BC}+\\overline{CD}\\|^2$."
+              },
+              "answer": "29",
+              "explain": {
+                "ro": "Regula triunghiului: suma este $\\overline{AD}=(0,2,5)$, deci pătratul normei este $0+4+25=29$.\nCapcană: nu aduna normele separate; aduni vectorii, apoi iei norma. Regula: $\\overline{AB}+\\overline{BC}+\\overline{CD}=\\overline{AD}$.",
+                "en": "Triangle rule: the sum is $\\overline{AD}=(0,2,5)$, so the square of the norm is $0+4+25=29$.\nTrap: do not add the norms separately; you add the vectors, then take the norm. Rule: $\\overline{AB}+\\overline{BC}+\\overline{CD}=\\overline{AD}$."
+              }
+            },
+            {
+              "type": "input",
+              "check": "number",
+              "skill": "coliniaritate-parametru",
+              "prompt": {
+                "ro": "Pentru ce $\\alpha$ sunt coliniari vectorii $(\\alpha,6,-9)$ și $(2,-4,6)$?",
+                "en": "For what $\\alpha$ are the vectors $(\\alpha,6,-9)$ and $(2,-4,6)$ collinear?"
+              },
+              "answer": "-3",
+              "explain": {
+                "ro": "Raportul pe $\\overline j$: $\\frac{6}{-4}=-\\frac32$. Pe $\\overline k$: $\\frac{-9}{6}=-\\frac32$, la fel. Deci $\\alpha=-\\frac32\\cdot2=-3$.\nCapcană: verifică că raportul e același pe toate componentele, nu doar pe una.\nRegula: componentele sunt proporționale.",
+                "en": "The ratio on $\\overline j$: $\\frac{6}{-4}=-\\frac32$. On $\\overline k$: $\\frac{-9}{6}=-\\frac32$, the same. So $\\alpha=-\\frac32\\cdot2=-3$.\nTrap: check that the ratio is the same on all components, not just one.\nRule: the components are proportional."
+              }
+            },
+            {
+              "type": "steps",
+              "skill": "coliniaritate-parametri",
+              "prompt": {
+                "ro": "Vectorul $(\\lambda,-6,\\mu)$ este coliniar cu $(1,2,-4)$. Află $\\lambda$ și $\\mu$.",
+                "en": "The vector $(\\lambda,-6,\\mu)$ is collinear with $(1,2,-4)$. Find $\\lambda$ and $\\mu$."
+              },
+              "steps": [
+                {
+                  "type": "input",
+                  "check": "number",
+                  "prompt": {
+                    "ro": "Care este raportul $k$ din $(\\lambda,-6,\\mu)=k\\,(1,2,-4)$?",
+                    "en": "What is the ratio $k$ in $(\\lambda,-6,\\mu)=k\\,(1,2,-4)$?"
+                  },
+                  "answer": "-3",
+                  "explain": {
+                    "ro": "Pe $\\overline j$: $-6=k\\cdot2$, deci $k=-3$.",
+                    "en": "On $\\overline j$: $-6=k\\cdot2$, so $k=-3$."
+                  }
+                },
+                {
+                  "type": "input",
+                  "check": "number",
+                  "prompt": {
+                    "ro": "Cât este $\\lambda$?",
+                    "en": "What is $\\lambda$?"
+                  },
+                  "answer": "-3",
+                  "explain": "$\\lambda=k\\cdot1=-3$."
+                },
+                {
+                  "type": "input",
+                  "check": "number",
+                  "prompt": {
+                    "ro": "Cât este $\\mu$?",
+                    "en": "What is $\\mu$?"
+                  },
+                  "answer": "12",
+                  "explain": {
+                    "ro": "$\\mu=k\\cdot(-4)=(-3)(-4)=12$. Regula: același $k$ pe toate componentele.",
+                    "en": "$\\mu=k\\cdot(-4)=(-3)(-4)=12$. Rule: the same $k$ on all components."
+                  }
+                }
+              ]
+            },
+            {
+              "type": "mc",
+              "skill": "puncte-coliniare",
+              "prompt": {
+                "ro": "Punctele $A(1,1,1)$, $B(2,3,4)$, $C(4,7,10)$ sunt:",
+                "en": "The points $A(1,1,1)$, $B(2,3,4)$, $C(4,7,10)$ are:"
+              },
+              "choices": [
+                {
+                  "ro": "coliniare, pentru că $\\overline{AC}=3\\,\\overline{AB}$",
+                  "en": "collinear, because $\\overline{AC}=3\\,\\overline{AB}$"
+                },
+                {
+                  "ro": "necoliniare, pentru că $\\overline{AC}\\neq\\overline{AB}$",
+                  "en": "non-collinear, because $\\overline{AC}\\neq\\overline{AB}$"
+                },
+                {
+                  "ro": "coliniare, dar $C$ e între $A$ și $B$",
+                  "en": "collinear, but $C$ is between $A$ and $B$"
+                },
+                {
+                  "ro": "necoliniare, pentru că lungimile diferă",
+                  "en": "non-collinear, because the lengths differ"
+                }
+              ],
+              "answer": 0,
+              "explain": {
+                "ro": "$\\overline{AB}=(1,2,3)$, $\\overline{AC}=(3,6,9)=3\\overline{AB}$: coliniare, iar $C$ e dincolo de $B$ (nu între).\nCapcană: vectorii nu trebuie să fie egali, ci proporționali.\nRegula: $\\overline{AC}=\\alpha\\overline{AB}$.",
+                "en": "$\\overline{AB}=(1,2,3)$, $\\overline{AC}=(3,6,9)=3\\overline{AB}$: collinear, and $C$ is beyond $B$ (not between).\nTrap: the vectors do not have to be equal, but proportional.\nRule: $\\overline{AC}=\\alpha\\overline{AB}$."
+              }
+            },
+            {
+              "type": "input",
+              "check": "number",
+              "skill": "mijloc",
+              "prompt": {
+                "ro": "Care este suma coordonatelor mijlocului segmentului $AB$, cu $A(2,-4,6)$ și $B(6,2,-2)$?",
+                "en": "What is the sum of the coordinates of the midpoint of the segment $AB$, with $A(2,-4,6)$ and $B(6,2,-2)$?"
+              },
+              "answer": "5",
+              "explain": {
+                "ro": "$M=\\frac12(r_A+r_B)=(4,-1,2)$, suma $=4-1+2=5$.\nCapcană: mijlocul folosește suma vectorilor de poziție, nu diferența. Regula: $r_M=\\frac12(r_A+r_B)$.",
+                "en": "$M=\\frac12(r_A+r_B)=(4,-1,2)$, sum $=4-1+2=5$.\nTrap: the midpoint uses the sum of the position vectors, not the difference. Rule: $r_M=\\frac12(r_A+r_B)$."
+              }
+            },
+            {
+              "type": "input",
+              "check": "number",
+              "skill": "versor",
+              "prompt": {
+                "ro": "Care este prima coordonată a versorului vectorului $v=(2,-3,6)$?",
+                "en": "What is the first coordinate of the unit vector of $v=(2,-3,6)$?"
+              },
+              "answer": "2/7",
+              "explain": {
+                "ro": "$\\|v\\|=\\sqrt{4+9+36}=7$, versorul este $\\frac v7=(\\frac27,-\\frac37,\\frac67)$.\nCapcană: se împarte la $\\|v\\|=7$, nu la $\\|v\\|^2=49$. Regula: versor $=\\frac{v}{\\|v\\|}$.",
+                "en": "$\\|v\\|=\\sqrt{4+9+36}=7$, the unit vector is $\\frac v7=(\\frac27,-\\frac37,\\frac67)$.\nTrap: you divide by $\\|v\\|=7$, not by $\\|v\\|^2=49$. Rule: unit vector $=\\frac{v}{\\|v\\|}$."
+              }
+            },
+            {
+              "type": "input",
+              "check": "number",
+              "skill": "norma-parametru",
+              "prompt": {
+                "ro": "Calculează lungimea vectorului $(a,\\,2a,\\,2a)$ pentru $a=[[a]]$.",
+                "en": "Compute the length of the vector $(a,\\,2a,\\,2a)$ for $a=[[a]]$."
+              },
+              "answer": "[[3*a]]",
+              "explain": {
+                "ro": "$\\sqrt{a^2+4a^2+4a^2}=\\sqrt{9a^2}=3a=[[3*a]]$.\nCapcană: $(2a)^2=4a^2$, nu $2a^2$. Regula: ridici la pătrat fiecare componentă.",
+                "en": "$\\sqrt{a^2+4a^2+4a^2}=\\sqrt{9a^2}=3a=[[3*a]]$.\nTrap: $(2a)^2=4a^2$, not $2a^2$. Rule: you square each component."
+              },
+              "vars": {
+                "a": [
+                  2,
+                  9
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": "al-7-3",
+          "title": {
+            "ro": "Produsul scalar: proprietăți și unghi",
+            "en": "The dot product: properties and angle"
+          },
+          "pick": 6,
+          "theory": [
+            {
+              "ro": "Formule\n$v_1\\cdot v_2=x_1x_2+y_1y_2+z_1z_2=\\|v_1\\|\\|v_2\\|\\cos\\theta$, $\\ v\\cdot v=\\|v\\|^2$.\nLiniar în fiecare factor: $a\\cdot(\\lambda b+\\mu c)=\\lambda\\,a\\cdot b+\\mu\\,a\\cdot c$.",
+              "en": "Formulas\n$v_1\\cdot v_2=x_1x_2+y_1y_2+z_1z_2=\\|v_1\\|\\|v_2\\|\\cos\\theta$, $\\ v\\cdot v=\\|v\\|^2$.\nLinear in each factor: $a\\cdot(\\lambda b+\\mu c)=\\lambda\\,a\\cdot b+\\mu\\,a\\cdot c$."
+            },
+            {
+              "ro": "Unghiul\n$\\cos\\theta=\\frac{v_1\\cdot v_2}{\\|v_1\\|\\|v_2\\|}$, $\\theta\\in[0,\\pi]$. Semnul lui $v_1\\cdot v_2$ dă tipul: pozitiv $\\to$ ascuțit, negativ $\\to$ obtuz. De reținut: $\\|a+b\\|^2=\\|a\\|^2+2\\,a\\cdot b+\\|b\\|^2$.",
+              "en": "The angle\n$\\cos\\theta=\\frac{v_1\\cdot v_2}{\\|v_1\\|\\|v_2\\|}$, $\\theta\\in[0,\\pi]$. The sign of $v_1\\cdot v_2$ gives the type: positive $\\to$ acute, negative $\\to$ obtuse. Worth remembering: $\\|a+b\\|^2=\\|a\\|^2+2\\,a\\cdot b+\\|b\\|^2$."
+            }
+          ],
+          "exercises": [
+            {
+              "type": "input",
+              "check": "number",
+              "skill": "produs-scalar",
+              "prompt": {
+                "ro": "Calculează $u\\cdot v$ pentru $u=(3,-2,1)$ și $v=(2,4,-5)$.",
+                "en": "Compute $u\\cdot v$ for $u=(3,-2,1)$ and $v=(2,4,-5)$."
+              },
+              "answer": "-7",
+              "explain": {
+                "ro": "$6-8-5=-7$.\nCapcană: $1\\cdot(-5)=-5$. Regula: suma produselor pe componente.",
+                "en": "$6-8-5=-7$.\nTrap: $1\\cdot(-5)=-5$. Rule: the sum of the componentwise products."
+              }
+            },
+            {
+              "type": "input",
+              "check": "number",
+              "skill": "liniaritate",
+              "prompt": {
+                "ro": "Se știe $a\\cdot b=4$ și $a\\cdot c=-3$. Cât este $a\\cdot(2b-c)$?",
+                "en": "It is known that $a\\cdot b=4$ and $a\\cdot c=-3$. What is $a\\cdot(2b-c)$?"
+              },
+              "answer": "11",
+              "explain": {
+                "ro": "$a\\cdot(2b-c)=2(a\\cdot b)-a\\cdot c=8+3=11$.\nCapcană: $-(-3)=+3$. Regula: produsul scalar e liniar în fiecare factor.",
+                "en": "$a\\cdot(2b-c)=2(a\\cdot b)-a\\cdot c=8+3=11$.\nTrap: $-(-3)=+3$. Rule: the dot product is linear in each factor."
+              }
+            },
+            {
+              "type": "input",
+              "check": "number",
+              "skill": "diferenta-patrate",
+              "prompt": {
+                "ro": "Dacă $\\|a\\|=2$ și $\\|b\\|=3$, cât este $(a+b)\\cdot(a-b)$?",
+                "en": "If $\\|a\\|=2$ and $\\|b\\|=3$, what is $(a+b)\\cdot(a-b)$?"
+              },
+              "answer": "-5",
+              "explain": {
+                "ro": "$(a+b)\\cdot(a-b)=a\\cdot a-a\\cdot b+b\\cdot a-b\\cdot b=\\|a\\|^2-\\|b\\|^2=4-9=-5$ (termenii mixți se reduc, fiindcă produsul scalar e comutativ).\nCapcană: nu e $\\|a\\|^2+\\|b\\|^2$. Regula: analog cu $x^2-y^2$.",
+                "en": "$(a+b)\\cdot(a-b)=a\\cdot a-a\\cdot b+b\\cdot a-b\\cdot b=\\|a\\|^2-\\|b\\|^2=4-9=-5$ (the mixed terms cancel, because the dot product is commutative).\nTrap: it is not $\\|a\\|^2+\\|b\\|^2$. Rule: analogous to $x^2-y^2$."
+              }
+            },
+            {
+              "type": "input",
+              "check": "number",
+              "skill": "norma-sumei",
+              "prompt": {
+                "ro": "Dacă $\\|a\\|=3$, $\\|b\\|=4$ și $a\\cdot b=6$, cât este $\\|a+b\\|^2$?",
+                "en": "If $\\|a\\|=3$, $\\|b\\|=4$ and $a\\cdot b=6$, what is $\\|a+b\\|^2$?"
+              },
+              "answer": "37",
+              "explain": {
+                "ro": "$\\|a+b\\|^2=\\|a\\|^2+2\\,a\\cdot b+\\|b\\|^2=9+12+16=37$.\nCapcană: factorul $2$ din termenul mixt; fără el ai obține $31$. Regula: $(a+b)^2=a^2+2ab+b^2$.",
+                "en": "$\\|a+b\\|^2=\\|a\\|^2+2\\,a\\cdot b+\\|b\\|^2=9+12+16=37$.\nTrap: the factor $2$ in the mixed term; without it you would get $31$. Rule: $(a+b)^2=a^2+2ab+b^2$."
+              }
+            },
+            {
+              "type": "input",
+              "check": "number",
+              "skill": "definitie-unghi",
+              "prompt": {
+                "ro": "Doi vectori au lungimile $2$ și $5$, iar unghiul dintre ei este $60^\\circ$. Cât este produsul lor scalar?",
+                "en": "Two vectors have lengths $2$ and $5$, and the angle between them is $60^\\circ$. What is their dot product?"
+              },
+              "answer": "5",
+              "explain": {
+                "ro": "$2\\cdot5\\cdot\\cos60^\\circ=10\\cdot\\frac12=5$.\nCapcană: cosinus, nu sinus (sinusul ar da $5\\sqrt3$, norma produsului vectorial). Regula: $v_1\\cdot v_2=\\|v_1\\|\\|v_2\\|\\cos\\theta$.",
+                "en": "$2\\cdot5\\cdot\\cos60^\\circ=10\\cdot\\frac12=5$.\nTrap: cosine, not sine (the sine would give $5\\sqrt3$, the norm of the cross product). Rule: $v_1\\cdot v_2=\\|v_1\\|\\|v_2\\|\\cos\\theta$."
+              }
+            },
+            {
+              "type": "input",
+              "check": "number",
+              "skill": "cosinus",
+              "prompt": {
+                "ro": "Care este cosinusul unghiului dintre $a=(2,1,-2)$ și $b=(1,-2,2)$?",
+                "en": "What is the cosine of the angle between $a=(2,1,-2)$ and $b=(1,-2,2)$?"
+              },
+              "answer": "-4/9",
+              "explain": {
+                "ro": "$a\\cdot b=2-2-4=-4$, $\\|a\\|=3$, $\\|b\\|=3$, deci $\\cos\\theta=-\\frac49$ (unghi obtuz).\nCapcană: împarți la $3\\cdot3=9$, nu la $3+3$. Regula: $\\cos\\theta=\\frac{a\\cdot b}{\\|a\\|\\|b\\|}$.",
+                "en": "$a\\cdot b=2-2-4=-4$, $\\|a\\|=3$, $\\|b\\|=3$, so $\\cos\\theta=-\\frac49$ (obtuse angle).\nTrap: you divide by $3\\cdot3=9$, not by $3+3$. Rule: $\\cos\\theta=\\frac{a\\cdot b}{\\|a\\|\\|b\\|}$."
+              }
+            },
+            {
+              "type": "mc",
+              "skill": "unghi",
+              "prompt": {
+                "ro": "Care este unghiul dintre $(1,1,0)$ și $(0,1,1)$?",
+                "en": "What is the angle between $(1,1,0)$ and $(0,1,1)$?"
+              },
+              "choices": [
+                "$60^\\circ$",
+                "$30^\\circ$",
+                "$45^\\circ$",
+                "$120^\\circ$"
+              ],
+              "answer": 0,
+              "explain": {
+                "ro": "Produsul scalar $=1$, normele $\\sqrt2\\cdot\\sqrt2=2$, $\\cos\\theta=\\frac12$, deci $\\theta=60^\\circ$.\nCapcană: $120^\\circ$ ar avea $\\cos=-\\frac12$; produsul scalar e pozitiv.\nRegula: $\\cos\\theta>0\\iff$ unghi ascuțit.",
+                "en": "The dot product $=1$, the norms $\\sqrt2\\cdot\\sqrt2=2$, $\\cos\\theta=\\frac12$, so $\\theta=60^\\circ$.\nTrap: $120^\\circ$ would have $\\cos=-\\frac12$; the dot product is positive.\nRule: $\\cos\\theta>0\\iff$ acute angle."
+              }
+            },
+            {
+              "type": "mc",
+              "skill": "tip-unghi",
+              "prompt": {
+                "ro": "Unghiul dintre $(3,1,-2)$ și $(1,-2,4)$ este:",
+                "en": "The angle between $(3,1,-2)$ and $(1,-2,4)$ is:"
+              },
+              "choices": [
+                {
+                  "ro": "obtuz",
+                  "en": "obtuse"
+                },
+                {
+                  "ro": "ascuțit",
+                  "en": "acute"
+                },
+                {
+                  "ro": "drept",
+                  "en": "right"
+                },
+                {
+                  "ro": "nul",
+                  "en": "zero"
+                }
+              ],
+              "answer": 0,
+              "explain": {
+                "ro": "Produsul scalar: $3-2-8=-7<0$, deci $\\cos\\theta<0$ și unghiul e obtuz.\nCapcană: pentru a decide tipul nu ai nevoie de norme, doar de semnul produsului scalar.\nRegula: negativ $\\to$ obtuz.",
+                "en": "Dot product: $3-2-8=-7<0$, so $\\cos\\theta<0$ and the angle is obtuse.\nTrap: to decide the type you do not need the norms, only the sign of the dot product.\nRule: negative $\\to$ obtuse."
+              }
+            },
+            {
+              "type": "input",
+              "check": "number",
+              "skill": "expresie-parametru",
+              "prompt": {
+                "ro": "Calculează produsul scalar:\n$$(a,-1,2)\\cdot(a,3,1),\\quad a=[[a]]$$",
+                "en": "Compute the dot product:\n$$(a,-1,2)\\cdot(a,3,1),\\quad a=[[a]]$$"
+              },
+              "answer": "[[a^2-1]]",
+              "explain": {
+                "ro": "$a\\cdot a+(-1)\\cdot3+2\\cdot1=a^2-3+2=a^2-1=[[a^2-1]]$.\nCapcană: prima componentă dă $a^2$, nu $a$. Regula: suma produselor pe componente.",
+                "en": "$a\\cdot a+(-1)\\cdot3+2\\cdot1=a^2-3+2=a^2-1=[[a^2-1]]$.\nTrap: the first component gives $a^2$, not $a$. Rule: the sum of the componentwise products."
+              },
+              "vars": {
+                "a": [
+                  2,
+                  9
+                ]
+              }
+            },
+            {
+              "type": "input",
+              "check": "number",
+              "skill": "norma-combinatie",
+              "prompt": {
+                "ro": "Pentru $a=(1,0,2)$ și $b=(0,3,-1)$ calculează $\\|2a-b\\|^2$.",
+                "en": "For $a=(1,0,2)$ and $b=(0,3,-1)$ compute $\\|2a-b\\|^2$."
+              },
+              "answer": "38",
+              "explain": {
+                "ro": "$2a-b=(2,0,4)-(0,3,-1)=(2,-3,5)$, deci $\\|2a-b\\|^2=4+9+25=38$.\nCapcană: $-(-1)=+1$, deci pe $\\overline k$ obții $4+1=5$, nu $3$. Regula: întâi combinația, apoi norma.",
+                "en": "$2a-b=(2,0,4)-(0,3,-1)=(2,-3,5)$, so $\\|2a-b\\|^2=4+9+25=38$.\nTrap: $-(-1)=+1$, so on $\\overline k$ you get $4+1=5$, not $3$. Rule: first the combination, then the norm."
+              }
+            },
+            {
+              "type": "steps",
+              "skill": "cosinus-triunghi",
+              "prompt": {
+                "ro": "În triunghiul cu $A(0,1,2)$, $B(3,1,6)$, $C(0,5,5)$ află $\\cos A$.",
+                "en": "In the triangle with $A(0,1,2)$, $B(3,1,6)$, $C(0,5,5)$ find $\\cos A$."
+              },
+              "steps": [
+                {
+                  "type": "input",
+                  "check": "number",
+                  "prompt": {
+                    "ro": "Cât este $\\overline{AB}\\cdot\\overline{AC}$ (cu $\\overline{AB}=(3,0,4)$, $\\overline{AC}=(0,4,3)$)?",
+                    "en": "What is $\\overline{AB}\\cdot\\overline{AC}$ (with $\\overline{AB}=(3,0,4)$, $\\overline{AC}=(0,4,3)$)?"
+                  },
+                  "answer": "12",
+                  "explain": "$0+0+12=12$."
+                },
+                {
+                  "type": "input",
+                  "check": "number",
+                  "prompt": {
+                    "ro": "Cât este $\\|\\overline{AB}\\|\\cdot\\|\\overline{AC}\\|$?",
+                    "en": "What is $\\|\\overline{AB}\\|\\cdot\\|\\overline{AC}\\|$?"
+                  },
+                  "answer": "25",
+                  "explain": "$\\sqrt{25}\\cdot\\sqrt{25}=5\\cdot5=25$."
+                },
+                {
+                  "type": "input",
+                  "check": "number",
+                  "prompt": {
+                    "ro": "Cât este $\\cos A$?",
+                    "en": "What is $\\cos A$?"
+                  },
+                  "answer": "12/25",
+                  "explain": {
+                    "ro": "$\\cos A=\\frac{12}{25}>0$, unghi ascuțit. Regula: produs scalar supra produsul normelor.",
+                    "en": "$\\cos A=\\frac{12}{25}>0$, acute angle. Rule: dot product over the product of the norms."
+                  }
+                }
+              ]
+            },
+            {
+              "type": "mc",
+              "skill": "proprietati-scalar",
+              "prompt": {
+                "ro": "Care afirmație este FALSĂ pentru vectori în spațiu?",
+                "en": "Which statement is FALSE for vectors in space?"
+              },
+              "choices": [
+                {
+                  "ro": "Din $a\\cdot b=a\\cdot c$ rezultă $b=c$",
+                  "en": "From $a\\cdot b=a\\cdot c$ it follows that $b=c$"
+                },
+                "$a\\cdot b=b\\cdot a$",
+                "$a\\cdot a=\\|a\\|^2$",
+                "$a\\cdot(b+c)=a\\cdot b+a\\cdot c$"
+              ],
+              "answer": 0,
+              "explain": {
+                "ro": "Contraexemplu: $a=(1,0,0)$, $b=(0,1,0)$, $c=(0,2,0)$ au $a\\cdot b=a\\cdot c=0$, dar $b\\neq c$. Celelalte sunt proprietăți ale produsului scalar.\nCapcană: produsul scalar nu se \"simplifică\" ca la numere.\nRegula: $a\\cdot(b-c)=0$ înseamnă doar $a\\perp(b-c)$.",
+                "en": "Counterexample: $a=(1,0,0)$, $b=(0,1,0)$, $c=(0,2,0)$ have $a\\cdot b=a\\cdot c=0$, but $b\\neq c$. The others are properties of the dot product.\nTrap: the dot product does not \"cancel\" like numbers.\nRule: $a\\cdot(b-c)=0$ only means $a\\perp(b-c)$."
+              }
+            }
+          ]
+        },
+        {
+          "id": "al-7-4",
+          "title": {
+            "ro": "Proiecții și perpendicularitate",
+            "en": "Projections and perpendicularity"
+          },
+          "pick": 6,
+          "theory": [
+            {
+              "ro": "Proiecția\n$\\|\\mathrm{pr}_{b}a\\|=\\frac{|a\\cdot b|}{\\|b\\|}$ și vectorul proiecție $\\frac{a\\cdot b}{\\|b\\|^2}\\,b$. Descompunere: $a=a_\\parallel+a_\\perp$ cu $a_\\parallel=\\frac{a\\cdot b}{\\|b\\|^2}b$ și $a_\\perp=a-a_\\parallel\\perp b$.",
+              "en": "The projection\n$\\|\\mathrm{pr}_{b}a\\|=\\frac{|a\\cdot b|}{\\|b\\|}$ and the projection vector $\\frac{a\\cdot b}{\\|b\\|^2}\\,b$. Decomposition: $a=a_\\parallel+a_\\perp$ with $a_\\parallel=\\frac{a\\cdot b}{\\|b\\|^2}b$ and $a_\\perp=a-a_\\parallel\\perp b$."
+            },
+            {
+              "ro": "Perpendicularitate\n$a\\perp b\\iff a\\cdot b=0$. Cu un parametru, scrii $a\\cdot b=0$ și rezolvi ecuația. Pitagora: dacă $a\\perp b$, atunci $\\|a+b\\|^2=\\|a\\|^2+\\|b\\|^2$.",
+              "en": "Perpendicularity\n$a\\perp b\\iff a\\cdot b=0$. With a parameter, you write $a\\cdot b=0$ and solve the equation. Pythagoras: if $a\\perp b$, then $\\|a+b\\|^2=\\|a\\|^2+\\|b\\|^2$."
+            }
+          ],
+          "exercises": [
+            {
+              "type": "input",
+              "check": "number",
+              "skill": "proiectie",
+              "prompt": {
+                "ro": "Calculează lungimea proiecției lui $a=(3,2,1)$ pe $b=(2,3,6)$.",
+                "en": "Compute the length of the projection of $a=(3,2,1)$ onto $b=(2,3,6)$."
+              },
+              "answer": "18/7",
+              "explain": {
+                "ro": "$a\\cdot b=6+6+6=18$, $\\|b\\|=\\sqrt{4+9+36}=7$, deci lungimea este $\\frac{18}{7}$.\nCapcană: dacă împarți la $\\|a\\|=\\sqrt{14}$ obții proiecția lui $b$ pe $a$. Regula: împarți la norma vectorului pe care proiectezi.",
+                "en": "$a\\cdot b=6+6+6=18$, $\\|b\\|=\\sqrt{4+9+36}=7$, so the length is $\\frac{18}{7}$.\nTrap: if you divide by $\\|a\\|=\\sqrt{14}$ you get the projection of $b$ onto $a$. Rule: you divide by the norm of the vector you project onto."
+              }
+            },
+            {
+              "type": "input",
+              "check": "number",
+              "skill": "vector-proiectie",
+              "prompt": {
+                "ro": "Fie $a=(1,2,3)$ și $b=(2,2,1)$. Proiecția vectorială a lui $a$ pe $b$ este $\\frac{a\\cdot b}{\\|b\\|^2}b$. Care este coordonata ei pe $\\overline k$?",
+                "en": "Let $a=(1,2,3)$ and $b=(2,2,1)$. The vector projection of $a$ onto $b$ is $\\frac{a\\cdot b}{\\|b\\|^2}b$. What is its $\\overline k$ coordinate?"
+              },
+              "answer": "1",
+              "explain": {
+                "ro": "$a\\cdot b=2+4+3=9$, $\\|b\\|^2=9$, coeficientul este $1$, deci proiecția este $(2,2,1)$, iar coordonata pe $\\overline k$ este $1$.\nCapcană: la numitor apare $\\|b\\|^2=9$, nu $\\|b\\|=3$ (ai obține $3b$). Regula: $\\frac{a\\cdot b}{\\|b\\|^2}b$.",
+                "en": "$a\\cdot b=2+4+3=9$, $\\|b\\|^2=9$, the coefficient is $1$, so the projection is $(2,2,1)$, and the $\\overline k$ coordinate is $1$.\nTrap: the denominator is $\\|b\\|^2=9$, not $\\|b\\|=3$ (you would get $3b$). Rule: $\\frac{a\\cdot b}{\\|b\\|^2}b$."
+              }
+            },
+            {
+              "type": "input",
+              "check": "number",
+              "skill": "perpendicular-parametru",
+              "prompt": {
+                "ro": "Pentru ce $\\lambda$ sunt perpendiculari $(\\lambda,3,\\lambda)$ și $(2,-1,-1)$?",
+                "en": "For what $\\lambda$ are $(\\lambda,3,\\lambda)$ and $(2,-1,-1)$ perpendicular?"
+              },
+              "answer": "3",
+              "explain": {
+                "ro": "$2\\lambda-3-\\lambda=\\lambda-3=0$, deci $\\lambda=3$.\nCapcană: $\\lambda\\cdot(-1)=-\\lambda$, apoi $2\\lambda-\\lambda=\\lambda$. Regula: $a\\cdot b=0$.",
+                "en": "$2\\lambda-3-\\lambda=\\lambda-3=0$, so $\\lambda=3$.\nTrap: $\\lambda\\cdot(-1)=-\\lambda$, then $2\\lambda-\\lambda=\\lambda$. Rule: $a\\cdot b=0$."
+              }
+            },
+            {
+              "type": "input",
+              "check": "number",
+              "skill": "perpendicular-parametru",
+              "prompt": {
+                "ro": "Pentru ce valoare a lui $\\lambda$ sunt perpendiculari vectorii $(\\lambda,2,-1)$ și $(3,\\lambda,4)$? Scrie fracția.",
+                "en": "For what value of $\\lambda$ are the vectors $(\\lambda,2,-1)$ and $(3,\\lambda,4)$ perpendicular? Write the fraction."
+              },
+              "answer": "4/5",
+              "explain": {
+                "ro": "$3\\lambda+2\\lambda-4=5\\lambda-4=0$, deci $\\lambda=\\frac45$.\nCapcană: ambii termeni conțin $\\lambda$ și se adună: $3\\lambda+2\\lambda=5\\lambda$. Regula: reduci termenii în $\\lambda$, apoi rezolvi.",
+                "en": "$3\\lambda+2\\lambda-4=5\\lambda-4=0$, so $\\lambda=\\frac45$.\nTrap: both terms contain $\\lambda$ and add up: $3\\lambda+2\\lambda=5\\lambda$. Rule: combine the terms in $\\lambda$, then solve."
+              }
+            },
+            {
+              "type": "input",
+              "check": "number",
+              "skill": "perpendicular-parametru",
+              "prompt": {
+                "ro": "Pentru $a=[[a]]$, află $\\lambda$ astfel încât $(\\lambda,2,a)\\perp(1,3,-1)$.",
+                "en": "For $a=[[a]]$, find $\\lambda$ such that $(\\lambda,2,a)\\perp(1,3,-1)$."
+              },
+              "answer": "[[a-6]]",
+              "explain": {
+                "ro": "$\\lambda+6-a=0$, deci $\\lambda=a-6=[[a-6]]$.\nCapcană: $a\\cdot(-1)=-a$. Regula: $\\lambda$ rezultă din $u\\cdot v=0$.",
+                "en": "$\\lambda+6-a=0$, so $\\lambda=a-6=[[a-6]]$.\nTrap: $a\\cdot(-1)=-a$. Rule: $\\lambda$ comes from $u\\cdot v=0$."
+              },
+              "vars": {
+                "a": [
+                  2,
+                  9
+                ]
+              }
+            },
+            {
+              "type": "input",
+              "check": "number",
+              "skill": "pitagora",
+              "prompt": {
+                "ro": "Vectorii $a$ și $b$ sunt perpendiculari, $\\|a\\|=6$ și $\\|b\\|=8$. Cât este $\\|a+b\\|$?",
+                "en": "The vectors $a$ and $b$ are perpendicular, $\\|a\\|=6$ and $\\|b\\|=8$. What is $\\|a+b\\|$?"
+              },
+              "answer": "10",
+              "explain": {
+                "ro": "$a\\cdot b=0$, deci $\\|a+b\\|^2=36+64=100$ și $\\|a+b\\|=10$.\nCapcană: $\\|a+b\\|\\neq\\|a\\|+\\|b\\|=14$ decât dacă sunt coliniari de același sens. Regula: Pitagora vectorială.",
+                "en": "$a\\cdot b=0$, so $\\|a+b\\|^2=36+64=100$ and $\\|a+b\\|=10$.\nTrap: $\\|a+b\\|\\neq\\|a\\|+\\|b\\|=14$ unless they are collinear with the same sense. Rule: vector Pythagoras."
+              }
+            },
+            {
+              "type": "input",
+              "check": "number",
+              "skill": "cosinus-axa",
+              "prompt": {
+                "ro": "Care este cosinusul unghiului dintre $a=(1,2,2)$ și versorul $\\overline i$?",
+                "en": "What is the cosine of the angle between $a=(1,2,2)$ and the unit vector $\\overline i$?"
+              },
+              "answer": "1/3",
+              "explain": {
+                "ro": "$a\\cdot\\overline i=1$, $\\|a\\|=3$, $\\|\\overline i\\|=1$, deci $\\cos=\\frac13$.\nCapcană: coordonata $x$ nu e cosinusul, trebuie împărțită la $\\|a\\|=3$. Regula: $\\cos\\theta=\\frac{a\\cdot\\overline i}{\\|a\\|}=\\frac{x}{\\|a\\|}$.",
+                "en": "$a\\cdot\\overline i=1$, $\\|a\\|=3$, $\\|\\overline i\\|=1$, so $\\cos=\\frac13$.\nTrap: the $x$ coordinate is not the cosine, it must be divided by $\\|a\\|=3$. Rule: $\\cos\\theta=\\frac{a\\cdot\\overline i}{\\|a\\|}=\\frac{x}{\\|a\\|}$."
+              }
+            },
+            {
+              "type": "mc",
+              "skill": "perpendicular",
+              "prompt": {
+                "ro": "Care dintre vectori este perpendicular pe $u=(1,-2,3)$?",
+                "en": "Which of the vectors is perpendicular to $u=(1,-2,3)$?"
+              },
+              "choices": [
+                "$(2,1,0)$",
+                "$(1,2,3)$",
+                "$(3,1,1)$",
+                "$(-1,1,2)$"
+              ],
+              "answer": 0,
+              "explain": {
+                "ro": "$u\\cdot(2,1,0)=2-2+0=0$. Celelalte dau $6$, $4$, respectiv $-1-2+6=3$.\nCapcană: nu e destul să \"arate\" asemănător; calculezi produsul scalar.\nRegula: perpendicular $\\iff$ produs scalar $0$.",
+                "en": "$u\\cdot(2,1,0)=2-2+0=0$. The others give $6$, $4$, and $-1-2+6=3$ respectively.\nTrap: it is not enough for it to \"look\" similar; you compute the dot product.\nRule: perpendicular $\\iff$ dot product $0$."
+              }
+            },
+            {
+              "type": "mc",
+              "skill": "triunghi-dreptunghic",
+              "prompt": {
+                "ro": "Pentru $A(1,0,2)$, $B(3,1,1)$, $C(2,-2,2)$, unghiul drept al triunghiului $ABC$ este în:",
+                "en": "For $A(1,0,2)$, $B(3,1,1)$, $C(2,-2,2)$, the right angle of the triangle $ABC$ is at:"
+              },
+              "choices": [
+                "$A$",
+                "$B$",
+                "$C$",
+                {
+                  "ro": "niciun vârf",
+                  "en": "no vertex"
+                }
+              ],
+              "answer": 0,
+              "explain": {
+                "ro": "$\\overline{AB}=(2,1,-1)$, $\\overline{AC}=(1,-2,0)$, produsul scalar $2-2+0=0$, deci unghiul din $A$ este drept. În $B$: $\\overline{BA}\\cdot\\overline{BC}=6\\neq0$; în $C$: $5\\neq0$.\nCapcană: vectorii trebuie plecați din ACELAȘI vârf.\nRegula: unghi drept în $A$ $\\iff\\overline{AB}\\cdot\\overline{AC}=0$.",
+                "en": "$\\overline{AB}=(2,1,-1)$, $\\overline{AC}=(1,-2,0)$, the dot product is $2-2+0=0$, so the angle at $A$ is right. At $B$: $\\overline{BA}\\cdot\\overline{BC}=6\\neq0$; at $C$: $5\\neq0$.\nTrap: the vectors must start from the SAME vertex.\nRule: right angle at $A$ $\\iff\\overline{AB}\\cdot\\overline{AC}=0$."
+              }
+            },
+            {
+              "type": "steps",
+              "skill": "descompunere",
+              "prompt": {
+                "ro": "Descompune $a=(3,1,2)$ în $a_\\parallel+a_\\perp$, cu $a_\\parallel$ pe direcția lui $b=(1,1,0)$.",
+                "en": "Decompose $a=(3,1,2)$ as $a_\\parallel+a_\\perp$, with $a_\\parallel$ along the direction of $b=(1,1,0)$."
+              },
+              "steps": [
+                {
+                  "type": "input",
+                  "check": "number",
+                  "prompt": {
+                    "ro": "Cât este $a\\cdot b$?",
+                    "en": "What is $a\\cdot b$?"
+                  },
+                  "answer": "4",
+                  "explain": "$3+1+0=4$."
+                },
+                {
+                  "type": "input",
+                  "check": "number",
+                  "prompt": {
+                    "ro": "Cât este coeficientul $\\frac{a\\cdot b}{\\|b\\|^2}$?",
+                    "en": "What is the coefficient $\\frac{a\\cdot b}{\\|b\\|^2}$?"
+                  },
+                  "answer": "2",
+                  "explain": {
+                    "ro": "$\\|b\\|^2=2$, coeficientul este $\\frac42=2$, deci $a_\\parallel=(2,2,0)$.",
+                    "en": "$\\|b\\|^2=2$, the coefficient is $\\frac42=2$, so $a_\\parallel=(2,2,0)$."
+                  }
+                },
+                {
+                  "type": "input",
+                  "check": "number",
+                  "prompt": {
+                    "ro": "Care este prima coordonată a lui $a_\\perp=a-a_\\parallel$?",
+                    "en": "What is the first coordinate of $a_\\perp=a-a_\\parallel$?"
+                  },
+                  "answer": "1",
+                  "explain": {
+                    "ro": "$a_\\perp=(3-2,1-2,2-0)=(1,-1,2)$ și într-adevăr $a_\\perp\\cdot b=1-1=0$.",
+                    "en": "$a_\\perp=(3-2,1-2,2-0)=(1,-1,2)$ and indeed $a_\\perp\\cdot b=1-1=0$."
+                  }
+                }
+              ]
+            },
+            {
+              "type": "input",
+              "check": "number",
+              "skill": "proiectie-parametru",
+              "prompt": {
+                "ro": "Calculează lungimea proiecției vectorului $(t,t,t)$ pe $b=(1,2,2)$, pentru $t=[[t]]$.",
+                "en": "Compute the length of the projection of the vector $(t,t,t)$ onto $b=(1,2,2)$, for $t=[[t]]$."
+              },
+              "answer": "[[5*t]]/3",
+              "explain": {
+                "ro": "$(t,t,t)\\cdot b=t+2t+2t=5t$ și $\\|b\\|=3$, deci $\\frac{5t}{3}=\\frac{[[5*t]]}{3}$.\nCapcană: împarți la $\\|b\\|=3$, nu la norma lui $(t,t,t)$. Regula: la norma vectorului pe care proiectezi.",
+                "en": "$(t,t,t)\\cdot b=t+2t+2t=5t$ and $\\|b\\|=3$, so $\\frac{5t}{3}=\\frac{[[5*t]]}{3}$.\nTrap: you divide by $\\|b\\|=3$, not by the norm of $(t,t,t)$. Rule: by the norm of the vector you project onto."
+              },
+              "vars": {
+                "t": [
+                  2,
+                  9
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": "al-7-5",
+          "title": {
+            "ro": "Produsul vectorial: proprietăți și arii",
+            "en": "The cross product: properties and areas"
+          },
+          "pick": 6,
+          "theory": [
+            {
+              "ro": "Calcul și sens geometric\n$a\\times b=\\begin{vmatrix}\\overline i&\\overline j&\\overline k\\\\a_1&a_2&a_3\\\\b_1&b_2&b_3\\end{vmatrix}$ este perpendicular pe $a$ și $b$ (regula mâinii drepte), $\\|a\\times b\\|=\\|a\\|\\|b\\|\\sin\\theta$.",
+              "en": "Computation and geometric meaning\n$a\\times b=\\begin{vmatrix}\\overline i&\\overline j&\\overline k\\\\a_1&a_2&a_3\\\\b_1&b_2&b_3\\end{vmatrix}$ is perpendicular to $a$ and $b$ (right-hand rule), $\\|a\\times b\\|=\\|a\\|\\|b\\|\\sin\\theta$."
+            },
+            {
+              "ro": "Proprietăți și aplicații\n$b\\times a=-a\\times b$, $a\\times a=\\overline0$, liniar în fiecare factor. $a\\times b=\\overline0\\iff a,b$ coliniari. Identitatea lui Lagrange: $\\|a\\times b\\|^2=\\|a\\|^2\\|b\\|^2-(a\\cdot b)^2$. Aria triunghiului $=\\frac12\\|\\overline{AB}\\times\\overline{AC}\\|$.",
+              "en": "Properties and applications\n$b\\times a=-a\\times b$, $a\\times a=\\overline0$, linear in each factor. $a\\times b=\\overline0\\iff a,b$ collinear. Lagrange's identity: $\\|a\\times b\\|^2=\\|a\\|^2\\|b\\|^2-(a\\cdot b)^2$. Area of the triangle $=\\frac12\\|\\overline{AB}\\times\\overline{AC}\\|$."
+            }
+          ],
+          "exercises": [
+            {
+              "type": "input",
+              "check": "number",
+              "skill": "produs-vectorial",
+              "prompt": {
+                "ro": "Calculează coeficientul lui $\\overline j$ în $a\\times b$, pentru $a=(2,1,3)$ și $b=(1,-1,4)$.",
+                "en": "Compute the coefficient of $\\overline j$ in $a\\times b$, for $a=(2,1,3)$ and $b=(1,-1,4)$."
+              },
+              "answer": "-5",
+              "explain": {
+                "ro": "Coeficientul lui $\\overline j$ este $-(a_1b_3-a_3b_1)=-(8-3)=-5$. (Rezultatul complet: $(7,-5,-3)$.)\nCapcană: semnul minus din dezvoltarea după $\\overline j$.\nRegula: $+\\overline i,\\ -\\overline j,\\ +\\overline k$.",
+                "en": "The coefficient of $\\overline j$ is $-(a_1b_3-a_3b_1)=-(8-3)=-5$. (The full result: $(7,-5,-3)$.)\nTrap: the minus sign in the expansion along $\\overline j$.\nRule: $+\\overline i,\\ -\\overline j,\\ +\\overline k$."
+              }
+            },
+            {
+              "type": "input",
+              "check": "number",
+              "skill": "lagrange",
+              "prompt": {
+                "ro": "Se dau $\\|a\\|=3$, $\\|b\\|=4$ și $a\\cdot b=6$. Cât este $\\|a\\times b\\|^2$?",
+                "en": "You are given $\\|a\\|=3$, $\\|b\\|=4$ and $a\\cdot b=6$. What is $\\|a\\times b\\|^2$?"
+              },
+              "answer": "108",
+              "explain": {
+                "ro": "$\\|a\\times b\\|^2=\\|a\\|^2\\|b\\|^2-(a\\cdot b)^2=9\\cdot16-36=144-36=108$.\nCapcană: nu uita să ridici la pătrat produsul scalar. Regula: $\\sin^2\\theta=1-\\cos^2\\theta$.",
+                "en": "$\\|a\\times b\\|^2=\\|a\\|^2\\|b\\|^2-(a\\cdot b)^2=9\\cdot16-36=144-36=108$.\nTrap: do not forget to square the dot product. Rule: $\\sin^2\\theta=1-\\cos^2\\theta$."
+              }
+            },
+            {
+              "type": "input",
+              "check": "number",
+              "skill": "aria-paralelogram",
+              "prompt": {
+                "ro": "Calculează pătratul ariei paralelogramului construit pe $a=(2,0,1)$ și $b=(1,3,0)$.",
+                "en": "Compute the square of the area of the parallelogram built on $a=(2,0,1)$ and $b=(1,3,0)$."
+              },
+              "answer": "46",
+              "explain": {
+                "ro": "$a\\times b=(-3,1,6)$, deci aria$^2=9+1+36=46$.\nCapcană: componenta pe $\\overline j$ este $-(0-1)=+1$. Regula: aria paralelogramului $=\\|a\\times b\\|$.",
+                "en": "$a\\times b=(-3,1,6)$, so area$^2=9+1+36=46$.\nTrap: the $\\overline j$ component is $-(0-1)=+1$. Rule: area of the parallelogram $=\\|a\\times b\\|$."
+              }
+            },
+            {
+              "type": "input",
+              "check": "number",
+              "skill": "aria-triunghi",
+              "prompt": {
+                "ro": "Calculează aria triunghiului cu vârfurile $A(1,0,0)$, $B(0,2,0)$, $C(0,0,3)$.",
+                "en": "Compute the area of the triangle with vertices $A(1,0,0)$, $B(0,2,0)$, $C(0,0,3)$."
+              },
+              "answer": "7/2",
+              "explain": {
+                "ro": "$\\overline{AB}=(-1,2,0)$, $\\overline{AC}=(-1,0,3)$, produsul vectorial $=(6,3,2)$, norma $\\sqrt{36+9+4}=7$, aria $=\\frac72$.\nCapcană: $\\frac12$ pentru triunghi. Regula: aria $=\\frac12\\|\\overline{AB}\\times\\overline{AC}\\|$.",
+                "en": "$\\overline{AB}=(-1,2,0)$, $\\overline{AC}=(-1,0,3)$, the cross product $=(6,3,2)$, norm $\\sqrt{36+9+4}=7$, area $=\\frac72$.\nTrap: $\\frac12$ for a triangle. Rule: area $=\\frac12\\|\\overline{AB}\\times\\overline{AC}\\|$."
+              }
+            },
+            {
+              "type": "input",
+              "check": "number",
+              "skill": "proprietati-vectorial",
+              "prompt": {
+                "ro": "Se știe că $a\\times b=(1,-2,3)$. Care este coordonata pe $\\overline k$ a lui $(2a)\\times(-3b)$?",
+                "en": "It is known that $a\\times b=(1,-2,3)$. What is the $\\overline k$ coordinate of $(2a)\\times(-3b)$?"
+              },
+              "answer": "-18",
+              "explain": {
+                "ro": "$(2a)\\times(-3b)=2\\cdot(-3)\\,(a\\times b)=-6(1,-2,3)$, deci la $\\overline k$: $-18$.\nCapcană: scalarii se înmulțesc între ei și ies în fața produsului. Regula: liniaritate în fiecare factor.",
+                "en": "$(2a)\\times(-3b)=2\\cdot(-3)\\,(a\\times b)=-6(1,-2,3)$, so at $\\overline k$: $-18$.\nTrap: the scalars multiply each other and come out in front of the product. Rule: linearity in each factor."
+              }
+            },
+            {
+              "type": "input",
+              "check": "number",
+              "skill": "proprietati-vectorial",
+              "prompt": {
+                "ro": "Se știe că $a\\times b=(2,-1,4)$. Care este coordonata pe $\\overline j$ a lui $(a+b)\\times(a-b)$?",
+                "en": "It is known that $a\\times b=(2,-1,4)$. What is the $\\overline j$ coordinate of $(a+b)\\times(a-b)$?"
+              },
+              "answer": "2",
+              "explain": {
+                "ro": "$(a+b)\\times(a-b)=a\\times a-a\\times b+b\\times a-b\\times b=-a\\times b+b\\times a=-2\\,(a\\times b)=(-4,2,-8)$.\nCapcană: $b\\times a=-a\\times b$, deci termenii mixți se adună, nu se reduc. Regula: anticomutativitate.",
+                "en": "$(a+b)\\times(a-b)=a\\times a-a\\times b+b\\times a-b\\times b=-a\\times b+b\\times a=-2\\,(a\\times b)=(-4,2,-8)$.\nTrap: $b\\times a=-a\\times b$, so the mixed terms add up, they do not cancel. Rule: anticommutativity."
+              }
+            },
+            {
+              "type": "mc",
+              "skill": "perpendicular-pe-doi",
+              "prompt": {
+                "ro": "Care vector este perpendicular pe $a=(1,1,0)$ și pe $b=(0,1,1)$?",
+                "en": "Which vector is perpendicular to both $a=(1,1,0)$ and $b=(0,1,1)$?"
+              },
+              "choices": [
+                "$(1,-1,1)$",
+                "$(1,1,1)$",
+                "$(1,-1,-1)$",
+                "$(2,1,-1)$"
+              ],
+              "answer": 0,
+              "explain": {
+                "ro": "$a\\times b=(1,-1,1)$. Verificare: $\\cdot a=1-1=0$, $\\cdot b=-1+1=0$. Celelalte nu anulează ambele produse scalare.\nCapcană: $(1,-1,-1)$ e perpendicular doar pe $a$.\nRegula: $a\\times b\\perp a$ și $\\perp b$.",
+                "en": "$a\\times b=(1,-1,1)$. Check: $\\cdot a=1-1=0$, $\\cdot b=-1+1=0$. The others do not make both dot products zero.\nTrap: $(1,-1,-1)$ is perpendicular only to $a$.\nRule: $a\\times b\\perp a$ and $\\perp b$."
+              }
+            },
+            {
+              "type": "mc",
+              "skill": "aria-triunghi",
+              "prompt": {
+                "ro": "Aria triunghiului cu $A(1,1,0)$, $B(2,3,1)$, $C(4,6,3)$ este:",
+                "en": "The area of the triangle with $A(1,1,0)$, $B(2,3,1)$, $C(4,6,3)$ is:"
+              },
+              "choices": [
+                "$\\frac{\\sqrt2}{2}$",
+                "$\\sqrt2$",
+                "$\\frac12$",
+                "$1$"
+              ],
+              "answer": 0,
+              "explain": {
+                "ro": "$\\overline{AB}=(1,2,1)$, $\\overline{AC}=(3,5,3)$, produsul vectorial $(1,0,-1)$, norma $\\sqrt2$, aria $\\frac{\\sqrt2}{2}$.\nCapcană: $\\sqrt2$ este aria paralelogramului. Regula: $\\frac12\\|\\overline{AB}\\times\\overline{AC}\\|$.",
+                "en": "$\\overline{AB}=(1,2,1)$, $\\overline{AC}=(3,5,3)$, the cross product $(1,0,-1)$, norm $\\sqrt2$, area $\\frac{\\sqrt2}{2}$.\nTrap: $\\sqrt2$ is the area of the parallelogram. Rule: $\\frac12\\|\\overline{AB}\\times\\overline{AC}\\|$."
+              }
+            },
+            {
+              "type": "mc",
+              "skill": "vectorial-nul",
+              "prompt": {
+                "ro": "Dacă $a\\times b=\\overline0$ și $a,b$ sunt nenuli, atunci:",
+                "en": "If $a\\times b=\\overline0$ and $a,b$ are nonzero, then:"
+              },
+              "choices": [
+                {
+                  "ro": "sunt coliniari",
+                  "en": "they are collinear"
+                },
+                {
+                  "ro": "sunt perpendiculari",
+                  "en": "they are perpendicular"
+                },
+                {
+                  "ro": "au aceeași lungime",
+                  "en": "they have the same length"
+                },
+                {
+                  "ro": "sunt necoplanari",
+                  "en": "they are non-coplanar"
+                }
+              ],
+              "answer": 0,
+              "explain": {
+                "ro": "$\\|a\\times b\\|=\\|a\\|\\|b\\|\\sin\\theta=0$ cu $a,b\\neq0$ dă $\\sin\\theta=0$, deci $\\theta=0$ sau $\\pi$: coliniari.\nCapcană: perpendiculari înseamnă produsul SCALAR zero. Regula: scalar $0\\to\\perp$, vectorial $\\overline0\\to\\parallel$.",
+                "en": "$\\|a\\times b\\|=\\|a\\|\\|b\\|\\sin\\theta=0$ with $a,b\\neq0$ gives $\\sin\\theta=0$, so $\\theta=0$ or $\\pi$: collinear.\nTrap: perpendicular means the DOT product is zero. Rule: dot $0\\to\\perp$, cross $\\overline0\\to\\parallel$."
+              }
+            },
+            {
+              "type": "steps",
+              "skill": "aria-pas",
+              "prompt": {
+                "ro": "Calculează aria triunghiului $A(1,2,3)$, $B(2,2,5)$, $C(0,5,3)$.",
+                "en": "Compute the area of the triangle $A(1,2,3)$, $B(2,2,5)$, $C(0,5,3)$."
+              },
+              "steps": [
+                {
+                  "type": "input",
+                  "check": "number",
+                  "prompt": {
+                    "ro": "Cât este coeficientul lui $\\overline i$ în $\\overline{AB}\\times\\overline{AC}$, cu $\\overline{AB}=(1,0,2)$, $\\overline{AC}=(-1,3,0)$?",
+                    "en": "What is the coefficient of $\\overline i$ in $\\overline{AB}\\times\\overline{AC}$, with $\\overline{AB}=(1,0,2)$, $\\overline{AC}=(-1,3,0)$?"
+                  },
+                  "answer": "-6",
+                  "explain": {
+                    "ro": "$0\\cdot0-2\\cdot3=-6$. Produsul complet: $(-6,-2,3)$.",
+                    "en": "$0\\cdot0-2\\cdot3=-6$. The full product: $(-6,-2,3)$."
+                  }
+                },
+                {
+                  "type": "input",
+                  "check": "number",
+                  "prompt": {
+                    "ro": "Cât este $\\|\\overline{AB}\\times\\overline{AC}\\|$?",
+                    "en": "What is $\\|\\overline{AB}\\times\\overline{AC}\\|$?"
+                  },
+                  "answer": "7",
+                  "explain": "$\\sqrt{36+4+9}=7$."
+                },
+                {
+                  "type": "input",
+                  "check": "number",
+                  "prompt": {
+                    "ro": "Cât este aria triunghiului?",
+                    "en": "What is the area of the triangle?"
+                  },
+                  "answer": "7/2",
+                  "explain": {
+                    "ro": "$\\frac12\\cdot7=\\frac72$. Regula: la triunghi înjumătățești.",
+                    "en": "$\\frac12\\cdot7=\\frac72$. Rule: for a triangle you halve."
+                  }
+                }
+              ]
+            },
+            {
+              "type": "input",
+              "check": "number",
+              "skill": "produs-vectorial",
+              "prompt": {
+                "ro": "Care este coeficientul lui $\\overline k$ în $(a,0,0)\\times(0,b,0)$, pentru $a=[[a]]$ și $b=[[b]]$?",
+                "en": "What is the coefficient of $\\overline k$ in $(a,0,0)\\times(0,b,0)$, for $a=[[a]]$ and $b=[[b]]$?"
+              },
+              "answer": "[[a*b]]",
+              "explain": {
+                "ro": "$a_1b_2-a_2b_1=a\\cdot b-0=[[a*b]]$ (rezultatul este $(0,0,ab)$).\nCapcană: celelalte componente sunt $0$. Regula: la $\\overline k$ iei $a_1b_2-a_2b_1$.",
+                "en": "$a_1b_2-a_2b_1=a\\cdot b-0=[[a*b]]$ (the result is $(0,0,ab)$).\nTrap: the other components are $0$. Rule: at $\\overline k$ you take $a_1b_2-a_2b_1$."
+              },
+              "vars": {
+                "a": [
+                  2,
+                  9
+                ],
+                "b": [
+                  2,
+                  9
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": "al-7-6",
+          "title": {
+            "ro": "Produsul mixt: coplanaritate și volume",
+            "en": "The scalar triple product: coplanarity and volumes"
+          },
+          "pick": 6,
+          "theory": [
+            {
+              "ro": "Produsul mixt\n$(v_1,v_2,v_3)=\\det$ cu liniile $v_1,v_2,v_3$. Coplanari $\\iff0$. Volum paralelipiped $|\\det|$, tetraedru $\\frac16|\\det|$ (cu $\\overline{AB},\\overline{AC},\\overline{AD}$).",
+              "en": "The scalar triple product\n$(v_1,v_2,v_3)=\\det$ with rows $v_1,v_2,v_3$. Coplanar $\\iff0$. Volume of the parallelepiped $|\\det|$, of the tetrahedron $\\frac16|\\det|$ (with $\\overline{AB},\\overline{AC},\\overline{AD}$)."
+            },
+            {
+              "ro": "Proprietăți\nSchimbând doi vectori, semnul se schimbă; permutări circulare: neschimbat; dacă doi vectori sunt coliniari, rezultatul e $0$; $(\\alpha v_1,v_2,v_3)=\\alpha(v_1,v_2,v_3)$.",
+              "en": "Properties\nSwapping two vectors changes the sign; cyclic permutations: unchanged; if two vectors are collinear, the result is $0$; $(\\alpha v_1,v_2,v_3)=\\alpha(v_1,v_2,v_3)$."
+            }
+          ],
+          "exercises": [
+            {
+              "type": "input",
+              "check": "number",
+              "skill": "determinant",
+              "prompt": {
+                "ro": "Calculează produsul mixt al vectorilor $(1,2,0)$, $(0,1,3)$, $(2,0,1)$.",
+                "en": "Compute the scalar triple product of the vectors $(1,2,0)$, $(0,1,3)$, $(2,0,1)$."
+              },
+              "answer": "13",
+              "explain": {
+                "ro": "Dezvoltare pe prima linie: $1(1-0)-2(0-6)+0=1+12=13$.\nCapcană: $-2\\cdot(-6)=+12$. Regula: $+,-,+$ pe prima linie.",
+                "en": "Expansion along the first row: $1(1-0)-2(0-6)+0=1+12=13$.\nTrap: $-2\\cdot(-6)=+12$. Rule: $+,-,+$ along the first row."
+              }
+            },
+            {
+              "type": "input",
+              "check": "number",
+              "skill": "coplanar-parametru",
+              "prompt": {
+                "ro": "Pentru ce $\\lambda$ sunt coplanari vectorii $(1,2,3)$, $(2,1,0)$, $(4,5,\\lambda)$?",
+                "en": "For what $\\lambda$ are the vectors $(1,2,3)$, $(2,1,0)$, $(4,5,\\lambda)$ coplanar?"
+              },
+              "answer": "6",
+              "explain": {
+                "ro": "Determinant: $1(\\lambda-0)-2(2\\lambda-0)+3(10-4)=\\lambda-4\\lambda+18=18-3\\lambda=0$, deci $\\lambda=6$.\nCapcană: al doilea termen are semnul minus și factorul $2$ în față. Regula: coplanari $\\iff\\det=0$, deci rezolvi ecuația.",
+                "en": "Determinant: $1(\\lambda-0)-2(2\\lambda-0)+3(10-4)=\\lambda-4\\lambda+18=18-3\\lambda=0$, so $\\lambda=6$.\nTrap: the second term has a minus sign and the factor $2$ in front. Rule: coplanar $\\iff\\det=0$, so you solve the equation."
+              }
+            },
+            {
+              "type": "input",
+              "check": "number",
+              "skill": "volum-paralelipiped",
+              "prompt": {
+                "ro": "Care este volumul paralelipipedului construit pe $(1,0,2)$, $(0,3,1)$, $(2,1,0)$?",
+                "en": "What is the volume of the parallelepiped built on $(1,0,2)$, $(0,3,1)$, $(2,1,0)$?"
+              },
+              "answer": "13",
+              "explain": {
+                "ro": "Determinant: $1(0-1)-0+2(0-6)=-1-12=-13$; volumul este $|-13|=13$.\nCapcană: volumul se ia cu modul. Regula: $V=|\\det|$.",
+                "en": "Determinant: $1(0-1)-0+2(0-6)=-1-12=-13$; the volume is $|-13|=13$.\nTrap: the volume is taken with absolute value. Rule: $V=|\\det|$."
+              }
+            },
+            {
+              "type": "input",
+              "check": "number",
+              "skill": "volum-tetraedru",
+              "prompt": {
+                "ro": "Un tetraedru are vârfurile $O(0,0,0)$, $A(2,1,0)$, $B(0,3,1)$, $C(1,0,4)$. Calculează volumul.",
+                "en": "A tetrahedron has vertices $O(0,0,0)$, $A(2,1,0)$, $B(0,3,1)$, $C(1,0,4)$. Compute its volume."
+              },
+              "answer": "25/6",
+              "explain": {
+                "ro": "$\\det=2(12-0)-1(0-1)+0=24+1=25$, deci $V=\\frac{25}{6}$.\nCapcană: $-1\\cdot(0-1)=+1$ și nu uita factorul $\\frac16$. Regula: $V=\\frac16|\\det|$.",
+                "en": "$\\det=2(12-0)-1(0-1)+0=24+1=25$, so $V=\\frac{25}{6}$.\nTrap: $-1\\cdot(0-1)=+1$, and do not forget the factor $\\frac16$. Rule: $V=\\frac16|\\det|$."
+              }
+            },
+            {
+              "type": "input",
+              "check": "number",
+              "skill": "volum-tetraedru",
+              "prompt": {
+                "ro": "Pentru $A(1,1,1)$, $B(3,1,2)$, $C(2,4,1)$, $D(2,2,5)$ calculează volumul tetraedrului $ABCD$.",
+                "en": "For $A(1,1,1)$, $B(3,1,2)$, $C(2,4,1)$, $D(2,2,5)$ compute the volume of the tetrahedron $ABCD$."
+              },
+              "answer": "11/3",
+              "explain": {
+                "ro": "$\\overline{AB}=(2,0,1)$, $\\overline{AC}=(1,3,0)$, $\\overline{AD}=(1,1,4)$. Determinantul: $2(12-0)-0+1(1-3)=24-2=22$, deci $V=\\frac{22}{6}=\\frac{11}{3}$.\nCapcană: vectorii pleacă din același vârf ($A$). Regula: $V=\\frac16|\\det|$.",
+                "en": "$\\overline{AB}=(2,0,1)$, $\\overline{AC}=(1,3,0)$, $\\overline{AD}=(1,1,4)$. The determinant: $2(12-0)-0+1(1-3)=24-2=22$, so $V=\\frac{22}{6}=\\frac{11}{3}$.\nTrap: the vectors start from the same vertex ($A$). Rule: $V=\\frac16|\\det|$."
+              }
+            },
+            {
+              "type": "mc",
+              "skill": "puncte-coplanare",
+              "prompt": {
+                "ro": "Punctele $A(1,0,0)$, $B(0,1,0)$, $C(0,0,1)$, $D(2,-1,0)$ sunt:",
+                "en": "The points $A(1,0,0)$, $B(0,1,0)$, $C(0,0,1)$, $D(2,-1,0)$ are:"
+              },
+              "choices": [
+                {
+                  "ro": "coplanare",
+                  "en": "coplanar"
+                },
+                {
+                  "ro": "necoplanare, determinantul este $2$",
+                  "en": "non-coplanar, the determinant is $2$"
+                },
+                {
+                  "ro": "necoplanare, determinantul este $-2$",
+                  "en": "non-coplanar, the determinant is $-2$"
+                },
+                {
+                  "ro": "coliniare",
+                  "en": "collinear"
+                }
+              ],
+              "answer": 0,
+              "explain": {
+                "ro": "$\\overline{AB}=(-1,1,0)$, $\\overline{AC}=(-1,0,1)$, $\\overline{AD}=(1,-1,0)=-\\overline{AB}$. Doi vectori coliniari dau determinant $0$. Toate patru sunt în planul $x+y+z=1$.\nCapcană: coplanare nu înseamnă coliniare ($A,B,C$ nu sunt pe o dreaptă). Regula: $\\det=0\\iff$ coplanare.",
+                "en": "$\\overline{AB}=(-1,1,0)$, $\\overline{AC}=(-1,0,1)$, $\\overline{AD}=(1,-1,0)=-\\overline{AB}$. Two collinear vectors give determinant $0$. All four lie in the plane $x+y+z=1$.\nTrap: coplanar does not mean collinear ($A,B,C$ are not on a line). Rule: $\\det=0\\iff$ coplanar."
+              }
+            },
+            {
+              "type": "mc",
+              "skill": "permutare",
+              "prompt": {
+                "ro": "Dacă $(a,b,c)=5$, cât este $(b,c,a)$?",
+                "en": "If $(a,b,c)=5$, what is $(b,c,a)$?"
+              },
+              "choices": [
+                "$5$",
+                "$-5$",
+                "$0$",
+                "$25$"
+              ],
+              "answer": 0,
+              "explain": {
+                "ro": "$(b,c,a)$ este o permutare circulară a lui $(a,b,c)$ (două schimbări consecutive), deci semnul rămâne: $5$.\nCapcană: o singură schimbare (de ex. $(b,a,c)$) ar da $-5$. Regula: circular $\\to$ neschimbat, schimbare $\\to$ semn.",
+                "en": "$(b,c,a)$ is a cyclic permutation of $(a,b,c)$ (two consecutive swaps), so the sign stays: $5$.\nTrap: a single swap (e.g. $(b,a,c)$) would give $-5$. Rule: cyclic $\\to$ unchanged, swap $\\to$ sign change."
+              }
+            },
+            {
+              "type": "input",
+              "check": "number",
+              "skill": "proprietati-mixt",
+              "prompt": {
+                "ro": "Dacă $(a,b,c)=4$, cât este $(2a,-b,3c)$?",
+                "en": "If $(a,b,c)=4$, what is $(2a,-b,3c)$?"
+              },
+              "answer": "-24",
+              "explain": {
+                "ro": "Fiecare factor iese în față: $2\\cdot(-1)\\cdot3\\cdot(a,b,c)=-6\\cdot4=-24$.\nCapcană: semnul lui $-b$ contează. Regula: liniaritate în fiecare vector.",
+                "en": "Each factor comes out in front: $2\\cdot(-1)\\cdot3\\cdot(a,b,c)=-6\\cdot4=-24$.\nTrap: the sign of $-b$ matters. Rule: linearity in each vector."
+              }
+            },
+            {
+              "type": "input",
+              "check": "number",
+              "skill": "volum-parametru",
+              "prompt": {
+                "ro": "Calculează volumul paralelipipedului construit pe $([[a]],0,0)$, $(0,[[a]],0)$, $(1,1,2)$.",
+                "en": "Compute the volume of the parallelepiped built on $([[a]],0,0)$, $(0,[[a]],0)$, $(1,1,2)$."
+              },
+              "answer": "[[2*a^2]]",
+              "explain": {
+                "ro": "Determinantul este $a\\cdot(2a-0)-0+0=2a^2=[[2*a^2]]$.\nCapcană: $a\\cdot a=a^2$, iar apoi factorul $2$ din ultima componentă. Regula: $V=|\\det|$.",
+                "en": "The determinant is $a\\cdot(2a-0)-0+0=2a^2=[[2*a^2]]$.\nTrap: $a\\cdot a=a^2$, and then the factor $2$ from the last component. Rule: $V=|\\det|$."
+              },
+              "vars": {
+                "a": [
+                  2,
+                  9
+                ]
+              }
+            },
+            {
+              "type": "steps",
+              "skill": "tetraedru-pas",
+              "prompt": {
+                "ro": "Pentru $A(1,1,1)$, $B(3,1,2)$, $C(2,4,1)$, $D(2,2,5)$ lucrezi cu $\\det(\\overline{AB},\\overline{AC},\\overline{AD})=22$.",
+                "en": "For $A(1,1,1)$, $B(3,1,2)$, $C(2,4,1)$, $D(2,2,5)$ you work with $\\det(\\overline{AB},\\overline{AC},\\overline{AD})=22$."
+              },
+              "steps": [
+                {
+                  "type": "input",
+                  "check": "number",
+                  "prompt": {
+                    "ro": "Care este volumul paralelipipedului construit pe $\\overline{AB},\\overline{AC},\\overline{AD}$?",
+                    "en": "What is the volume of the parallelepiped built on $\\overline{AB},\\overline{AC},\\overline{AD}$?"
+                  },
+                  "answer": "22",
+                  "explain": "$|22|=22$."
+                },
+                {
+                  "type": "input",
+                  "check": "number",
+                  "prompt": {
+                    "ro": "Care este volumul tetraedrului $ABCD$? (scrie fracția)",
+                    "en": "What is the volume of the tetrahedron $ABCD$? (write the fraction)"
+                  },
+                  "answer": "11/3",
+                  "explain": "$\\frac{22}{6}=\\frac{11}{3}$."
+                },
+                {
+                  "type": "input",
+                  "check": "number",
+                  "prompt": {
+                    "ro": "De câte ori încape tetraedrul în paralelipiped (raportul volumelor)?",
+                    "en": "How many times does the tetrahedron fit in the parallelepiped (the ratio of the volumes)?"
+                  },
+                  "answer": "6",
+                  "explain": {
+                    "ro": "$\\frac{22}{11/3}=6$. Tetraedrul este o șesime din paralelipiped.",
+                    "en": "$\\frac{22}{11/3}=6$. The tetrahedron is one sixth of the parallelepiped."
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "al-8",
+      "title": {
+        "ro": "Dreapta și planul în spațiu",
+        "en": "Line and plane in space"
+      },
+      "desc": {
+        "ro": "Ecuațiile dreptei și planului, dreapta ca intersecție de plane, poziții relative, unghiuri, distanțe, dublul produs vectorial",
+        "en": "Equations of the line and the plane, a line as the intersection of planes, relative positions, angles, distances, the double vector product"
+      },
+      "lessons": [
+        {
+          "id": "al-8-1",
+          "title": {
+            "ro": "Dreapta și planul, pe scurt",
+            "en": "Line and plane, in brief"
+          },
+          "pick": 6,
+          "theory": [
+            {
+              "ro": "Ecuațiile dreptei\nDreapta $(D)$ trece prin $M_0(x_0,y_0,z_0)$ și are vectorul director $\\bar d(p,q,r)\\neq\\bar 0$.\n• Vectorială: $\\bar r=\\bar r_0+t\\bar d$, $t\\in\\mathbb R$.\n• Parametrice: $x=x_0+tp,\\ y=y_0+tq,\\ z=z_0+tr$.\n• Canonice: $$\\frac{x-x_0}{p}=\\frac{y-y_0}{q}=\\frac{z-z_0}{r}$$\nPrin două puncte $A,B$: $\\bar d=\\overline{AB}$. Un numitor $0$ înseamnă că acea coordonată e constantă: $\\frac{y}{0}$ spune $y=0$.",
+              "en": "Equations of the line\nThe line $(D)$ passes through $M_0(x_0,y_0,z_0)$ and has direction vector $\\bar d(p,q,r)\\neq\\bar 0$.\n• Vector form: $\\bar r=\\bar r_0+t\\bar d$, $t\\in\\mathbb R$.\n• Parametric: $x=x_0+tp,\\ y=y_0+tq,\\ z=z_0+tr$.\n• Canonical (symmetric): $$\\frac{x-x_0}{p}=\\frac{y-y_0}{q}=\\frac{z-z_0}{r}$$\nThrough two points $A,B$: $\\bar d=\\overline{AB}$. A denominator $0$ means that coordinate is constant: $\\frac{y}{0}$ says $y=0$."
+            },
+            {
+              "ro": "Planul cu vector normal\nPlanul $(P)$ prin $M_0(x_0,y_0,z_0)$, perpendicular pe $\\bar n(a,b,c)$ (vectorul normal): pentru $M\\in P$ avem $\\bar n\\cdot\\overline{M_0M}=0$, deci$$a(x-x_0)+b(y-y_0)+c(z-z_0)=0.$$\nDesfăcut: $ax+by+cz+d=0$ (ecuația generală), cu $a^2+b^2+c^2\\neq0$. Coeficienții lui $x,y,z$ sunt chiar coordonatele normalei.",
+              "en": "The plane with a normal vector\nThe plane $(P)$ through $M_0(x_0,y_0,z_0)$, perpendicular to $\\bar n(a,b,c)$ (the normal vector): for $M\\in P$ we have $\\bar n\\cdot\\overline{M_0M}=0$, so$$a(x-x_0)+b(y-y_0)+c(z-z_0)=0.$$\nExpanded: $ax+by+cz+d=0$ (the general equation), with $a^2+b^2+c^2\\neq0$. The coefficients of $x,y,z$ are exactly the coordinates of the normal."
+            },
+            {
+              "ro": "Planul prin trei puncte\nPentru $A,B,C$ necoliniare: $\\overline{AB}$ și $\\overline{AC}$ sunt paralele cu planul, deci $\\bar n=\\overline{AB}\\times\\overline{AC}$. Apoi scrii planul prin $A$ cu normala $\\bar n$.\nEchivalent: $M(x,y,z)\\in(ABC)$ dacă$$\\begin{vmatrix}x-x_A&y-y_A&z-z_A\\\\x_B-x_A&y_B-y_A&z_B-z_A\\\\x_C-x_A&y_C-y_A&z_C-z_A\\end{vmatrix}=0.$$Planul prin punct și doi vectori necoliniari: $\\bar r=\\bar r_0+t\\bar d_1+s\\bar d_2$.\nForma cu intercepte: planul care taie axele în $(\\alpha,0,0),(0,\\beta,0),(0,0,\\gamma)$ este $\\frac x\\alpha+\\frac y\\beta+\\frac z\\gamma=1$.",
+              "en": "The plane through three points\nFor non-collinear $A,B,C$: $\\overline{AB}$ and $\\overline{AC}$ are parallel to the plane, so $\\bar n=\\overline{AB}\\times\\overline{AC}$. Then you write the plane through $A$ with normal $\\bar n$.\nEquivalently: $M(x,y,z)\\in(ABC)$ if$$\\begin{vmatrix}x-x_A&y-y_A&z-z_A\\\\x_B-x_A&y_B-y_A&z_B-z_A\\\\x_C-x_A&y_C-y_A&z_C-z_A\\end{vmatrix}=0.$$The plane through a point and two non-collinear vectors: $\\bar r=\\bar r_0+t\\bar d_1+s\\bar d_2$.\nIntercept form: the plane that cuts the axes at $(\\alpha,0,0),(0,\\beta,0),(0,0,\\gamma)$ is $\\frac x\\alpha+\\frac y\\beta+\\frac z\\gamma=1$."
+            },
+            {
+              "ro": "Dreapta ca intersecție de două plane\n$$(D):\\ \\begin{cases}a_1x+b_1y+c_1z+d_1=0\\\\a_2x+b_2y+c_2z+d_2=0\\end{cases}$$Dreapta e conținută în ambele plane, deci e perpendiculară pe ambele normale:$$\\boxed{\\bar d=\\bar n_1\\times\\bar n_2}$$Un punct al ei: dai o valoare convenabilă unei necunoscute (de ex. $z=0$) și rezolvi sistemul în celelalte două.",
+              "en": "A line as the intersection of two planes\n$$(D):\\ \\begin{cases}a_1x+b_1y+c_1z+d_1=0\\\\a_2x+b_2y+c_2z+d_2=0\\end{cases}$$The line lies in both planes, so it is perpendicular to both normals:$$\\boxed{\\bar d=\\bar n_1\\times\\bar n_2}$$A point on it: give a convenient value to one unknown (e.g. $z=0$) and solve the system in the other two."
+            },
+            {
+              "ro": "Plan față de plan\nCu normalele $\\bar n_1,\\bar n_2$:\n• $\\bar n_1\\times\\bar n_2\\neq\\bar 0$: planele sunt secante, după o dreaptă.\n• $\\bar n_1\\times\\bar n_2=\\bar 0$ (normale proporționale): paralele sau confundate. Iei un punct din $P_1$: dacă nu e în $P_2$, sunt paralele distincte; dacă e, coincid.\n• $\\bar n_1\\cdot\\bar n_2=0$: planele sunt perpendiculare.",
+              "en": "Plane versus plane\nWith normals $\\bar n_1,\\bar n_2$:\n• $\\bar n_1\\times\\bar n_2\\neq\\bar 0$: the planes are secant, meeting along a line.\n• $\\bar n_1\\times\\bar n_2=\\bar 0$ (proportional normals): parallel or coincident. Take a point of $P_1$: if it is not in $P_2$, they are distinct parallel planes; if it is, they coincide.\n• $\\bar n_1\\cdot\\bar n_2=0$: the planes are perpendicular."
+            },
+            {
+              "ro": "Dreaptă față de plan\nDreapta are $M_0,\\bar d$; planul are normala $\\bar n$.\n• $\\bar n\\cdot\\bar d\\neq0$: dreapta înțeapă planul într-un singur punct.\n• $\\bar n\\cdot\\bar d=0$: dreapta e paralelă cu planul sau conținută în el. Verifici $M_0$: dacă $M_0\\notin P$, e paralelă; dacă $M_0\\in P$, e conținută.\n• $\\bar d\\parallel\\bar n$: dreapta e perpendiculară pe plan.",
+              "en": "Line versus plane\nThe line has $M_0,\\bar d$; the plane has normal $\\bar n$.\n• $\\bar n\\cdot\\bar d\\neq0$: the line pierces the plane at a single point.\n• $\\bar n\\cdot\\bar d=0$: the line is parallel to the plane or contained in it. Check $M_0$: if $M_0\\notin P$, it is parallel; if $M_0\\in P$, it is contained.\n• $\\bar d\\parallel\\bar n$: the line is perpendicular to the plane."
+            },
+            {
+              "ro": "Dreaptă față de dreaptă (complement standard)\nCu $M_1,\\bar d_1$ și $M_2,\\bar d_2$:\n• $\\bar d_1\\times\\bar d_2=\\bar 0$: paralele (sau confundate dacă $M_2$ e pe prima).\n• Altfel calculezi produsul mixt $(\\bar d_1,\\bar d_2,\\overline{M_1M_2})$: dacă e $0$ dreptele sunt coplanare și se taie într-un punct; dacă e $\\neq0$ sunt strâmbe (necoplanare).",
+              "en": "Line versus line (standard supplement)\nWith $M_1,\\bar d_1$ and $M_2,\\bar d_2$:\n• $\\bar d_1\\times\\bar d_2=\\bar 0$: parallel (or coincident if $M_2$ lies on the first line).\n• Otherwise compute the scalar triple product $(\\bar d_1,\\bar d_2,\\overline{M_1M_2})$: if it is $0$ the lines are coplanar and meet at a point; if it is $\\neq0$ they are skew (non-coplanar)."
+            },
+            {
+              "ro": "Unghiuri și distanțe (complement standard)\n• Unghiul a doi vectori: $\\cos\\alpha=\\dfrac{\\bar u\\cdot\\bar v}{\\|\\bar u\\|\\,\\|\\bar v\\|}$. Pentru drepte sau plane iei valoarea absolută (unghi ascuțit).\n• Dreaptă-plan: $\\sin\\varphi=\\dfrac{|\\bar n\\cdot\\bar d|}{\\|\\bar n\\|\\,\\|\\bar d\\|}$.\n• Distanța de la $M(x_1,y_1,z_1)$ la planul $ax+by+cz+d=0$:$$\\frac{|ax_1+by_1+cz_1+d|}{\\sqrt{a^2+b^2+c^2}}$$• Distanța de la $M$ la dreapta prin $P$ cu direcția $\\bar d$: $\\dfrac{\\|\\overline{PM}\\times\\bar d\\|}{\\|\\bar d\\|}$.",
+              "en": "Angles and distances (standard supplement)\n• Angle between two vectors: $\\cos\\alpha=\\dfrac{\\bar u\\cdot\\bar v}{\\|\\bar u\\|\\,\\|\\bar v\\|}$. For lines or planes you take the absolute value (acute angle).\n• Line-plane: $\\sin\\varphi=\\dfrac{|\\bar n\\cdot\\bar d|}{\\|\\bar n\\|\\,\\|\\bar d\\|}$.\n• Distance from $M(x_1,y_1,z_1)$ to the plane $ax+by+cz+d=0$:$$\\frac{|ax_1+by_1+cz_1+d|}{\\sqrt{a^2+b^2+c^2}}$$• Distance from $M$ to the line through $P$ with direction $\\bar d$: $\\dfrac{\\|\\overline{PM}\\times\\bar d\\|}{\\|\\bar d\\|}$."
+            },
+            {
+              "ro": "Dublul produs vectorial\nPentru orice $\\bar a,\\bar b,\\bar c$:$$\\bar a\\times(\\bar b\\times\\bar c)=\\bar b(\\bar a\\cdot\\bar c)-\\bar c(\\bar a\\cdot\\bar b)$$Rezultatul e o combinație liniară de $\\bar b$ și $\\bar c$. Demonstrația alege axele cu $\\bar a\\subset Ox$, $\\bar b\\subset Oxy$ și calculează ambele părți cu determinanți.\nAtenție: produsul vectorial nu e asociativ; $(\\bar a\\times\\bar b)\\times\\bar c=\\bar b(\\bar a\\cdot\\bar c)-\\bar a(\\bar b\\cdot\\bar c)$.",
+              "en": "The double vector product\nFor any $\\bar a,\\bar b,\\bar c$:$$\\bar a\\times(\\bar b\\times\\bar c)=\\bar b(\\bar a\\cdot\\bar c)-\\bar c(\\bar a\\cdot\\bar b)$$The result is a linear combination of $\\bar b$ and $\\bar c$. The proof chooses axes with $\\bar a\\subset Ox$, $\\bar b\\subset Oxy$ and computes both sides with determinants.\nCareful: the vector product is not associative; $(\\bar a\\times\\bar b)\\times\\bar c=\\bar b(\\bar a\\cdot\\bar c)-\\bar a(\\bar b\\cdot\\bar c)$."
+            }
+          ],
+          "exercises": [
+            {
+              "type": "mc",
+              "skill": "dreapta-doua-puncte",
+              "prompt": {
+                "ro": "Dreapta trece prin $A(1,2,3)$ și $B(3,3,1)$. Care sunt ecuațiile ei canonice?",
+                "en": "The line passes through $A(1,2,3)$ and $B(3,3,1)$. What are its canonical equations?"
+              },
+              "choices": [
+                "$\\dfrac{x-1}{2}=\\dfrac{y-2}{1}=\\dfrac{z-3}{-2}$",
+                "$\\dfrac{x-1}{4}=\\dfrac{y-2}{5}=\\dfrac{z-3}{4}$",
+                "$\\dfrac{x+1}{2}=\\dfrac{y+2}{1}=\\dfrac{z+3}{-2}$",
+                "$\\dfrac{x-1}{2}=\\dfrac{y-2}{1}=\\dfrac{z-3}{2}$"
+              ],
+              "answer": 0,
+              "explain": {
+                "ro": "$\\bar d=\\overline{AB}=(3-1,\\,3-2,\\,1-3)=(2,1,-2)$ și dreapta trece prin $A(1,2,3)$, deci $\\frac{x-1}{2}=\\frac{y-2}{1}=\\frac{z-3}{-2}$.\nCapcane: suma coordonatelor ($4,5,4$) nu e diferența; punctul intră cu semn schimbat ($x+1$ în loc de $x-1$) doar dacă el are coordonate negative.\nRegula: $\\bar d=B-A$, punctul $A$ intră ca $x-x_A$.",
+                "en": "$\\bar d=\\overline{AB}=(3-1,\\,3-2,\\,1-3)=(2,1,-2)$ and the line passes through $A(1,2,3)$, so $\\frac{x-1}{2}=\\frac{y-2}{1}=\\frac{z-3}{-2}$.\nPitfalls: the sum of the coordinates ($4,5,4$) is not the difference; the point enters with its sign flipped ($x+1$ instead of $x-1$) only if it has negative coordinates.\nRule: $\\bar d=B-A$, and the point $A$ enters as $x-x_A$."
+              }
+            },
+            {
+              "type": "mc",
+              "skill": "plan-punct-normala",
+              "prompt": {
+                "ro": "Planul trece prin $M_0(1,2,-1)$ și are normala $\\bar n(2,-3,1)$. Care este ecuația lui?",
+                "en": "The plane passes through $M_0(1,2,-1)$ and has normal $\\bar n(2,-3,1)$. What is its equation?"
+              },
+              "choices": [
+                "$2x-3y+z-5=0$",
+                "$2x-3y+z+5=0$",
+                "$x+2y-z-6=0$",
+                "$2x+3y+z-7=0$"
+              ],
+              "answer": 1,
+              "explain": {
+                "ro": "$2(x-1)-3(y-2)+(z+1)=0\\Rightarrow 2x-2-3y+6+z+1=0\\Rightarrow 2x-3y+z+5=0$. Verificare: $2-6-1+5=0$.\nCapcane: $x+2y-z-6=0$ trece prin $M_0$, dar folosește coordonatele punctului drept normală; $2x+3y+z-7=0$ trece prin $M_0$ cu o normală cu semn greșit.\nRegula: coeficienții sunt normala, apoi constanta se află din punct.",
+                "en": "$2(x-1)-3(y-2)+(z+1)=0\\Rightarrow 2x-2-3y+6+z+1=0\\Rightarrow 2x-3y+z+5=0$. Check: $2-6-1+5=0$.\nPitfalls: $x+2y-z-6=0$ passes through $M_0$, but it uses the point's coordinates as the normal; $2x+3y+z-7=0$ passes through $M_0$ with a normal that has a wrong sign.\nRule: the coefficients are the normal, then the constant is found from the point."
+              }
+            },
+            {
+              "type": "mc",
+              "skill": "vector-normal",
+              "prompt": {
+                "ro": "Care dintre vectori este perpendicular pe planul$$3x-y+4z-7=0\\ ?$$",
+                "en": "Which of the vectors is perpendicular to the plane$$3x-y+4z-7=0\\ ?$$"
+              },
+              "choices": [
+                "$(3,1,4)$",
+                "$(3,-1,-7)$",
+                "$(3,-1,4)$",
+                "$(1,-1,4)$"
+              ],
+              "answer": 2,
+              "explain": {
+                "ro": "Normala unui plan $ax+by+cz+d=0$ este $(a,b,c)$, deci $(3,-1,4)$.\nCapcane: termenul liber $-7$ nu face parte din normală; semnul lui $y$ contează ($-1$, nu $1$).\nRegula: normala = coeficienții lui $x,y,z$.",
+                "en": "The normal of a plane $ax+by+cz+d=0$ is $(a,b,c)$, so $(3,-1,4)$.\nPitfalls: the constant term $-7$ is not part of the normal; the sign of $y$ matters ($-1$, not $1$).\nRule: normal = the coefficients of $x,y,z$."
+              }
+            },
+            {
+              "type": "mc",
+              "skill": "plan-trei-puncte",
+              "prompt": {
+                "ro": "Care este planul prin $A(2,0,0)$, $B(0,3,0)$, $C(0,0,6)$?",
+                "en": "What is the plane through $A(2,0,0)$, $B(0,3,0)$, $C(0,0,6)$?"
+              },
+              "choices": [
+                "$3x+2y+z+6=0$",
+                "$2x+3y+6z-6=0$",
+                "$x+y+z-11=0$",
+                "$3x+2y+z-6=0$"
+              ],
+              "answer": 3,
+              "explain": {
+                "ro": "Forma cu intercepte: $\\frac x2+\\frac y3+\\frac z6=1$; înmulțim cu $6$: $3x+2y+z=6$. Prin produs vectorial: $\\overline{AB}\\times\\overline{AC}=(-2,3,0)\\times(-2,0,6)=(18,12,6)\\parallel(3,2,1)$.\nCapcană: $2x+3y+6z-6=0$ pune interceptele drept coeficienți, dar $A$ nu verifică ($4-6\\neq0$).\nRegula: interceptele apar la numitori, nu ca coeficienți.",
+                "en": "Intercept form: $\\frac x2+\\frac y3+\\frac z6=1$; multiplying by $6$: $3x+2y+z=6$. Via the vector product: $\\overline{AB}\\times\\overline{AC}=(-2,3,0)\\times(-2,0,6)=(18,12,6)\\parallel(3,2,1)$.\nPitfall: $2x+3y+6z-6=0$ puts the intercepts in as coefficients, but $A$ does not satisfy it ($4-6\\neq0$).\nRule: the intercepts appear in the denominators, not as coefficients."
+              }
+            },
+            {
+              "type": "mc",
+              "skill": "dreapta-intersectie-plane",
+              "prompt": {
+                "ro": "Dreapta este intersecția planelor $x+y+z-3=0$ și $x-y+2z=0$. Care este un vector director al ei?",
+                "en": "The line is the intersection of the planes $x+y+z-3=0$ and $x-y+2z=0$. What is a direction vector of it?"
+              },
+              "choices": [
+                "$(3,-1,-2)$",
+                "$(2,0,3)$",
+                "$(-3,1,-2)$",
+                "$(3,-1,2)$"
+              ],
+              "answer": 0,
+              "explain": {
+                "ro": "$\\bar d=\\bar n_1\\times\\bar n_2=(1,1,1)\\times(1,-1,2)=(1\\cdot2-1\\cdot(-1),\\ 1\\cdot1-1\\cdot2,\\ 1\\cdot(-1)-1\\cdot1)=(3,-1,-2)$.\nCapcană: $(2,0,3)=\\bar n_1+\\bar n_2$ nu e perpendicular pe ambele normale.\nRegula: $\\bar d=\\bar n_1\\times\\bar n_2$.",
+                "en": "$\\bar d=\\bar n_1\\times\\bar n_2=(1,1,1)\\times(1,-1,2)=(1\\cdot2-1\\cdot(-1),\\ 1\\cdot1-1\\cdot2,\\ 1\\cdot(-1)-1\\cdot1)=(3,-1,-2)$.\nPitfall: $(2,0,3)=\\bar n_1+\\bar n_2$ is not perpendicular to both normals.\nRule: $\\bar d=\\bar n_1\\times\\bar n_2$."
+              }
+            },
+            {
+              "type": "mc",
+              "skill": "plan-plan",
+              "prompt": {
+                "ro": "Cum sunt planele$$2x-y+3z-1=0\\quad\\text{și}\\quad4x-2y+6z+5=0\\ ?$$",
+                "en": "How are the planes$$2x-y+3z-1=0\\quad\\text{and}\\quad4x-2y+6z+5=0\\ ?$$"
+              },
+              "choices": [
+                {
+                  "ro": "confundate",
+                  "en": "coincident"
+                },
+                {
+                  "ro": "paralele distincte",
+                  "en": "distinct parallel"
+                },
+                {
+                  "ro": "secante după o dreaptă",
+                  "en": "secant along a line"
+                },
+                {
+                  "ro": "perpendiculare",
+                  "en": "perpendicular"
+                }
+              ],
+              "answer": 1,
+              "explain": {
+                "ro": "$\\bar n_2=(4,-2,6)=2\\bar n_1$, deci sunt paralele sau confundate. Punctul $(0,-1,0)\\in P_1$ ($1-1=0$), dar în $P_2$: $2+5=7\\neq0$. Deci paralele distincte.\nCapcană: normale proporționale nu înseamnă automat plane confundate; cere și un punct comun.\nRegula: $\\bar n_1\\times\\bar n_2=\\bar 0$ plus un punct al lui $P_1$ în afara lui $P_2$.",
+                "en": "$\\bar n_2=(4,-2,6)=2\\bar n_1$, so they are parallel or coincident. The point $(0,-1,0)\\in P_1$ ($1-1=0$), but in $P_2$: $2+5=7\\neq0$. So they are distinct parallel planes.\nPitfall: proportional normals do not automatically mean coincident planes; a common point is also required.\nRule: $\\bar n_1\\times\\bar n_2=\\bar 0$ plus a point of $P_1$ outside $P_2$."
+              }
+            },
+            {
+              "type": "mc",
+              "skill": "dreapta-plan",
+              "prompt": {
+                "ro": "Dreapta are $M_0(1,0,-1)$ și $\\bar d(1,2,1)$. Planul este $x+y-3z+4=0$. Cum sunt?",
+                "en": "The line has $M_0(1,0,-1)$ and $\\bar d(1,2,1)$. The plane is $x+y-3z+4=0$. How are they positioned?"
+              },
+              "choices": [
+                {
+                  "ro": "dreapta este conținută în plan",
+                  "en": "the line is contained in the plane"
+                },
+                {
+                  "ro": "dreapta înțeapă planul într-un punct",
+                  "en": "the line pierces the plane at a point"
+                },
+                {
+                  "ro": "dreapta este paralelă cu planul",
+                  "en": "the line is parallel to the plane"
+                },
+                {
+                  "ro": "dreapta este perpendiculară pe plan",
+                  "en": "the line is perpendicular to the plane"
+                }
+              ],
+              "answer": 2,
+              "explain": {
+                "ro": "$\\bar n=(1,1,-3)$ și $\\bar n\\cdot\\bar d=1+2-3=0$, deci dreapta e paralelă cu planul sau în el. Punctul: $1+0+3+4=8\\neq0$, deci $M_0\\notin P$: paralelă.\nCapcană: $\\bar n\\cdot\\bar d=0$ singur nu decide între paralelă și conținută.\nRegula: $\\bar n\\cdot\\bar d=0$, apoi testezi $M_0$.",
+                "en": "$\\bar n=(1,1,-3)$ and $\\bar n\\cdot\\bar d=1+2-3=0$, so the line is parallel to the plane or in it. The point: $1+0+3+4=8\\neq0$, so $M_0\\notin P$: parallel.\nPitfall: $\\bar n\\cdot\\bar d=0$ alone does not decide between parallel and contained.\nRule: $\\bar n\\cdot\\bar d=0$, then test $M_0$."
+              }
+            },
+            {
+              "type": "mc",
+              "skill": "drepte-stramb",
+              "prompt": {
+                "ro": "Dreptele sunt $D_1:\\ x=t,\\ y=0,\\ z=0$ și $D_2:\\ x=0,\\ y=s,\\ z=1$. Cum sunt?",
+                "en": "The lines are $D_1:\\ x=t,\\ y=0,\\ z=0$ and $D_2:\\ x=0,\\ y=s,\\ z=1$. How are they positioned?"
+              },
+              "choices": [
+                {
+                  "ro": "secante",
+                  "en": "secant"
+                },
+                {
+                  "ro": "paralele distincte",
+                  "en": "distinct parallel"
+                },
+                {
+                  "ro": "confundate",
+                  "en": "coincident"
+                },
+                {
+                  "ro": "strâmbe (necoplanare)",
+                  "en": "skew (non-coplanar)"
+                }
+              ],
+              "answer": 3,
+              "explain": {
+                "ro": "$\\bar d_1=(1,0,0)$, $\\bar d_2=(0,1,0)$ nu sunt proporționale. $M_1(0,0,0)$, $M_2(0,0,1)$, $\\overline{M_1M_2}=(0,0,1)$ și $\\begin{vmatrix}1&0&0\\\\0&1&0\\\\0&0&1\\end{vmatrix}=1\\neq0$: dreptele nu sunt coplanare.\nCapcană: faptul că nu sunt paralele nu înseamnă că se taie.\nRegula: produsul mixt nenul înseamnă strâmbe.",
+                "en": "$\\bar d_1=(1,0,0)$, $\\bar d_2=(0,1,0)$ are not proportional. $M_1(0,0,0)$, $M_2(0,0,1)$, $\\overline{M_1M_2}=(0,0,1)$ and $\\begin{vmatrix}1&0&0\\\\0&1&0\\\\0&0&1\\end{vmatrix}=1\\neq0$: the lines are not coplanar.\nPitfall: the fact that they are not parallel does not mean they intersect.\nRule: a nonzero scalar triple product means skew."
+              }
+            },
+            {
+              "type": "mc",
+              "skill": "dublu-produs",
+              "prompt": {
+                "ro": "Fie $\\bar a=(1,1,0)$, $\\bar b=(1,0,0)$, $\\bar c=(0,1,0)$. Cât este $\\bar a\\times(\\bar b\\times\\bar c)$?",
+                "en": "Let $\\bar a=(1,1,0)$, $\\bar b=(1,0,0)$, $\\bar c=(0,1,0)$. What is $\\bar a\\times(\\bar b\\times\\bar c)$?"
+              },
+              "choices": [
+                "$(1,-1,0)$",
+                "$(-1,1,0)$",
+                "$(1,0,0)$",
+                "$(0,0,-1)$"
+              ],
+              "answer": 0,
+              "explain": {
+                "ro": "$\\bar a\\cdot\\bar c=1$, $\\bar a\\cdot\\bar b=1$, deci $\\bar b\\cdot1-\\bar c\\cdot1=(1,0,0)-(0,1,0)=(1,-1,0)$. Direct: $\\bar b\\times\\bar c=(0,0,1)$ și $\\bar a\\times(0,0,1)=(1,-1,0)$.\nCapcană: $(1,0,0)$ este $(\\bar a\\times\\bar b)\\times\\bar c$, parantezele schimbă rezultatul; $(-1,1,0)$ vine din ordinea inversă a diferenței.\nRegula: $\\bar b(\\bar a\\cdot\\bar c)-\\bar c(\\bar a\\cdot\\bar b)$.",
+                "en": "$\\bar a\\cdot\\bar c=1$, $\\bar a\\cdot\\bar b=1$, so $\\bar b\\cdot1-\\bar c\\cdot1=(1,0,0)-(0,1,0)=(1,-1,0)$. Directly: $\\bar b\\times\\bar c=(0,0,1)$ and $\\bar a\\times(0,0,1)=(1,-1,0)$.\nPitfall: $(1,0,0)$ is $(\\bar a\\times\\bar b)\\times\\bar c$, the parentheses change the result; $(-1,1,0)$ comes from reversing the order of the difference.\nRule: $\\bar b(\\bar a\\cdot\\bar c)-\\bar c(\\bar a\\cdot\\bar b)$."
+              }
+            }
+          ]
+        },
+        {
+          "id": "al-8-2",
+          "title": {
+            "ro": "Ecuațiile dreptei",
+            "en": "Equations of the line"
+          },
+          "pick": 6,
+          "theory": [
+            {
+              "ro": "Punct și direcție\nDin $\\frac{x-x_0}{p}=\\frac{y-y_0}{q}=\\frac{z-z_0}{r}$ citești punctul $M_0(x_0,y_0,z_0)$ și direcția $\\bar d(p,q,r)$. Atenție la semne: $x+1$ înseamnă $x_0=-1$.",
+              "en": "Point and direction\nFrom $\\frac{x-x_0}{p}=\\frac{y-y_0}{q}=\\frac{z-z_0}{r}$ you read the point $M_0(x_0,y_0,z_0)$ and the direction $\\bar d(p,q,r)$. Watch the signs: $x+1$ means $x_0=-1$."
+            },
+            {
+              "ro": "Parametric\n$x=x_0+tp,\\ y=y_0+tq,\\ z=z_0+tr$. Pentru fiecare $t$ obții un punct; $t=0$ dă $M_0$. Un punct $P$ e pe dreaptă dacă toate rapoartele $\\frac{x_P-x_0}{p}$ etc. dau același $t$.",
+              "en": "Parametric\n$x=x_0+tp,\\ y=y_0+tq,\\ z=z_0+tr$. For each $t$ you get a point; $t=0$ gives $M_0$. A point $P$ is on the line if all the ratios $\\frac{x_P-x_0}{p}$ etc. give the same $t$."
+            }
+          ],
+          "exercises": [
+            {
+              "type": "mc",
+              "skill": "citire-dreapta",
+              "prompt": {
+                "ro": "Dreapta este$$\\frac{x-2}{3}=\\frac{y+1}{-2}=\\frac{z}{5}$$Care sunt punctul și direcția citite din ecuație?",
+                "en": "The line is$$\\frac{x-2}{3}=\\frac{y+1}{-2}=\\frac{z}{5}$$What are the point and direction read from the equation?"
+              },
+              "choices": [
+                "$M_0(-2,1,0)$, $\\bar d(3,-2,5)$",
+                "$M_0(2,-1,0)$, $\\bar d(3,-2,5)$",
+                "$M_0(2,-1,0)$, $\\bar d(-3,2,5)$",
+                "$M_0(2,1,0)$, $\\bar d(3,2,5)$"
+              ],
+              "answer": 1,
+              "explain": {
+                "ro": "$x-2\\Rightarrow x_0=2$; $y+1=y-(-1)\\Rightarrow y_0=-1$; $z=z-0\\Rightarrow z_0=0$. Numitorii dau $\\bar d(3,-2,5)$.\nCapcană: semnele punctului sunt opuse celor din numărător ($y+1$ dă $y_0=-1$), iar direcția se citește cu semnul numitorilor.\nRegula: $x-x_0$, deci $x_0$ are semn opus față de ce vezi.",
+                "en": "$x-2\\Rightarrow x_0=2$; $y+1=y-(-1)\\Rightarrow y_0=-1$; $z=z-0\\Rightarrow z_0=0$. The denominators give $\\bar d(3,-2,5)$.\nPitfall: the signs of the point are opposite to those in the numerator ($y+1$ gives $y_0=-1$), while the direction is read with the sign of the denominators.\nRule: $x-x_0$, so $x_0$ has the opposite sign from what you see."
+              }
+            },
+            {
+              "type": "input",
+              "check": "number",
+              "skill": "lungime-segment",
+              "prompt": {
+                "ro": "Calculează lungimea segmentului $AB$, unde $A(1,2,3)$ și $B(4,6,15)$.",
+                "en": "Compute the length of the segment $AB$, where $A(1,2,3)$ and $B(4,6,15)$."
+              },
+              "answer": "13",
+              "explain": {
+                "ro": "$\\overline{AB}=(3,4,12)$ este vectorul director al dreptei $AB$. $\\|\\overline{AB}\\|=\\sqrt{9+16+144}=\\sqrt{169}=13$.\nCapcană: nu aduna coordonatele ($3+4+12=19$); se adună pătratele și se ia rădăcina.\nRegula: $\\|\\bar d\\|=\\sqrt{p^2+q^2+r^2}$.",
+                "en": "$\\overline{AB}=(3,4,12)$ is the direction vector of the line $AB$. $\\|\\overline{AB}\\|=\\sqrt{9+16+144}=\\sqrt{169}=13$.\nPitfall: do not add the coordinates ($3+4+12=19$); you add the squares and take the root.\nRule: $\\|\\bar d\\|=\\sqrt{p^2+q^2+r^2}$."
+              }
+            },
+            {
+              "type": "input",
+              "check": "number",
+              "skill": "parametric-valoare",
+              "prompt": {
+                "ro": "Dreapta este $x=1+2t,\\ y=3-t,\\ z=2+4t$. Pentru $t=2$, calculează $x+y+z$ pentru punctul obținut.",
+                "en": "The line is $x=1+2t,\\ y=3-t,\\ z=2+4t$. For $t=2$, compute $x+y+z$ for the resulting point."
+              },
+              "answer": "16",
+              "explain": {
+                "ro": "Pentru $t=2$: $x=5$, $y=1$, $z=10$. Suma: $5+1+10=16$.\nCapcană: $y=3-t$ scade: $3-2=1$, nu $5$.\nRegula: înlocuiești $t$ în fiecare coordonată.",
+                "en": "For $t=2$: $x=5$, $y=1$, $z=10$. The sum: $5+1+10=16$.\nPitfall: $y=3-t$ decreases: $3-2=1$, not $5$.\nRule: substitute $t$ in each coordinate."
+              }
+            },
+            {
+              "type": "mc",
+              "skill": "dreapta-AB",
+              "prompt": {
+                "ro": "Dreapta trece prin $A(1,0,2)$ și $B(3,-2,5)$. Care este ecuația ei canonică?",
+                "en": "The line passes through $A(1,0,2)$ and $B(3,-2,5)$. What is its canonical equation?"
+              },
+              "choices": [
+                "$\\dfrac{x-1}{2}=\\dfrac{y}{2}=\\dfrac{z-2}{3}$",
+                "$\\dfrac{x-1}{3}=\\dfrac{y}{-2}=\\dfrac{z-2}{5}$",
+                "$\\dfrac{x-1}{2}=\\dfrac{y}{-2}=\\dfrac{z-2}{3}$",
+                "$\\dfrac{x-1}{4}=\\dfrac{y}{-2}=\\dfrac{z-2}{7}$"
+              ],
+              "answer": 2,
+              "explain": {
+                "ro": "$\\bar d=B-A=(2,-2,3)$, punct $A(1,0,2)$: $\\frac{x-1}{2}=\\frac{y}{-2}=\\frac{z-2}{3}$.\nCapcane: coordonatele lui $B$ puse la numitor (a treia) sau suma $A+B$ (a patra) nu dau direcția; semnul lui $y$ se schimbă în a doua.\nRegula: numitorii sunt $B-A$.",
+                "en": "$\\bar d=B-A=(2,-2,3)$, point $A(1,0,2)$: $\\frac{x-1}{2}=\\frac{y}{-2}=\\frac{z-2}{3}$.\nPitfalls: the coordinates of $B$ placed in the denominators (the second) or the sum $A+B$ (the fourth) do not give the direction; the sign of $y$ is changed in the first.\nRule: the denominators are $B-A$."
+              }
+            },
+            {
+              "type": "steps",
+              "skill": "punct-pe-dreapta",
+              "prompt": {
+                "ro": "Aparține punctul $P(5,-1,7)$ dreptei$$\\frac{x-1}{2}=\\frac{y-1}{-1}=\\frac{z-3}{2}\\ ?$$",
+                "en": "Does the point $P(5,-1,7)$ belong to the line$$\\frac{x-1}{2}=\\frac{y-1}{-1}=\\frac{z-3}{2}\\ ?$$"
+              },
+              "steps": [
+                {
+                  "type": "input",
+                  "check": "number",
+                  "skill": "punct-pe-dreapta",
+                  "prompt": {
+                    "ro": "Cât este raportul $\\dfrac{x_P-1}{2}$?",
+                    "en": "What is the ratio $\\dfrac{x_P-1}{2}$?"
+                  },
+                  "answer": "2",
+                  "explain": {
+                    "ro": "$\\frac{5-1}{2}=\\frac42=2$. Acesta ar fi parametrul $t$.\nRegula: calculezi raportul pentru fiecare coordonată.",
+                    "en": "$\\frac{5-1}{2}=\\frac42=2$. This would be the parameter $t$.\nRule: compute the ratio for each coordinate."
+                  }
+                },
+                {
+                  "type": "input",
+                  "check": "number",
+                  "skill": "punct-pe-dreapta",
+                  "prompt": {
+                    "ro": "Cât este raportul $\\dfrac{y_P-1}{-1}$?",
+                    "en": "What is the ratio $\\dfrac{y_P-1}{-1}$?"
+                  },
+                  "answer": "2",
+                  "explain": {
+                    "ro": "$\\frac{-1-1}{-1}=\\frac{-2}{-1}=2$. Același $t$ ca la $x$.\nCapcană: atenție la minusurile; $-2/(-1)=+2$.",
+                    "en": "$\\frac{-1-1}{-1}=\\frac{-2}{-1}=2$. The same $t$ as for $x$.\nPitfall: watch the minus signs; $-2/(-1)=+2$."
+                  }
+                },
+                {
+                  "type": "mc",
+                  "skill": "punct-pe-dreapta",
+                  "prompt": {
+                    "ro": "Raportul pentru $z$ este $\\frac{7-3}{2}=2$. Concluzia?",
+                    "en": "The ratio for $z$ is $\\frac{7-3}{2}=2$. The conclusion?"
+                  },
+                  "choices": [
+                    {
+                      "ro": "$P$ nu aparține dreptei",
+                      "en": "$P$ does not belong to the line"
+                    },
+                    {
+                      "ro": "$P$ aparține dreptei doar dacă $t=0$",
+                      "en": "$P$ belongs to the line only if $t=0$"
+                    },
+                    {
+                      "ro": "nu se poate decide",
+                      "en": "it cannot be decided"
+                    },
+                    {
+                      "ro": "$P$ aparține dreptei (toate cele trei rapoarte sunt $2$)",
+                      "en": "$P$ belongs to the line (all three ratios are $2$)"
+                    }
+                  ],
+                  "answer": 3,
+                  "explain": {
+                    "ro": "Cele trei rapoarte sunt egale cu $2$, deci $P$ corespunde lui $t=2$ și e pe dreaptă.\nRegula: același raport peste tot înseamnă punct pe dreaptă; un singur raport diferit înseamnă că nu e.",
+                    "en": "The three ratios are all equal to $2$, so $P$ corresponds to $t=2$ and is on the line.\nRule: the same ratio everywhere means the point is on the line; a single different ratio means it is not."
+                  }
+                }
+              ]
+            },
+            {
+              "type": "mc",
+              "skill": "numitor-zero",
+              "prompt": {
+                "ro": "Dreapta este$$\\frac{x-1}{2}=\\frac{y}{0}=\\frac{z-4}{-1}$$Care punct se află pe ea?",
+                "en": "The line is$$\\frac{x-1}{2}=\\frac{y}{0}=\\frac{z-4}{-1}$$Which point lies on it?"
+              },
+              "choices": [
+                "$(3,0,3)$",
+                "$(3,1,3)$",
+                "$(3,0,5)$",
+                "$(1,0,5)$"
+              ],
+              "answer": 0,
+              "explain": {
+                "ro": "Numitorul $0$ dă $y=0$, iar $\\frac{x-1}{2}=\\frac{z-4}{-1}$. Pentru $(3,0,3)$: $y=0$, $\\frac{3-1}{2}=1$ și $\\frac{3-4}{-1}=1$. Verifică.\nCapcană: $(3,0,5)$ are $y=0$ dar $\\frac{5-4}{-1}=-1\\neq1$; $(3,1,3)$ are $y\\neq0$.\nRegula: numitor $0$ înseamnă coordonată fixă, restul rapoartelor trebuie egale.",
+                "en": "The denominator $0$ gives $y=0$, and $\\frac{x-1}{2}=\\frac{z-4}{-1}$. For $(3,0,3)$: $y=0$, $\\frac{3-1}{2}=1$ and $\\frac{3-4}{-1}=1$. It checks.\nPitfall: $(3,0,5)$ has $y=0$ but $\\frac{5-4}{-1}=-1\\neq1$; $(3,1,3)$ has $y\\neq0$.\nRule: a denominator $0$ means a fixed coordinate, and the remaining ratios must be equal."
+              }
+            },
+            {
+              "type": "input",
+              "check": "number",
+              "skill": "intersectie-axa",
+              "prompt": {
+                "ro": "Dreapta este $x=2+3t,\\ y=-1+t,\\ z=4-2t$. Pentru ce valoare a lui $t$ punctul se află în planul $xOy$ (adică $z=0$)?",
+                "en": "The line is $x=2+3t,\\ y=-1+t,\\ z=4-2t$. For what value of $t$ does the point lie in the plane $xOy$ (that is, $z=0$)?"
+              },
+              "answer": "2",
+              "explain": {
+                "ro": "Punem $z=0$: $4-2t=0\\Rightarrow t=2$. (Punctul este $(8,1,0)$.)\nCapcană: nu rezolva după $x$ sau $y$; planul $xOy$ înseamnă $z=0$.\nRegula: condiția pe coordonată dă ecuația în $t$.",
+                "en": "Set $z=0$: $4-2t=0\\Rightarrow t=2$. (The point is $(8,1,0)$.)\nPitfall: do not solve for $x$ or $y$; the plane $xOy$ means $z=0$.\nRule: the condition on a coordinate gives the equation in $t$."
+              }
+            },
+            {
+              "type": "input",
+              "check": "number",
+              "skill": "distanta-pe-dreapta",
+              "prompt": {
+                "ro": "Dreapta trece prin $A(2,1,-1)$ cu direcția $\\bar d(1,2,2)$. Punctul $P$ corespunde lui $t=3$ (adică $P=A+3\\bar d$). Calculează distanța $AP$.",
+                "en": "The line passes through $A(2,1,-1)$ with direction $\\bar d(1,2,2)$. The point $P$ corresponds to $t=3$ (that is, $P=A+3\\bar d$). Compute the distance $AP$."
+              },
+              "answer": "9",
+              "explain": {
+                "ro": "$\\overline{AP}=3\\bar d=(3,6,6)$ și $\\|\\overline{AP}\\|=\\sqrt{9+36+36}=\\sqrt{81}=9$. Sau: $\\|\\bar d\\|=3$, deci $AP=3\\cdot3=9$.\nCapcană: $t$ nu este distanța; distanța e $|t|\\cdot\\|\\bar d\\|$.\nRegula: $AP=|t|\\,\\|\\bar d\\|$.",
+                "en": "$\\overline{AP}=3\\bar d=(3,6,6)$ and $\\|\\overline{AP}\\|=\\sqrt{9+36+36}=\\sqrt{81}=9$. Or: $\\|\\bar d\\|=3$, so $AP=3\\cdot3=9$.\nPitfall: $t$ is not the distance; the distance is $|t|\\cdot\\|\\bar d\\|$.\nRule: $AP=|t|\\,\\|\\bar d\\|$."
+              }
+            },
+            {
+              "type": "mc",
+              "skill": "directii-echivalente",
+              "prompt": {
+                "ro": "Care vector are aceeași direcție cu $\\bar d(2,-4,6)$?",
+                "en": "Which vector has the same direction as $\\bar d(2,-4,6)$?"
+              },
+              "choices": [
+                "$(1,2,3)$",
+                "$(1,-2,3)$",
+                "$(2,4,6)$",
+                "$(-1,2,-2)$"
+              ],
+              "answer": 1,
+              "explain": {
+                "ro": "$(2,-4,6)=2\\cdot(1,-2,3)$, deci $(1,-2,3)$ e coliniar cu $\\bar d$.\nCapcană: dacă schimbi semnul unei singure coordonate ($(1,2,3)$, $(2,4,6)$), direcția se schimbă.\nRegula: coliniar înseamnă toate coordonatele înmulțite cu același număr.",
+                "en": "$(2,-4,6)=2\\cdot(1,-2,3)$, so $(1,-2,3)$ is collinear with $\\bar d$.\nPitfall: if you change the sign of a single coordinate ($(1,2,3)$, $(2,4,6)$), the direction changes.\nRule: collinear means all the coordinates are multiplied by the same number."
+              }
+            }
+          ]
+        },
+        {
+          "id": "al-8-3",
+          "title": {
+            "ro": "Ecuațiile planului",
+            "en": "Equations of the plane"
+          },
+          "pick": 6,
+          "theory": [
+            {
+              "ro": "Normala și punctul\n$a(x-x_0)+b(y-y_0)+c(z-z_0)=0$, cu $\\bar n(a,b,c)$. Constanta din $ax+by+cz+d=0$ se obține punând coordonatele punctului: $d=-(ax_0+by_0+cz_0)$.",
+              "en": "Normal and point\n$a(x-x_0)+b(y-y_0)+c(z-z_0)=0$, with $\\bar n(a,b,c)$. The constant in $ax+by+cz+d=0$ is obtained by plugging in the coordinates of the point: $d=-(ax_0+by_0+cz_0)$."
+            },
+            {
+              "ro": "Trei puncte și intercepte\nNormala: $\\bar n=\\overline{AB}\\times\\overline{AC}$. Cu interceptele $\\alpha,\\beta,\\gamma$: $\\frac x\\alpha+\\frac y\\beta+\\frac z\\gamma=1$.",
+              "en": "Three points and intercepts\nThe normal: $\\bar n=\\overline{AB}\\times\\overline{AC}$. With intercepts $\\alpha,\\beta,\\gamma$: $\\frac x\\alpha+\\frac y\\beta+\\frac z\\gamma=1$."
+            }
+          ],
+          "exercises": [
+            {
+              "type": "mc",
+              "skill": "plan-punct-normala",
+              "prompt": {
+                "ro": "Planul trece prin $M_0(2,-1,3)$ și are normala $\\bar n(1,2,-2)$. Care este ecuația lui?",
+                "en": "The plane passes through $M_0(2,-1,3)$ and has normal $\\bar n(1,2,-2)$. What is its equation?"
+              },
+              "choices": [
+                "$x+2y-2z-6=0$",
+                "$x+2y-2z+2=0$",
+                "$x+2y-2z+6=0$",
+                "$2x-y+3z-14=0$"
+              ],
+              "answer": 2,
+              "explain": {
+                "ro": "$(x-2)+2(y+1)-2(z-3)=0\\Rightarrow x+2y-2z+6=0$. Verificare în $M_0$: $2-2-6+6=0$.\nCapcană: $2x-y+3z-14=0$ trece prin $M_0$, dar e construit cu coordonatele punctului ca normală.\nRegula: $d=-(ax_0+by_0+cz_0)=-(2-2-6)=6$.",
+                "en": "$(x-2)+2(y+1)-2(z-3)=0\\Rightarrow x+2y-2z+6=0$. Check at $M_0$: $2-2-6+6=0$.\nPitfall: $2x-y+3z-14=0$ passes through $M_0$, but it is built with the point's coordinates as the normal.\nRule: $d=-(ax_0+by_0+cz_0)=-(2-2-6)=6$."
+              }
+            },
+            {
+              "type": "input",
+              "check": "number",
+              "skill": "norma-normalei",
+              "prompt": {
+                "ro": "Planul este $2x-y+2z-6=0$. Calculează lungimea normalei $\\|\\bar n\\|$.",
+                "en": "The plane is $2x-y+2z-6=0$. Compute the length of the normal $\\|\\bar n\\|$."
+              },
+              "answer": "3",
+              "explain": {
+                "ro": "$\\bar n=(2,-1,2)$, $\\|\\bar n\\|=\\sqrt{4+1+4}=3$.\nCapcană: $-6$ nu face parte din normală.\nRegula: $\\|\\bar n\\|=\\sqrt{a^2+b^2+c^2}$.",
+                "en": "$\\bar n=(2,-1,2)$, $\\|\\bar n\\|=\\sqrt{4+1+4}=3$.\nPitfall: $-6$ is not part of the normal.\nRule: $\\|\\bar n\\|=\\sqrt{a^2+b^2+c^2}$."
+              }
+            },
+            {
+              "type": "input",
+              "check": "number",
+              "skill": "constanta-plan",
+              "prompt": {
+                "ro": "Planul are normala $\\bar n(3,-2,1)$ și trece prin $M_0(1,1,2)$. Scrie-l ca $3x-2y+z+d=0$ și calculează $d$.",
+                "en": "The plane has normal $\\bar n(3,-2,1)$ and passes through $M_0(1,1,2)$. Write it as $3x-2y+z+d=0$ and compute $d$."
+              },
+              "answer": "-3",
+              "explain": {
+                "ro": "Punem $M_0$: $3\\cdot1-2\\cdot1+2+d=0\\Rightarrow 3+d=0\\Rightarrow d=-3$.\nCapcană: $d=3$ vine din uitarea semnului; $d$ se scoate la dreapta cu semn schimbat.\nRegula: $d=-(ax_0+by_0+cz_0)$.",
+                "en": "Plug in $M_0$: $3\\cdot1-2\\cdot1+2+d=0\\Rightarrow 3+d=0\\Rightarrow d=-3$.\nPitfall: $d=3$ comes from forgetting the sign; $d$ is moved to the right-hand side with its sign changed.\nRule: $d=-(ax_0+by_0+cz_0)$."
+              }
+            },
+            {
+              "type": "steps",
+              "skill": "plan-trei-puncte",
+              "prompt": {
+                "ro": "Scrie planul prin $A(1,0,0)$, $B(0,2,0)$, $C(0,0,3)$.",
+                "en": "Write the plane through $A(1,0,0)$, $B(0,2,0)$, $C(0,0,3)$."
+              },
+              "steps": [
+                {
+                  "type": "mc",
+                  "skill": "plan-trei-puncte",
+                  "prompt": {
+                    "ro": "Care este un vector normal $\\overline{AB}\\times\\overline{AC}$?",
+                    "en": "What is a normal vector $\\overline{AB}\\times\\overline{AC}$?"
+                  },
+                  "choices": [
+                    "$(1,2,3)$",
+                    "$(2,3,6)$",
+                    "$(3,6,2)$",
+                    "$(6,3,2)$"
+                  ],
+                  "answer": 3,
+                  "explain": {
+                    "ro": "$\\overline{AB}=(-1,2,0)$, $\\overline{AC}=(-1,0,3)$. $\\overline{AB}\\times\\overline{AC}=(2\\cdot3-0\\cdot0,\\ 0\\cdot(-1)-(-1)\\cdot3,\\ (-1)\\cdot0-2\\cdot(-1))=(6,3,2)$.\nCapcană: nu pune interceptele $(1,2,3)$ drept normală.",
+                    "en": "$\\overline{AB}=(-1,2,0)$, $\\overline{AC}=(-1,0,3)$. $\\overline{AB}\\times\\overline{AC}=(2\\cdot3-0\\cdot0,\\ 0\\cdot(-1)-(-1)\\cdot3,\\ (-1)\\cdot0-2\\cdot(-1))=(6,3,2)$.\nPitfall: do not take the intercepts $(1,2,3)$ as the normal."
+                  }
+                },
+                {
+                  "type": "input",
+                  "check": "number",
+                  "skill": "plan-trei-puncte",
+                  "prompt": {
+                    "ro": "Planul este $6x+3y+2z+d=0$. Punând $A(1,0,0)$, cât este $d$?",
+                    "en": "The plane is $6x+3y+2z+d=0$. Plugging in $A(1,0,0)$, what is $d$?"
+                  },
+                  "answer": "-6",
+                  "explain": {
+                    "ro": "$6\\cdot1+d=0\\Rightarrow d=-6$. Deci $6x+3y+2z-6=0$; verifică și $B$: $6-6=0$, $C$: $6-6=0$.",
+                    "en": "$6\\cdot1+d=0\\Rightarrow d=-6$. So $6x+3y+2z-6=0$; also check $B$: $6-6=0$, $C$: $6-6=0$."
+                  }
+                }
+              ]
+            },
+            {
+              "type": "mc",
+              "skill": "punct-in-plan",
+              "prompt": {
+                "ro": "Care dintre puncte aparține planului $3x+y-2z=5$?",
+                "en": "Which of the points belongs to the plane $3x+y-2z=5$?"
+              },
+              "choices": [
+                "$(1,4,1)$",
+                "$(1,4,-1)$",
+                "$(2,2,1)$",
+                "$(0,1,2)$"
+              ],
+              "answer": 0,
+              "explain": {
+                "ro": "Pentru $(1,4,1)$: $3+4-2=5$. Verifică.\nPentru $(1,4,-1)$: $3+4+2=9$; $(2,2,1)$: $6+2-2=6$; $(0,1,2)$: $1-4=-3$.\nRegula: înlocuiești coordonatele și vezi dacă egalitatea e adevărată.",
+                "en": "For $(1,4,1)$: $3+4-2=5$. It checks.\nFor $(1,4,-1)$: $3+4+2=9$; $(2,2,1)$: $6+2-2=6$; $(0,1,2)$: $1-4=-3$.\nRule: substitute the coordinates and see whether the equality is true."
+              }
+            },
+            {
+              "type": "mc",
+              "skill": "plan-intercepte",
+              "prompt": {
+                "ro": "Care plan taie axele în $(2,0,0)$, $(0,-3,0)$, $(0,0,4)$?",
+                "en": "Which plane cuts the axes at $(2,0,0)$, $(0,-3,0)$, $(0,0,4)$?"
+              },
+              "choices": [
+                "$6x+4y+3z-12=0$",
+                "$6x-4y+3z-12=0$",
+                "$2x-3y+4z-24=0$",
+                "$6x-4y+3z+12=0$"
+              ],
+              "answer": 1,
+              "explain": {
+                "ro": "$\\frac x2+\\frac y{-3}+\\frac z4=1$; înmulțim cu $12$: $6x-4y+3z=12$.\nVerificare: $(0,-3,0)$: $12-12=0$. Capcană: semnul lui $y$ vine din intercept negativ; $2x-3y+4z-24=0$ nu verifică $(2,0,0)$.\nRegula: interceptele sunt numitori.",
+                "en": "$\\frac x2+\\frac y{-3}+\\frac z4=1$; multiplying by $12$: $6x-4y+3z=12$.\nCheck: $(0,-3,0)$: $12-12=0$. Pitfall: the sign of $y$ comes from the negative intercept; $2x-3y+4z-24=0$ does not satisfy $(2,0,0)$.\nRule: the intercepts are denominators."
+              }
+            },
+            {
+              "type": "input",
+              "check": "number",
+              "skill": "coordonata-lipsa",
+              "prompt": {
+                "ro": "Punctul $(1,2,z)$ aparține planului $x+2y-z=3$. Află $z$.",
+                "en": "The point $(1,2,z)$ belongs to the plane $x+2y-z=3$. Find $z$."
+              },
+              "answer": "2",
+              "explain": {
+                "ro": "$1+4-z=3\\Rightarrow z=2$.\nCapcană: $z=-2$ vine din $-z=2$ citit greșit; verifici: $1+4-2=3$.\nRegula: înlocuiești și rezolvi.",
+                "en": "$1+4-z=3\\Rightarrow z=2$.\nPitfall: $z=-2$ comes from misreading $-z=2$; check: $1+4-2=3$.\nRule: substitute and solve."
+              }
+            },
+            {
+              "type": "input",
+              "check": "number",
+              "skill": "suma-interceptelor",
+              "prompt": {
+                "ro": "Planul este $2x+3y+6z-12=0$. Calculează suma interceptelor pe cele trei axe.",
+                "en": "The plane is $2x+3y+6z-12=0$. Compute the sum of the intercepts on the three axes."
+              },
+              "answer": "12",
+              "explain": {
+                "ro": "Pe $Ox$: $y=z=0\\Rightarrow x=6$. Pe $Oy$: $y=4$. Pe $Oz$: $z=2$. Suma: $6+4+2=12$.\nCapcană: coeficienții $2,3,6$ nu sunt interceptele.\nRegula: interceptul pe axă este $-d$ împărțit la coeficientul ei.",
+                "en": "On $Ox$: $y=z=0\\Rightarrow x=6$. On $Oy$: $y=4$. On $Oz$: $z=2$. The sum: $6+4+2=12$.\nPitfall: the coefficients $2,3,6$ are not the intercepts.\nRule: the intercept on an axis is $-d$ divided by its coefficient."
+              }
+            },
+            {
+              "type": "mc",
+              "skill": "plan-perpendicular-dreapta",
+              "prompt": {
+                "ro": "Care plan este perpendicular pe dreapta$$\\frac{x-1}{2}=\\frac{y}{-1}=\\frac{z+3}{3}\\ ?$$",
+                "en": "Which plane is perpendicular to the line$$\\frac{x-1}{2}=\\frac{y}{-1}=\\frac{z+3}{3}\\ ?$$"
+              },
+              "choices": [
+                "$2x+y+3z-5=0$",
+                "$2x-y-3z=0$",
+                "$2x-y+3z-5=0$",
+                "$x+2y+3z+1=0$"
+              ],
+              "answer": 2,
+              "explain": {
+                "ro": "Planul e perpendicular pe dreaptă dacă $\\bar n\\parallel\\bar d=(2,-1,3)$. Normala $(2,-1,3)$ apare în $2x-y+3z-5=0$.\nCapcană: o schimbare de semn la o coordonată ($(2,1,3)$ sau $(2,-1,-3)$) strică paralelismul.\nRegula: $\\bar n=\\bar d$.",
+                "en": "A plane is perpendicular to the line if $\\bar n\\parallel\\bar d=(2,-1,3)$. The normal $(2,-1,3)$ appears in $2x-y+3z-5=0$.\nPitfall: a sign change in one coordinate ($(2,1,3)$ or $(2,-1,-3)$) breaks the parallelism.\nRule: $\\bar n=\\bar d$."
+              }
+            }
+          ]
+        },
+        {
+          "id": "al-8-4",
+          "title": {
+            "ro": "Dreapta ca intersecție de plane",
+            "en": "A line as an intersection of planes"
+          },
+          "pick": 6,
+          "theory": [
+            {
+              "ro": "Direcția și un punct\nPentru $(D)=P_1\\cap P_2$: $\\bar d=\\bar n_1\\times\\bar n_2$. Un punct: pui $z=0$ (sau altă coordonată) și rezolvi sistemul $2\\times2$. Apoi scrii canonic ecuațiile.",
+              "en": "Direction and a point\nFor $(D)=P_1\\cap P_2$: $\\bar d=\\bar n_1\\times\\bar n_2$. A point: set $z=0$ (or another coordinate) and solve the $2\\times2$ system. Then write the equations in canonical form."
+            }
+          ],
+          "exercises": [
+            {
+              "type": "input",
+              "check": "number",
+              "skill": "produs-vectorial-normale",
+              "prompt": {
+                "ro": "Planele $2x+y-z-1=0$ și $3x-y-z+1=0$. Calculează prima coordonată a lui $\\bar n_1\\times\\bar n_2$ (coeficientul lui $\\bar i$).",
+                "en": "The planes $2x+y-z-1=0$ and $3x-y-z+1=0$. Compute the first coordinate of $\\bar n_1\\times\\bar n_2$ (the coefficient of $\\bar i$)."
+              },
+              "answer": "-2",
+              "explain": {
+                "ro": "$\\bar n_1=(2,1,-1)$, $\\bar n_2=(3,-1,-1)$. Coeficientul lui $\\bar i$: $1\\cdot(-1)-(-1)(-1)=-1-1=-2$. Tot vectorul: $-2\\bar i-\\bar j-5\\bar k$.\nCapcană: la $(-1)(-1)$ semnul devine $+1$, apoi se scade.\nRegula: prima coordonată = $b_1c_2-c_1b_2$.",
+                "en": "$\\bar n_1=(2,1,-1)$, $\\bar n_2=(3,-1,-1)$. The coefficient of $\\bar i$: $1\\cdot(-1)-(-1)(-1)=-1-1=-2$. The whole vector: $-2\\bar i-\\bar j-5\\bar k$.\nPitfall: in $(-1)(-1)$ the sign becomes $+1$, and then it is subtracted.\nRule: first coordinate = $b_1c_2-c_1b_2$."
+              }
+            },
+            {
+              "type": "mc",
+              "skill": "vector-director-intersectie",
+              "prompt": {
+                "ro": "Pentru aceleași plane, $2x+y-z-1=0$ și $3x-y-z+1=0$, care este vectorul director al dreptei de intersecție?",
+                "en": "For the same planes, $2x+y-z-1=0$ and $3x-y-z+1=0$, what is the direction vector of the line of intersection?"
+              },
+              "choices": [
+                "$(2,-1,5)$",
+                "$(-2,1,-5)$",
+                "$(5,0,-2)$",
+                "$(-2,-1,-5)$"
+              ],
+              "answer": 3,
+              "explain": {
+                "ro": "$\\bar n_1\\times\\bar n_2=\\begin{vmatrix}\\bar i&\\bar j&\\bar k\\\\2&1&-1\\\\3&-1&-1\\end{vmatrix}=\\bar i(-1-1)-\\bar j(-2+3)+\\bar k(-2-3)=(-2,-1,-5)$.\nCapcană: $(5,0,-2)=\\bar n_1+\\bar n_2$ nu e perpendicular pe normale; al doilea termen din dezvoltare are semn minus.\nRegula: $\\bar d=\\bar n_1\\times\\bar n_2$.",
+                "en": "$\\bar n_1\\times\\bar n_2=\\begin{vmatrix}\\bar i&\\bar j&\\bar k\\\\2&1&-1\\\\3&-1&-1\\end{vmatrix}=\\bar i(-1-1)-\\bar j(-2+3)+\\bar k(-2-3)=(-2,-1,-5)$.\nPitfall: $(5,0,-2)=\\bar n_1+\\bar n_2$ is not perpendicular to the normals; the second term in the expansion has a minus sign.\nRule: $\\bar d=\\bar n_1\\times\\bar n_2$."
+              }
+            },
+            {
+              "type": "mc",
+              "skill": "ecuatie-canonica-intersectie",
+              "prompt": {
+                "ro": "Planele $x+y+z-6=0$ și $x-y=0$. Care sunt ecuațiile canonice ale dreptei lor de intersecție?",
+                "en": "The planes $x+y+z-6=0$ and $x-y=0$. What are the canonical equations of their line of intersection?"
+              },
+              "choices": [
+                "$\\dfrac{x-3}{1}=\\dfrac{y-3}{1}=\\dfrac{z}{-2}$",
+                "$\\dfrac{x-3}{1}=\\dfrac{y-3}{1}=\\dfrac{z}{2}$",
+                "$\\dfrac{x-3}{1}=\\dfrac{y-3}{-1}=\\dfrac{z}{-2}$",
+                "$\\dfrac{x-6}{1}=\\dfrac{y}{1}=\\dfrac{z}{-2}$"
+              ],
+              "answer": 0,
+              "explain": {
+                "ro": "$\\bar d=(1,1,1)\\times(1,-1,0)=(1\\cdot0-1\\cdot(-1),\\ 1\\cdot1-1\\cdot0,\\ 1\\cdot(-1)-1\\cdot1)=(1,1,-2)$. Cu $z=0$: $x+y=6$, $x=y$, deci $(3,3,0)$.\nCapcană: $(6,0,0)$ verifică primul plan, dar nu al doilea ($6\\neq0$).\nRegula: punctul trebuie să verifice AMBELE plane.",
+                "en": "$\\bar d=(1,1,1)\\times(1,-1,0)=(1\\cdot0-1\\cdot(-1),\\ 1\\cdot1-1\\cdot0,\\ 1\\cdot(-1)-1\\cdot1)=(1,1,-2)$. With $z=0$: $x+y=6$, $x=y$, so $(3,3,0)$.\nPitfall: $(6,0,0)$ satisfies the first plane, but not the second ($6\\neq0$).\nRule: the point must satisfy BOTH planes."
+              }
+            },
+            {
+              "type": "steps",
+              "skill": "dreapta-intersectie",
+              "prompt": {
+                "ro": "Dreapta este intersecția planelor $x+y-z-2=0$ și $2x-y+z-1=0$.",
+                "en": "The line is the intersection of the planes $x+y-z-2=0$ and $2x-y+z-1=0$."
+              },
+              "steps": [
+                {
+                  "type": "input",
+                  "check": "number",
+                  "skill": "dreapta-intersectie",
+                  "prompt": {
+                    "ro": "Adună ecuațiile membru cu membru. Ce valoare are $x$ în toate punctele dreptei?",
+                    "en": "Add the equations term by term. What value does $x$ have at all points of the line?"
+                  },
+                  "answer": "1",
+                  "explain": {
+                    "ro": "$(x+y-z-2)+(2x-y+z-1)=3x-3=0\\Rightarrow x=1$. Rămâne $y-z=1$.",
+                    "en": "$(x+y-z-2)+(2x-y+z-1)=3x-3=0\\Rightarrow x=1$. What remains is $y-z=1$."
+                  }
+                },
+                {
+                  "type": "mc",
+                  "skill": "dreapta-intersectie",
+                  "prompt": {
+                    "ro": "Care este vectorul director $\\bar n_1\\times\\bar n_2$ (până la un factor)?",
+                    "en": "What is the direction vector $\\bar n_1\\times\\bar n_2$ (up to a factor)?"
+                  },
+                  "choices": [
+                    "$(1,0,1)$",
+                    "$(0,1,1)$",
+                    "$(0,1,-1)$",
+                    "$(3,0,0)$"
+                  ],
+                  "answer": 1,
+                  "explain": {
+                    "ro": "$(1,1,-1)\\times(2,-1,1)=(1\\cdot1-(-1)(-1),\\ (-1)\\cdot2-1\\cdot1,\\ 1\\cdot(-1)-1\\cdot2)=(0,-3,-3)\\parallel(0,1,1)$.\nCapcană: $(3,0,0)=\\bar n_1+\\bar n_2$ nu e produsul vectorial. Direcția are $0$ pe $x$, în acord cu $x=1$ constant.",
+                    "en": "$(1,1,-1)\\times(2,-1,1)=(1\\cdot1-(-1)(-1),\\ (-1)\\cdot2-1\\cdot1,\\ 1\\cdot(-1)-1\\cdot2)=(0,-3,-3)\\parallel(0,1,1)$.\nPitfall: $(3,0,0)=\\bar n_1+\\bar n_2$ is not the vector product. The direction has $0$ in $x$, consistent with $x=1$ being constant."
+                  }
+                },
+                {
+                  "type": "input",
+                  "check": "number",
+                  "skill": "dreapta-intersectie",
+                  "prompt": {
+                    "ro": "Din $y-z=1$: dacă $y=3$ pe dreaptă, cât este $z$?",
+                    "en": "From $y-z=1$: if $y=3$ on the line, what is $z$?"
+                  },
+                  "answer": "2",
+                  "explain": {
+                    "ro": "$3-z=1\\Rightarrow z=2$. Punctul $(1,3,2)$ verifică ambele plane: $1+3-2-2=0$ și $2-3+2-1=0$.",
+                    "en": "$3-z=1\\Rightarrow z=2$. The point $(1,3,2)$ satisfies both planes: $1+3-2-2=0$ and $2-3+2-1=0$."
+                  }
+                }
+              ]
+            },
+            {
+              "type": "mc",
+              "skill": "plane-paralele-fara-dreapta",
+              "prompt": {
+                "ro": "Planele $x-2y+z=1$ și $2x-4y+2z=5$ se taie după o dreaptă?",
+                "en": "Do the planes $x-2y+z=1$ and $2x-4y+2z=5$ meet along a line?"
+              },
+              "choices": [
+                {
+                  "ro": "Da, cu vectorul director $\\bar n_1\\times\\bar n_2=\\bar 0$",
+                  "en": "Yes, with direction vector $\\bar n_1\\times\\bar n_2=\\bar 0$"
+                },
+                {
+                  "ro": "Da, coincid",
+                  "en": "Yes, they coincide"
+                },
+                {
+                  "ro": "Nu: sunt paralele distincte, intersecția e vidă",
+                  "en": "No: they are distinct parallel planes, the intersection is empty"
+                },
+                {
+                  "ro": "Da, cu vectorul director $(2,-4,2)$",
+                  "en": "Yes, with direction vector $(2,-4,2)$"
+                }
+              ],
+              "answer": 2,
+              "explain": {
+                "ro": "$\\bar n_2=2\\bar n_1$, deci $\\bar n_1\\times\\bar n_2=\\bar 0$. Punctul $(1,0,0)\\in P_1$, iar în $P_2$: $2\\neq5$. Planele sunt paralele distincte.\nCapcană: un vector director nul nu există; produsul nul înseamnă că nu avem dreaptă.\nRegula: dreaptă de intersecție doar dacă $\\bar n_1\\times\\bar n_2\\neq\\bar 0$.",
+                "en": "$\\bar n_2=2\\bar n_1$, so $\\bar n_1\\times\\bar n_2=\\bar 0$. The point $(1,0,0)\\in P_1$, while in $P_2$: $2\\neq5$. The planes are distinct parallel planes.\nPitfall: a zero direction vector does not exist; a zero product means there is no line.\nRule: there is a line of intersection only if $\\bar n_1\\times\\bar n_2\\neq\\bar 0$."
+              }
+            },
+            {
+              "type": "input",
+              "check": "number",
+              "skill": "norma-director",
+              "prompt": {
+                "ro": "Planele $z=0$ și $x+y=0$. Calculează $\\|\\bar n_1\\times\\bar n_2\\|$.",
+                "en": "The planes $z=0$ and $x+y=0$. Compute $\\|\\bar n_1\\times\\bar n_2\\|$."
+              },
+              "answer": "sqrt(2)",
+              "explain": {
+                "ro": "$\\bar n_1=(0,0,1)$, $\\bar n_2=(1,1,0)$. $\\bar n_1\\times\\bar n_2=(0\\cdot0-1\\cdot1,\\ 1\\cdot1-0\\cdot0,\\ 0)=(-1,1,0)$, norma $\\sqrt{1+1}=\\sqrt2$.\nCapcană: nu e $2$; rădăcina rămâne.\nRegula: calculezi produsul, apoi $\\sqrt{\\text{suma pătratelor}}$.",
+                "en": "$\\bar n_1=(0,0,1)$, $\\bar n_2=(1,1,0)$. $\\bar n_1\\times\\bar n_2=(0\\cdot0-1\\cdot1,\\ 1\\cdot1-0\\cdot0,\\ 0)=(-1,1,0)$, with norm $\\sqrt{1+1}=\\sqrt2$.\nPitfall: it is not $2$; the root remains.\nRule: compute the product, then $\\sqrt{\\text{sum of squares}}$."
+              }
+            },
+            {
+              "type": "input",
+              "check": "number",
+              "skill": "punct-pe-intersectie",
+              "prompt": {
+                "ro": "Planele $x+y+z=6$ și $x-y+z=2$. Pe dreapta lor, dacă $z=1$, cât este $x$?",
+                "en": "The planes $x+y+z=6$ and $x-y+z=2$. On their line, if $z=1$, what is $x$?"
+              },
+              "answer": "3",
+              "explain": {
+                "ro": "Scădem: $2y=4\\Rightarrow y=2$. Apoi $x+2+1=6\\Rightarrow x=3$. Verificare în al doilea: $3-2+1=2$.\nCapcană: trebuie verificate ambele ecuații.\nRegula: combini ecuațiile și rezolvi.",
+                "en": "Subtract: $2y=4\\Rightarrow y=2$. Then $x+2+1=6\\Rightarrow x=3$. Check in the second: $3-2+1=2$.\nPitfall: both equations must be checked.\nRule: combine the equations and solve."
+              }
+            },
+            {
+              "type": "mc",
+              "skill": "dreapta-in-doua-plane",
+              "prompt": {
+                "ro": "Dreapta este$$\\frac{x-1}{2}=\\frac{y}{1}=\\frac{z+1}{-1}$$Care pereche de plane o are ca intersecție?",
+                "en": "The line is$$\\frac{x-1}{2}=\\frac{y}{1}=\\frac{z+1}{-1}$$Which pair of planes has it as their intersection?"
+              },
+              "choices": [
+                {
+                  "ro": "$x-2y-1=0$ și $y-z+1=0$",
+                  "en": "$x-2y-1=0$ and $y-z+1=0$"
+                },
+                {
+                  "ro": "$x+2y-1=0$ și $y+z+1=0$",
+                  "en": "$x+2y-1=0$ and $y+z+1=0$"
+                },
+                {
+                  "ro": "$2x-y-2=0$ și $y+z-1=0$",
+                  "en": "$2x-y-2=0$ and $y+z-1=0$"
+                },
+                {
+                  "ro": "$x-2y-1=0$ și $y+z+1=0$",
+                  "en": "$x-2y-1=0$ and $y+z+1=0$"
+                }
+              ],
+              "answer": 3,
+              "explain": {
+                "ro": "Din $\\frac{x-1}{2}=y$: $x-2y-1=0$. Din $y=\\frac{z+1}{-1}$: $y+z+1=0$. Direcția: $(1,-2,0)\\times(0,1,1)=(-2,-1,1)\\parallel(2,1,-1)$, punctul $(1,0,-1)$ verifică ambele.\nCapcană: celelalte perechi fie nu au direcția $(2,1,-1)$, fie nu trec prin $(1,0,-1)$.\nRegula: verifică direcția și un punct.",
+                "en": "From $\\frac{x-1}{2}=y$: $x-2y-1=0$. From $y=\\frac{z+1}{-1}$: $y+z+1=0$. The direction: $(1,-2,0)\\times(0,1,1)=(-2,-1,1)\\parallel(2,1,-1)$, and the point $(1,0,-1)$ satisfies both.\nPitfall: the other pairs either do not have the direction $(2,1,-1)$ or do not pass through $(1,0,-1)$.\nRule: check the direction and a point."
+              }
+            },
+            {
+              "type": "input",
+              "check": "number",
+              "skill": "norma-patrat",
+              "prompt": {
+                "ro": "Planele $x+y+z=0$ și $x-z=0$. Calculează $\\|\\bar n_1\\times\\bar n_2\\|^2$.",
+                "en": "The planes $x+y+z=0$ and $x-z=0$. Compute $\\|\\bar n_1\\times\\bar n_2\\|^2$."
+              },
+              "answer": "6",
+              "explain": {
+                "ro": "$(1,1,1)\\times(1,0,-1)=(1\\cdot(-1)-1\\cdot0,\\ 1\\cdot1-1\\cdot(-1),\\ 1\\cdot0-1\\cdot1)=(-1,2,-1)$. Pătratul normei: $1+4+1=6$.\nCapcană: o greșeală de semn la a doua coordonată ($1\\cdot1-1\\cdot(-1)=2$).\nRegula: dezvoltarea pe prima linie, cu semnul minus la $\\bar j$.",
+                "en": "$(1,1,1)\\times(1,0,-1)=(1\\cdot(-1)-1\\cdot0,\\ 1\\cdot1-1\\cdot(-1),\\ 1\\cdot0-1\\cdot1)=(-1,2,-1)$. The square of the norm: $1+4+1=6$.\nPitfall: a sign mistake in the second coordinate ($1\\cdot1-1\\cdot(-1)=2$).\nRule: expansion along the first row, with the minus sign at $\\bar j$."
+              }
+            }
+          ]
+        },
+        {
+          "id": "al-8-5",
+          "title": {
+            "ro": "Poziții relative",
+            "en": "Relative positions"
+          },
+          "pick": 6,
+          "theory": [
+            {
+              "ro": "Dreaptă-plan și plan-plan\nDreaptă-plan: $\\bar n\\cdot\\bar d\\neq0$ înseamnă un punct de intersecție; $=0$ înseamnă paralelă sau conținută (testezi $M_0$). Plan-plan: normale proporționale înseamnă paralele sau confundate; $\\bar n_1\\cdot\\bar n_2=0$ înseamnă perpendiculare.",
+              "en": "Line-plane and plane-plane\nLine-plane: $\\bar n\\cdot\\bar d\\neq0$ means one intersection point; $=0$ means parallel or contained (test $M_0$). Plane-plane: proportional normals mean parallel or coincident; $\\bar n_1\\cdot\\bar n_2=0$ means perpendicular."
+            },
+            {
+              "ro": "Dreaptă-dreaptă\nDacă $\\bar d_1\\not\\parallel\\bar d_2$, calculezi produsul mixt $(\\bar d_1,\\bar d_2,\\overline{M_1M_2})$: zero înseamnă secante, nenul înseamnă strâmbe. Dacă $\\bar d_1\\parallel\\bar d_2$: paralele distincte sau confundate.",
+              "en": "Line-line\nIf $\\bar d_1\\not\\parallel\\bar d_2$, compute the scalar triple product $(\\bar d_1,\\bar d_2,\\overline{M_1M_2})$: zero means secant, nonzero means skew. If $\\bar d_1\\parallel\\bar d_2$: distinct parallel or coincident."
+            }
+          ],
+          "exercises": [
+            {
+              "type": "steps",
+              "skill": "problema-caiet",
+              "prompt": {
+                "ro": "Planul $2x+y-z-1=0$ și dreapta$$\\frac{x}{2}=\\frac{y-1}{3}=\\frac{z}{0}$$Cum sunt?",
+                "en": "The plane $2x+y-z-1=0$ and the line$$\\frac{x}{2}=\\frac{y-1}{3}=\\frac{z}{0}$$How are they positioned?"
+              },
+              "steps": [
+                {
+                  "type": "input",
+                  "check": "number",
+                  "skill": "dreapta-plan",
+                  "prompt": {
+                    "ro": "Calculează $\\bar n_1\\cdot\\bar d$ cu $\\bar n_1(2,1,-1)$ și $\\bar d(2,3,0)$.",
+                    "en": "Compute $\\bar n_1\\cdot\\bar d$ with $\\bar n_1(2,1,-1)$ and $\\bar d(2,3,0)$."
+                  },
+                  "answer": "7",
+                  "explain": {
+                    "ro": "$2\\cdot2+1\\cdot3+(-1)\\cdot0=7$. Nu este $0$, deci dreapta nu e paralelă cu planul.",
+                    "en": "$2\\cdot2+1\\cdot3+(-1)\\cdot0=7$. It is not $0$, so the line is not parallel to the plane."
+                  }
+                },
+                {
+                  "type": "mc",
+                  "skill": "dreapta-plan",
+                  "prompt": {
+                    "ro": "Punctul $M_0(0,1,0)$ aparține dreptei. Aparține planului?",
+                    "en": "The point $M_0(0,1,0)$ belongs to the line. Does it belong to the plane?"
+                  },
+                  "choices": [
+                    {
+                      "ro": "Da: $2\\cdot0+1-0-1=0$",
+                      "en": "Yes: $2\\cdot0+1-0-1=0$"
+                    },
+                    {
+                      "ro": "Nu: $2\\cdot0+0-0-1=-1\\neq0$",
+                      "en": "No: $2\\cdot0+0-0-1=-1\\neq0$"
+                    },
+                    {
+                      "ro": "Nu: $2\\cdot1+0-0-1=1\\neq0$",
+                      "en": "No: $2\\cdot1+0-0-1=1\\neq0$"
+                    },
+                    {
+                      "ro": "Nu: $2\\cdot0+3-0-1=2\\neq0$",
+                      "en": "No: $2\\cdot0+3-0-1=2\\neq0$"
+                    }
+                  ],
+                  "answer": 0,
+                  "explain": {
+                    "ro": "Coordonatele sunt $x_0=0$, $y_0=1$, $z_0=0$: $2\\cdot0+1\\cdot1-0-1=0$, deci $M_0\\in P_1$.\nCapcană: în caiet apărea $y_0=0$ din greșeală (rezultat $-1$); $y_0$ este $1$, nu $0$ și nu $q=3$.",
+                    "en": "The coordinates are $x_0=0$, $y_0=1$, $z_0=0$: $2\\cdot0+1\\cdot1-0-1=0$, so $M_0\\in P_1$.\nPitfall: in the notebook $y_0=0$ appeared by mistake (result $-1$); $y_0$ is $1$, not $0$ and not $q=3$."
+                  }
+                },
+                {
+                  "type": "mc",
+                  "skill": "dreapta-plan",
+                  "prompt": {
+                    "ro": "Care este concluzia?",
+                    "en": "What is the conclusion?"
+                  },
+                  "choices": [
+                    {
+                      "ro": "Dreapta este paralelă cu planul",
+                      "en": "The line is parallel to the plane"
+                    },
+                    {
+                      "ro": "Dreapta înțeapă planul exact în $M_0(0,1,0)$",
+                      "en": "The line pierces the plane exactly at $M_0(0,1,0)$"
+                    },
+                    {
+                      "ro": "Dreapta este conținută în plan",
+                      "en": "The line is contained in the plane"
+                    },
+                    {
+                      "ro": "Dreapta este perpendiculară pe plan",
+                      "en": "The line is perpendicular to the plane"
+                    }
+                  ],
+                  "answer": 1,
+                  "explain": {
+                    "ro": "$\\bar n_1\\cdot\\bar d=7\\neq0$: dreapta și planul au un singur punct comun, iar $M_0$ e deja în ambele: $(D)\\cap P_1=\\{M_0\\}$.\nCapcană: $M_0\\in P_1$ nu înseamnă dreapta conținută în plan, ci punct de intersecție când $\\bar n\\cdot\\bar d\\neq0$.",
+                    "en": "$\\bar n_1\\cdot\\bar d=7\\neq0$: the line and the plane have a single common point, and $M_0$ is already in both: $(D)\\cap P_1=\\{M_0\\}$.\nPitfall: $M_0\\in P_1$ does not mean the line is contained in the plane, but rather that it is the intersection point when $\\bar n\\cdot\\bar d\\neq0$."
+                  }
+                }
+              ]
+            },
+            {
+              "type": "mc",
+              "skill": "dreapta-in-plan",
+              "prompt": {
+                "ro": "Dreapta are $M_0(1,1,1)$, $\\bar d(1,2,-1)$. Planul este $x+y+3z-5=0$. Cum sunt?",
+                "en": "The line has $M_0(1,1,1)$, $\\bar d(1,2,-1)$. The plane is $x+y+3z-5=0$. How are they positioned?"
+              },
+              "choices": [
+                {
+                  "ro": "dreapta este paralelă cu planul, fără puncte comune",
+                  "en": "the line is parallel to the plane, with no common points"
+                },
+                {
+                  "ro": "dreapta înțeapă planul într-un punct",
+                  "en": "the line pierces the plane at a point"
+                },
+                {
+                  "ro": "dreapta este conținută în plan",
+                  "en": "the line is contained in the plane"
+                },
+                {
+                  "ro": "dreapta este perpendiculară pe plan",
+                  "en": "the line is perpendicular to the plane"
+                }
+              ],
+              "answer": 2,
+              "explain": {
+                "ro": "$\\bar n\\cdot\\bar d=1+2-3=0$. $M_0$: $1+1+3-5=0$, deci $M_0\\in P$. Dreapta este conținută în plan.\nCapcană: $\\bar n\\cdot\\bar d=0$ singur duce la paralelă sau conținută; testul pe punct decide.\nRegula: $\\bar n\\cdot\\bar d=0$ și $M_0\\in P$ înseamnă conținută.",
+                "en": "$\\bar n\\cdot\\bar d=1+2-3=0$. $M_0$: $1+1+3-5=0$, so $M_0\\in P$. The line is contained in the plane.\nPitfall: $\\bar n\\cdot\\bar d=0$ alone leads to parallel or contained; the test on the point decides.\nRule: $\\bar n\\cdot\\bar d=0$ and $M_0\\in P$ mean contained."
+              }
+            },
+            {
+              "type": "input",
+              "check": "number",
+              "skill": "intersectie-dreapta-plan",
+              "prompt": {
+                "ro": "Dreapta $x=1+t,\\ y=2t,\\ z=3-t$ taie planul $x+y+z-8=0$. Află $t$.",
+                "en": "The line $x=1+t,\\ y=2t,\\ z=3-t$ meets the plane $x+y+z-8=0$. Find $t$."
+              },
+              "answer": "2",
+              "explain": {
+                "ro": "$(1+t)+2t+(3-t)-8=2t-4=0\\Rightarrow t=2$. Punctul este $(3,4,1)$.\nCapcană: coeficientul lui $t$ este $1+2-1=2$.\nRegula: înlocuiești parametric în plan, rămâne o ecuație în $t$.",
+                "en": "$(1+t)+2t+(3-t)-8=2t-4=0\\Rightarrow t=2$. The point is $(3,4,1)$.\nPitfall: the coefficient of $t$ is $1+2-1=2$.\nRule: substitute the parametric form into the plane, and one equation in $t$ remains."
+              }
+            },
+            {
+              "type": "input",
+              "check": "number",
+              "skill": "intersectie-dreapta-plan",
+              "prompt": {
+                "ro": "Dreapta $x=2t,\\ y=1+t,\\ z=-t$ taie planul $3x-y+2z-5=0$. Calculează coordonata $z$ a punctului de intersecție.",
+                "en": "The line $x=2t,\\ y=1+t,\\ z=-t$ meets the plane $3x-y+2z-5=0$. Compute the $z$ coordinate of the intersection point."
+              },
+              "answer": "-2",
+              "explain": {
+                "ro": "$3(2t)-(1+t)+2(-t)-5=6t-1-t-2t-5=3t-6=0\\Rightarrow t=2$. Atunci $z=-t=-2$.\nCapcană: întrebarea cere $z$, nu $t$.\nRegula: află $t$, apoi înlocuiește în coordonata cerută.",
+                "en": "$3(2t)-(1+t)+2(-t)-5=6t-1-t-2t-5=3t-6=0\\Rightarrow t=2$. Then $z=-t=-2$.\nPitfall: the question asks for $z$, not $t$.\nRule: find $t$, then substitute into the requested coordinate."
+              }
+            },
+            {
+              "type": "mc",
+              "skill": "plane-confundate",
+              "prompt": {
+                "ro": "Cum sunt planele $x+y+z=1$ și $2x+2y+2z=2$?",
+                "en": "How are the planes $x+y+z=1$ and $2x+2y+2z=2$ positioned?"
+              },
+              "choices": [
+                {
+                  "ro": "paralele distincte",
+                  "en": "distinct parallel"
+                },
+                {
+                  "ro": "secante după o dreaptă",
+                  "en": "secant along a line"
+                },
+                {
+                  "ro": "perpendiculare",
+                  "en": "perpendicular"
+                },
+                {
+                  "ro": "confundate",
+                  "en": "coincident"
+                }
+              ],
+              "answer": 3,
+              "explain": {
+                "ro": "Al doilea plan este dublul primului (membru cu membru), deci sunt același plan. Punctul $(1,0,0)\\in P_1$ verifică și $P_2$: $2=2$.\nCapcană: nu confunda proporționalitatea normalelor cu paralelismul distinct; verifică termenul liber.\nRegula: totul proporțional (cu termen liber) înseamnă confundate.",
+                "en": "The second plane is double the first (term by term), so they are the same plane. The point $(1,0,0)\\in P_1$ also satisfies $P_2$: $2=2$.\nPitfall: do not confuse proportionality of the normals with distinct parallelism; check the constant term.\nRule: everything proportional (including the constant term) means coincident."
+              }
+            },
+            {
+              "type": "mc",
+              "skill": "plane-perpendiculare",
+              "prompt": {
+                "ro": "Planele $x+2y-z-1=0$ și $3x-y+z+4=0$. Cum sunt?",
+                "en": "The planes $x+2y-z-1=0$ and $3x-y+z+4=0$. How are they positioned?"
+              },
+              "choices": [
+                {
+                  "ro": "perpendiculare",
+                  "en": "perpendicular"
+                },
+                {
+                  "ro": "paralele",
+                  "en": "parallel"
+                },
+                {
+                  "ro": "confundate",
+                  "en": "coincident"
+                },
+                {
+                  "ro": "secante oblic (nu perpendiculare)",
+                  "en": "secant obliquely (not perpendicular)"
+                }
+              ],
+              "answer": 0,
+              "explain": {
+                "ro": "$\\bar n_1\\cdot\\bar n_2=1\\cdot3+2\\cdot(-1)+(-1)\\cdot1=3-2-1=0$: perpendiculare.\nCapcană: normalele $(1,2,-1)$ și $(3,-1,1)$ nu sunt proporționale, deci nu sunt paralele.\nRegula: $\\bar n_1\\cdot\\bar n_2=0$ înseamnă plane perpendiculare.",
+                "en": "$\\bar n_1\\cdot\\bar n_2=1\\cdot3+2\\cdot(-1)+(-1)\\cdot1=3-2-1=0$: perpendicular.\nPitfall: the normals $(1,2,-1)$ and $(3,-1,1)$ are not proportional, so they are not parallel.\nRule: $\\bar n_1\\cdot\\bar n_2=0$ means perpendicular planes."
+              }
+            },
+            {
+              "type": "steps",
+              "skill": "drepte-secante",
+              "prompt": {
+                "ro": "$D_1$ trece prin $M_1(1,1,0)$ cu $\\bar d_1(1,1,1)$ și $D_2$ trece prin $M_2(3,2,0)$ cu $\\bar d_2(1,0,-1)$.",
+                "en": "$D_1$ passes through $M_1(1,1,0)$ with $\\bar d_1(1,1,1)$ and $D_2$ passes through $M_2(3,2,0)$ with $\\bar d_2(1,0,-1)$."
+              },
+              "steps": [
+                {
+                  "type": "input",
+                  "check": "number",
+                  "skill": "produs-mixt",
+                  "prompt": {
+                    "ro": "Calculează produsul mixt$$\\begin{vmatrix}1&1&1\\\\1&0&-1\\\\2&1&0\\end{vmatrix}$$(ultima linie este $\\overline{M_1M_2}$).",
+                    "en": "Compute the scalar triple product$$\\begin{vmatrix}1&1&1\\\\1&0&-1\\\\2&1&0\\end{vmatrix}$$(the last row is $\\overline{M_1M_2}$)."
+                  },
+                  "answer": "0",
+                  "explain": "$1\\cdot(0\\cdot0-(-1)\\cdot1)-1\\cdot(1\\cdot0-(-1)\\cdot2)+1\\cdot(1\\cdot1-0\\cdot2)=1\\cdot1-1\\cdot2+1\\cdot1=0$."
+                },
+                {
+                  "type": "mc",
+                  "skill": "drepte-secante",
+                  "prompt": {
+                    "ro": "Direcțiile nu sunt proporționale și produsul mixt este $0$. Cum sunt dreptele?",
+                    "en": "The directions are not proportional and the scalar triple product is $0$. How are the lines positioned?"
+                  },
+                  "choices": [
+                    {
+                      "ro": "strâmbe",
+                      "en": "skew"
+                    },
+                    {
+                      "ro": "secante (se taie într-un punct)",
+                      "en": "secant (they meet at a point)"
+                    },
+                    {
+                      "ro": "paralele distincte",
+                      "en": "distinct parallel"
+                    },
+                    {
+                      "ro": "confundate",
+                      "en": "coincident"
+                    }
+                  ],
+                  "answer": 1,
+                  "explain": {
+                    "ro": "Produs mixt $0$ înseamnă coplanare; nefiind paralele, se taie. (Punctul este $(2,2,1)$: la $t=1$ pe $D_1$ și la $s=-1$ pe $D_2$.)\nRegula: nu paralele + produs mixt $0$ înseamnă secante.",
+                    "en": "Scalar triple product $0$ means coplanar; since they are not parallel, they meet. (The point is $(2,2,1)$: at $t=1$ on $D_1$ and at $s=-1$ on $D_2$.)\nRule: not parallel + scalar triple product $0$ means secant."
+                  }
+                }
+              ]
+            },
+            {
+              "type": "mc",
+              "skill": "drepte-stramb-calcul",
+              "prompt": {
+                "ro": "$D_1$: $M_1(1,0,0)$, $\\bar d_1(1,1,0)$; $D_2$: $M_2(0,0,2)$, $\\bar d_2(0,1,1)$. Cum sunt?",
+                "en": "$D_1$: $M_1(1,0,0)$, $\\bar d_1(1,1,0)$; $D_2$: $M_2(0,0,2)$, $\\bar d_2(0,1,1)$. How are they positioned?"
+              },
+              "choices": [
+                {
+                  "ro": "secante",
+                  "en": "secant"
+                },
+                {
+                  "ro": "paralele distincte",
+                  "en": "distinct parallel"
+                },
+                {
+                  "ro": "strâmbe",
+                  "en": "skew"
+                },
+                {
+                  "ro": "confundate",
+                  "en": "coincident"
+                }
+              ],
+              "answer": 2,
+              "explain": {
+                "ro": "$\\overline{M_1M_2}=(-1,0,2)$ și$$\\begin{vmatrix}1&1&0\\\\0&1&1\\\\-1&0&2\\end{vmatrix}=1\\cdot(2-0)-1\\cdot(0+1)+0=2-1=1\\neq0$$Dreptele nu sunt coplanare: strâmbe.\nCapcană: direcțiile nu sunt proporționale, dar asta nu garantează că se taie.\nRegula: produs mixt nenul înseamnă strâmbe.",
+                "en": "$\\overline{M_1M_2}=(-1,0,2)$ and$$\\begin{vmatrix}1&1&0\\\\0&1&1\\\\-1&0&2\\end{vmatrix}=1\\cdot(2-0)-1\\cdot(0+1)+0=2-1=1\\neq0$$The lines are not coplanar: skew.\nPitfall: the directions are not proportional, but that does not guarantee they meet.\nRule: a nonzero scalar triple product means skew."
+              }
+            },
+            {
+              "type": "mc",
+              "skill": "drepte-paralele",
+              "prompt": {
+                "ro": "$D_1$: $M_1(1,0,0)$, $\\bar d_1(1,2,3)$; $D_2$: $M_2(0,1,0)$, $\\bar d_2(2,4,6)$. Cum sunt?",
+                "en": "$D_1$: $M_1(1,0,0)$, $\\bar d_1(1,2,3)$; $D_2$: $M_2(0,1,0)$, $\\bar d_2(2,4,6)$. How are they positioned?"
+              },
+              "choices": [
+                {
+                  "ro": "confundate",
+                  "en": "coincident"
+                },
+                {
+                  "ro": "secante",
+                  "en": "secant"
+                },
+                {
+                  "ro": "strâmbe",
+                  "en": "skew"
+                },
+                {
+                  "ro": "paralele distincte",
+                  "en": "distinct parallel"
+                }
+              ],
+              "answer": 3,
+              "explain": {
+                "ro": "$\\bar d_2=2\\bar d_1$, deci paralele sau confundate. $\\overline{M_1M_2}=(-1,1,0)$ nu e proporțional cu $(1,2,3)$, deci $M_2\\notin D_1$: paralele distincte.\nCapcană: direcții proporționale nu înseamnă drepte confundate.\nRegula: verifică dacă $M_2$ e pe $D_1$.",
+                "en": "$\\bar d_2=2\\bar d_1$, so parallel or coincident. $\\overline{M_1M_2}=(-1,1,0)$ is not proportional to $(1,2,3)$, so $M_2\\notin D_1$: distinct parallel.\nPitfall: proportional directions do not mean coincident lines.\nRule: check whether $M_2$ is on $D_1$."
+              }
+            }
+          ]
+        },
+        {
+          "id": "al-8-6",
+          "title": {
+            "ro": "Unghiuri și distanțe",
+            "en": "Angles and distances"
+          },
+          "pick": 6,
+          "theory": [
+            {
+              "ro": "Formulele (complement standard)\n• $\\cos\\alpha=\\dfrac{|\\bar u\\cdot\\bar v|}{\\|\\bar u\\|\\,\\|\\bar v\\|}$ între drepte (direcții) sau plane (normale).\n• Dreaptă-plan: $\\sin\\varphi=\\dfrac{|\\bar n\\cdot\\bar d|}{\\|\\bar n\\|\\,\\|\\bar d\\|}$.",
+              "en": "The formulas (standard supplement)\n• $\\cos\\alpha=\\dfrac{|\\bar u\\cdot\\bar v|}{\\|\\bar u\\|\\,\\|\\bar v\\|}$ between lines (directions) or planes (normals).\n• Line-plane: $\\sin\\varphi=\\dfrac{|\\bar n\\cdot\\bar d|}{\\|\\bar n\\|\\,\\|\\bar d\\|}$."
+            },
+            {
+              "ro": "Distanțe\n• Punct-plan: $\\dfrac{|ax_1+by_1+cz_1+d|}{\\sqrt{a^2+b^2+c^2}}$.\n• Punct-dreaptă: $\\dfrac{\\|\\overline{PM}\\times\\bar d\\|}{\\|\\bar d\\|}$ (aria paralelogramului împărțită la bază).",
+              "en": "Distances\n• Point-plane: $\\dfrac{|ax_1+by_1+cz_1+d|}{\\sqrt{a^2+b^2+c^2}}$.\n• Point-line: $\\dfrac{\\|\\overline{PM}\\times\\bar d\\|}{\\|\\bar d\\|}$ (the area of the parallelogram divided by the base)."
+            }
+          ],
+          "exercises": [
+            {
+              "type": "input",
+              "check": "number",
+              "skill": "cos-directii",
+              "prompt": {
+                "ro": "Dreptele au direcțiile $\\bar d_1(1,2,2)$ și $\\bar d_2(2,3,6)$. Calculează $\\cos\\alpha$ dintre ele.",
+                "en": "The lines have directions $\\bar d_1(1,2,2)$ and $\\bar d_2(2,3,6)$. Compute $\\cos\\alpha$ between them."
+              },
+              "answer": "20/21",
+              "explain": {
+                "ro": "$\\bar d_1\\cdot\\bar d_2=2+6+12=20$, $\\|\\bar d_1\\|=3$, $\\|\\bar d_2\\|=\\sqrt{4+9+36}=7$. $\\cos\\alpha=\\frac{20}{21}$.\nCapcană: nu uita să împarți la ambele norme.\nRegula: produs scalar peste produsul normelor.",
+                "en": "$\\bar d_1\\cdot\\bar d_2=2+6+12=20$, $\\|\\bar d_1\\|=3$, $\\|\\bar d_2\\|=\\sqrt{4+9+36}=7$. $\\cos\\alpha=\\frac{20}{21}$.\nPitfall: do not forget to divide by both norms.\nRule: dot product over the product of the norms."
+              }
+            },
+            {
+              "type": "input",
+              "check": "number",
+              "skill": "unghi-plane",
+              "prompt": {
+                "ro": "Planele $x+y-2=0$ și $y+z+3=0$. Află unghiul ascuțit dintre ele, în grade.",
+                "en": "The planes $x+y-2=0$ and $y+z+3=0$. Find the acute angle between them, in degrees."
+              },
+              "answer": "60",
+              "explain": {
+                "ro": "$\\bar n_1=(1,1,0)$, $\\bar n_2=(0,1,1)$. $\\bar n_1\\cdot\\bar n_2=1$, $\\|\\bar n_1\\|=\\|\\bar n_2\\|=\\sqrt2$, $\\cos\\alpha=\\frac{1}{2}\\Rightarrow\\alpha=60^\\circ$.\nCapcană: termenii liberi nu intră în normale.\nRegula: unghiul planelor = unghiul normalelor.",
+                "en": "$\\bar n_1=(1,1,0)$, $\\bar n_2=(0,1,1)$. $\\bar n_1\\cdot\\bar n_2=1$, $\\|\\bar n_1\\|=\\|\\bar n_2\\|=\\sqrt2$, $\\cos\\alpha=\\frac{1}{2}\\Rightarrow\\alpha=60^\\circ$.\nPitfall: the constant terms are not part of the normals.\nRule: the angle between planes = the angle between the normals."
+              }
+            },
+            {
+              "type": "input",
+              "check": "number",
+              "skill": "dist-punct-plan",
+              "prompt": {
+                "ro": "Calculează distanța de la $M(1,1,2)$ la planul $2x+2y-z+4=0$.",
+                "en": "Compute the distance from $M(1,1,2)$ to the plane $2x+2y-z+4=0$."
+              },
+              "answer": "2",
+              "explain": {
+                "ro": "$|2\\cdot1+2\\cdot1-2+4|=6$ și $\\sqrt{4+4+1}=3$. Distanța: $\\frac63=2$.\nCapcană: nu uita să incluzi termenul liber $+4$ în numărător.\nRegula: |valoarea ecuației în punct| împărțită la $\\|\\bar n\\|$.",
+                "en": "$|2\\cdot1+2\\cdot1-2+4|=6$ and $\\sqrt{4+4+1}=3$. The distance: $\\frac63=2$.\nPitfall: do not forget to include the constant term $+4$ in the numerator.\nRule: |value of the equation at the point| divided by $\\|\\bar n\\|$."
+              }
+            },
+            {
+              "type": "input",
+              "check": "number",
+              "skill": "dist-origine-plan",
+              "prompt": {
+                "ro": "Calculează distanța de la origine la planul $3x-4y+12z-39=0$.",
+                "en": "Compute the distance from the origin to the plane $3x-4y+12z-39=0$."
+              },
+              "answer": "3",
+              "explain": {
+                "ro": "La origine: $|-39|=39$ și $\\sqrt{9+16+144}=13$. $\\frac{39}{13}=3$.\nCapcană: $13$ e $\\|\\bar n\\|$, nu termenul liber.\nRegula: la origine rămâne $|d|/\\|\\bar n\\|$.",
+                "en": "At the origin: $|-39|=39$ and $\\sqrt{9+16+144}=13$. $\\frac{39}{13}=3$.\nPitfall: $13$ is $\\|\\bar n\\|$, not the constant term.\nRule: at the origin what remains is $|d|/\\|\\bar n\\|$."
+              }
+            },
+            {
+              "type": "steps",
+              "skill": "dist-punct-dreapta",
+              "prompt": {
+                "ro": "Distanța de la $M(1,4,1)$ la dreapta prin $P(1,1,1)$ cu direcția $\\bar d(1,2,2)$.",
+                "en": "The distance from $M(1,4,1)$ to the line through $P(1,1,1)$ with direction $\\bar d(1,2,2)$."
+              },
+              "steps": [
+                {
+                  "type": "input",
+                  "check": "number",
+                  "skill": "dist-punct-dreapta",
+                  "prompt": {
+                    "ro": "Calculează $\\|\\bar d\\|$.",
+                    "en": "Compute $\\|\\bar d\\|$."
+                  },
+                  "answer": "3",
+                  "explain": "$\\sqrt{1+4+4}=3$."
+                },
+                {
+                  "type": "mc",
+                  "skill": "dist-punct-dreapta",
+                  "prompt": {
+                    "ro": "Calculează $\\overline{PM}\\times\\bar d$, cu $\\overline{PM}=(0,3,0)$.",
+                    "en": "Compute $\\overline{PM}\\times\\bar d$, with $\\overline{PM}=(0,3,0)$."
+                  },
+                  "choices": [
+                    "$(6,0,-3)$",
+                    "$(6,0,3)$",
+                    "$(3,0,-6)$",
+                    "$(0,6,-3)$"
+                  ],
+                  "answer": 0,
+                  "explain": {
+                    "ro": "$(0,3,0)\\times(1,2,2)=(3\\cdot2-0\\cdot2,\\ 0\\cdot1-0\\cdot2,\\ 0\\cdot2-3\\cdot1)=(6,0,-3)$.\nCapcană: ultima coordonată este $0\\cdot2-3\\cdot1=-3$.",
+                    "en": "$(0,3,0)\\times(1,2,2)=(3\\cdot2-0\\cdot2,\\ 0\\cdot1-0\\cdot2,\\ 0\\cdot2-3\\cdot1)=(6,0,-3)$.\nPitfall: the last coordinate is $0\\cdot2-3\\cdot1=-3$."
+                  }
+                },
+                {
+                  "type": "input",
+                  "check": "number",
+                  "skill": "dist-punct-dreapta",
+                  "prompt": {
+                    "ro": "Distanța este $\\dfrac{\\|(6,0,-3)\\|}{\\|\\bar d\\|}$. Calculeaz-o.",
+                    "en": "The distance is $\\dfrac{\\|(6,0,-3)\\|}{\\|\\bar d\\|}$. Compute it."
+                  },
+                  "answer": "sqrt(5)",
+                  "explain": {
+                    "ro": "$\\|(6,0,-3)\\|=\\sqrt{36+9}=\\sqrt{45}=3\\sqrt5$, iar $\\frac{3\\sqrt5}{3}=\\sqrt5$.",
+                    "en": "$\\|(6,0,-3)\\|=\\sqrt{36+9}=\\sqrt{45}=3\\sqrt5$, and $\\frac{3\\sqrt5}{3}=\\sqrt5$."
+                  }
+                }
+              ]
+            },
+            {
+              "type": "input",
+              "check": "number",
+              "skill": "sin-dreapta-plan",
+              "prompt": {
+                "ro": "Dreapta are $\\bar d(1,2,2)$, planul are $\\bar n(0,0,1)$. Calculează $\\sin\\varphi$ dintre dreaptă și plan.",
+                "en": "The line has $\\bar d(1,2,2)$, the plane has $\\bar n(0,0,1)$. Compute $\\sin\\varphi$ between the line and the plane."
+              },
+              "answer": "2/3",
+              "explain": {
+                "ro": "$|\\bar n\\cdot\\bar d|=2$, $\\|\\bar n\\|=1$, $\\|\\bar d\\|=3$. $\\sin\\varphi=\\frac23$.\nCapcană: la dreaptă-plan se folosește sinus, nu cosinus.\nRegula: $\\sin\\varphi=|\\bar n\\cdot\\bar d|/(\\|\\bar n\\|\\|\\bar d\\|)$.",
+                "en": "$|\\bar n\\cdot\\bar d|=2$, $\\|\\bar n\\|=1$, $\\|\\bar d\\|=3$. $\\sin\\varphi=\\frac23$.\nPitfall: for line-plane you use sine, not cosine.\nRule: $\\sin\\varphi=|\\bar n\\cdot\\bar d|/(\\|\\bar n\\|\\|\\bar d\\|)$."
+              }
+            },
+            {
+              "type": "mc",
+              "skill": "unghi-zero",
+              "prompt": {
+                "ro": "Ce unghi face dreapta de direcție $(1,1,0)$ cu planul $z=0$?",
+                "en": "What angle does the line with direction $(1,1,0)$ make with the plane $z=0$?"
+              },
+              "choices": [
+                "$45^\\circ$",
+                "$0^\\circ$",
+                "$60^\\circ$",
+                "$90^\\circ$"
+              ],
+              "answer": 1,
+              "explain": {
+                "ro": "$\\bar n=(0,0,1)$, $\\bar n\\cdot\\bar d=0$, deci $\\sin\\varphi=0$ și $\\varphi=0^\\circ$ (dreapta este paralelă cu planul sau în el).\nCapcană: $45^\\circ$ este unghiul dreptei cu axa $Ox$ în plan, nu cu planul.\nRegula: $\\bar n\\cdot\\bar d=0\\Rightarrow\\varphi=0$.",
+                "en": "$\\bar n=(0,0,1)$, $\\bar n\\cdot\\bar d=0$, so $\\sin\\varphi=0$ and $\\varphi=0^\\circ$ (the line is parallel to the plane or in it).\nPitfall: $45^\\circ$ is the angle of the line with the $Ox$ axis within the plane, not with the plane.\nRule: $\\bar n\\cdot\\bar d=0\\Rightarrow\\varphi=0$."
+              }
+            },
+            {
+              "type": "input",
+              "check": "number",
+              "skill": "dist-plane-paralele",
+              "prompt": {
+                "ro": "Planele paralele $x+2y+2z-3=0$ și $x+2y+2z+6=0$. Calculează distanța dintre ele.",
+                "en": "The parallel planes $x+2y+2z-3=0$ and $x+2y+2z+6=0$. Compute the distance between them."
+              },
+              "answer": "3",
+              "explain": {
+                "ro": "Alegem $(3,0,0)\\in P_1$. Distanța la $P_2$: $\\frac{|3+6|}{\\sqrt{1+4+4}}=\\frac93=3$.\nCapcană: nu scădea termenii liberi fără a împărți la $\\|\\bar n\\|$.\nRegula: punct din primul plan, distanță la al doilea.",
+                "en": "Pick $(3,0,0)\\in P_1$. Its distance to $P_2$: $\\frac{|3+6|}{\\sqrt{1+4+4}}=\\frac93=3$.\nPitfall: do not subtract the constant terms without dividing by $\\|\\bar n\\|$.\nRule: a point of the first plane, its distance to the second."
+              }
+            },
+            {
+              "type": "mc",
+              "skill": "drepte-perpendiculare",
+              "prompt": {
+                "ro": "Care dreaptă este perpendiculară pe direcția $(2,-1,3)$?",
+                "en": "Which line is perpendicular to the direction $(2,-1,3)$?"
+              },
+              "choices": [
+                {
+                  "ro": "direcția $(1,2,1)$",
+                  "en": "direction $(1,2,1)$"
+                },
+                {
+                  "ro": "direcția $(3,0,1)$",
+                  "en": "direction $(3,0,1)$"
+                },
+                {
+                  "ro": "direcția $(1,5,1)$",
+                  "en": "direction $(1,5,1)$"
+                },
+                {
+                  "ro": "direcția $(1,1,1)$",
+                  "en": "direction $(1,1,1)$"
+                }
+              ],
+              "answer": 2,
+              "explain": {
+                "ro": "$(2,-1,3)\\cdot(1,5,1)=2-5+3=0$. Celelalte: $2-2+3=3$, $6+3=9$, $2-1+3=4$.\nCapcană: produsul scalar trebuie să fie exact $0$.\nRegula: perpendicular înseamnă produs scalar nul.",
+                "en": "$(2,-1,3)\\cdot(1,5,1)=2-5+3=0$. The others: $2-2+3=3$, $6+3=9$, $2-1+3=4$.\nPitfall: the dot product must be exactly $0$.\nRule: perpendicular means zero dot product."
+              }
+            }
+          ]
+        },
+        {
+          "id": "al-8-7",
+          "title": {
+            "ro": "Dublul produs vectorial",
+            "en": "The double vector product"
+          },
+          "pick": 6,
+          "theory": [
+            {
+              "ro": "Formula\n$\\bar a\\times(\\bar b\\times\\bar c)=\\bar b(\\bar a\\cdot\\bar c)-\\bar c(\\bar a\\cdot\\bar b)$. Mai întâi cele două produse scalare (numere), apoi combini $\\bar b$ și $\\bar c$.",
+              "en": "The formula\n$\\bar a\\times(\\bar b\\times\\bar c)=\\bar b(\\bar a\\cdot\\bar c)-\\bar c(\\bar a\\cdot\\bar b)$. First the two dot products (numbers), then combine $\\bar b$ and $\\bar c$."
+            }
+          ],
+          "exercises": [
+            {
+              "type": "steps",
+              "skill": "dublu-produs-calcul",
+              "prompt": {
+                "ro": "Fie $\\bar a(1,2,0)$, $\\bar b(2,0,1)$, $\\bar c(0,1,3)$. Calculează $\\bar a\\times(\\bar b\\times\\bar c)$ cu formula.",
+                "en": "Let $\\bar a(1,2,0)$, $\\bar b(2,0,1)$, $\\bar c(0,1,3)$. Compute $\\bar a\\times(\\bar b\\times\\bar c)$ using the formula."
+              },
+              "steps": [
+                {
+                  "type": "input",
+                  "check": "number",
+                  "skill": "dublu-produs-calcul",
+                  "prompt": {
+                    "ro": "Calculează $\\bar a\\cdot\\bar c$.",
+                    "en": "Compute $\\bar a\\cdot\\bar c$."
+                  },
+                  "answer": "2",
+                  "explain": "$1\\cdot0+2\\cdot1+0\\cdot3=2$."
+                },
+                {
+                  "type": "input",
+                  "check": "number",
+                  "skill": "dublu-produs-calcul",
+                  "prompt": {
+                    "ro": "Calculează $\\bar a\\cdot\\bar b$.",
+                    "en": "Compute $\\bar a\\cdot\\bar b$."
+                  },
+                  "answer": "2",
+                  "explain": "$1\\cdot2+2\\cdot0+0\\cdot1=2$."
+                },
+                {
+                  "type": "mc",
+                  "skill": "dublu-produs-calcul",
+                  "prompt": {
+                    "ro": "Atunci $\\bar a\\times(\\bar b\\times\\bar c)=2\\bar b-2\\bar c$ este:",
+                    "en": "Then $\\bar a\\times(\\bar b\\times\\bar c)=2\\bar b-2\\bar c$ is:"
+                  },
+                  "choices": [
+                    "$(-4,2,4)$",
+                    "$(1,-6,2)$",
+                    "$(4,2,-4)$",
+                    "$(4,-2,-4)$"
+                  ],
+                  "answer": 3,
+                  "explain": {
+                    "ro": "$2(2,0,1)-2(0,1,3)=(4,0,2)-(0,2,6)=(4,-2,-4)$. Verificare directă: $\\bar b\\times\\bar c=(-1,-6,2)$, apoi $\\bar a\\times(-1,-6,2)=(4,-2,-4)$.\nCapcană: $(1,-6,2)$ este $(\\bar a\\times\\bar b)\\times\\bar c$, altă expresie.",
+                    "en": "$2(2,0,1)-2(0,1,3)=(4,0,2)-(0,2,6)=(4,-2,-4)$. Direct check: $\\bar b\\times\\bar c=(-1,-6,2)$, then $\\bar a\\times(-1,-6,2)=(4,-2,-4)$.\nPitfall: $(1,-6,2)$ is $(\\bar a\\times\\bar b)\\times\\bar c$, a different expression."
+                  }
+                }
+              ]
+            },
+            {
+              "type": "input",
+              "check": "number",
+              "skill": "norma-dublu-produs",
+              "prompt": {
+                "ro": "Fie $\\bar a(1,0,0)$, $\\bar b(1,1,0)$, $\\bar c(1,0,1)$. Calculează $\\|\\bar a\\times(\\bar b\\times\\bar c)\\|$.",
+                "en": "Let $\\bar a(1,0,0)$, $\\bar b(1,1,0)$, $\\bar c(1,0,1)$. Compute $\\|\\bar a\\times(\\bar b\\times\\bar c)\\|$."
+              },
+              "answer": "sqrt(2)",
+              "explain": {
+                "ro": "$\\bar a\\cdot\\bar c=1$, $\\bar a\\cdot\\bar b=1$, deci rezultatul este $\\bar b-\\bar c=(0,1,-1)$. Norma: $\\sqrt{0+1+1}=\\sqrt2$.\nCapcană: nu calcula $\\|\\bar b\\|-\\|\\bar c\\|$; întâi diferența vectorilor.\nRegula: formula, apoi norma.",
+                "en": "$\\bar a\\cdot\\bar c=1$, $\\bar a\\cdot\\bar b=1$, so the result is $\\bar b-\\bar c=(0,1,-1)$. The norm: $\\sqrt{0+1+1}=\\sqrt2$.\nPitfall: do not compute $\\|\\bar b\\|-\\|\\bar c\\|$; first the difference of the vectors.\nRule: the formula, then the norm."
+              }
+            },
+            {
+              "type": "mc",
+              "skill": "neasociativ",
+              "prompt": {
+                "ro": "Este adevărat că $\\bar a\\times(\\bar b\\times\\bar c)=(\\bar a\\times\\bar b)\\times\\bar c$ în general?",
+                "en": "Is it true that $\\bar a\\times(\\bar b\\times\\bar c)=(\\bar a\\times\\bar b)\\times\\bar c$ in general?"
+              },
+              "choices": [
+                {
+                  "ro": "Nu: de ex. $\\bar i\\times(\\bar i\\times\\bar j)=-\\bar j$, dar $(\\bar i\\times\\bar i)\\times\\bar j=\\bar 0$",
+                  "en": "No: e.g. $\\bar i\\times(\\bar i\\times\\bar j)=-\\bar j$, but $(\\bar i\\times\\bar i)\\times\\bar j=\\bar 0$"
+                },
+                {
+                  "ro": "Da, ca la produsul scalar",
+                  "en": "Yes, as with the dot product"
+                },
+                {
+                  "ro": "Da, dacă vectorii sunt unitari",
+                  "en": "Yes, if the vectors are unit vectors"
+                },
+                {
+                  "ro": "Nu, diferă doar prin semn",
+                  "en": "No, they differ only by a sign"
+                }
+              ],
+              "answer": 0,
+              "explain": {
+                "ro": "$\\bar i\\times\\bar j=\\bar k$ și $\\bar i\\times\\bar k=-\\bar j$. Pe de altă parte, $\\bar i\\times\\bar i=\\bar 0$. Rezultatele diferă ($-\\bar j$ vs $\\bar 0$), deci nu e asociativ.\nCapcană: nu doar semnul diferă; uneori e chiar alt vector.\nRegula: parantezele contează la produsul vectorial.",
+                "en": "$\\bar i\\times\\bar j=\\bar k$ and $\\bar i\\times\\bar k=-\\bar j$. On the other hand, $\\bar i\\times\\bar i=\\bar 0$. The results differ ($-\\bar j$ vs $\\bar 0$), so it is not associative.\nPitfall: it is not only the sign that differs; sometimes it is a different vector altogether.\nRule: parentheses matter for the vector product."
+              }
+            },
+            {
+              "type": "mc",
+              "skill": "combinatie-liniara",
+              "prompt": {
+                "ro": "Vectorul $\\bar a\\times(\\bar b\\times\\bar c)$ este o combinație liniară de:",
+                "en": "The vector $\\bar a\\times(\\bar b\\times\\bar c)$ is a linear combination of:"
+              },
+              "choices": [
+                {
+                  "ro": "$\\bar a$ și $\\bar b$",
+                  "en": "$\\bar a$ and $\\bar b$"
+                },
+                {
+                  "ro": "$\\bar b$ și $\\bar c$",
+                  "en": "$\\bar b$ and $\\bar c$"
+                },
+                {
+                  "ro": "$\\bar a$ și $\\bar c$",
+                  "en": "$\\bar a$ and $\\bar c$"
+                },
+                {
+                  "ro": "doar $\\bar a$",
+                  "en": "only $\\bar a$"
+                }
+              ],
+              "answer": 1,
+              "explain": {
+                "ro": "Formula dă $\\bar b(\\bar a\\cdot\\bar c)-\\bar c(\\bar a\\cdot\\bar b)$, combinație de $\\bar b$ și $\\bar c$ (rezultatul stă în planul lor).\nCapcană: $\\bar a$ apare doar prin produsele scalare (numere).\nRegula: vectorii din rezultat sunt cei din paranteză.",
+                "en": "The formula gives $\\bar b(\\bar a\\cdot\\bar c)-\\bar c(\\bar a\\cdot\\bar b)$, a combination of $\\bar b$ and $\\bar c$ (the result lies in their plane).\nPitfall: $\\bar a$ appears only through the dot products (numbers).\nRule: the vectors in the result are the ones inside the parentheses."
+              }
+            },
+            {
+              "type": "input",
+              "check": "number",
+              "skill": "coordonata-dublu",
+              "prompt": {
+                "ro": "Fie $\\bar a(1,1,1)$, $\\bar b(1,2,3)$, $\\bar c(2,0,1)$. Calculează a doua coordonată (coeficientul lui $\\bar j$) a lui $\\bar a\\times(\\bar b\\times\\bar c)$.",
+                "en": "Let $\\bar a(1,1,1)$, $\\bar b(1,2,3)$, $\\bar c(2,0,1)$. Compute the second coordinate (the coefficient of $\\bar j$) of $\\bar a\\times(\\bar b\\times\\bar c)$."
+              },
+              "answer": "6",
+              "explain": {
+                "ro": "$\\bar a\\cdot\\bar c=3$, $\\bar a\\cdot\\bar b=6$. $3\\bar b-6\\bar c=(3,6,9)-(12,0,6)=(-9,6,3)$. A doua coordonată: $6$.\nVerificare: $\\bar b\\times\\bar c=(2,5,-4)$ și $\\bar a\\times(2,5,-4)=(-9,6,3)$.\nRegula: $\\bar b$ înmulțit cu $\\bar a\\cdot\\bar c$, apoi minus $\\bar c$ înmulțit cu $\\bar a\\cdot\\bar b$.",
+                "en": "$\\bar a\\cdot\\bar c=3$, $\\bar a\\cdot\\bar b=6$. $3\\bar b-6\\bar c=(3,6,9)-(12,0,6)=(-9,6,3)$. The second coordinate: $6$.\nCheck: $\\bar b\\times\\bar c=(2,5,-4)$ and $\\bar a\\times(2,5,-4)=(-9,6,3)$.\nRule: $\\bar b$ times $\\bar a\\cdot\\bar c$, then minus $\\bar c$ times $\\bar a\\cdot\\bar b$."
+              }
+            },
+            {
+              "type": "mc",
+              "skill": "ortogonale",
+              "prompt": {
+                "ro": "Dacă $\\bar a\\perp\\bar b$ și $\\bar a\\perp\\bar c$, cât este $\\bar a\\times(\\bar b\\times\\bar c)$?",
+                "en": "If $\\bar a\\perp\\bar b$ and $\\bar a\\perp\\bar c$, what is $\\bar a\\times(\\bar b\\times\\bar c)$?"
+              },
+              "choices": [
+                "$\\bar b-\\bar c$",
+                "$\\bar a$",
+                "$\\bar 0$",
+                "$\\bar b\\times\\bar c$"
+              ],
+              "answer": 2,
+              "explain": {
+                "ro": "$\\bar a\\cdot\\bar c=0$ și $\\bar a\\cdot\\bar b=0$, deci formula dă $\\bar b\\cdot0-\\bar c\\cdot0=\\bar 0$. (Geometric: $\\bar b\\times\\bar c\\parallel\\bar a$.)\nCapcană: nu ți se cere $\\bar b\\times\\bar c$.\nRegula: ambele produse scalare nule dau vectorul nul.",
+                "en": "$\\bar a\\cdot\\bar c=0$ and $\\bar a\\cdot\\bar b=0$, so the formula gives $\\bar b\\cdot0-\\bar c\\cdot0=\\bar 0$. (Geometrically: $\\bar b\\times\\bar c\\parallel\\bar a$.)\nPitfall: you are not asked for $\\bar b\\times\\bar c$.\nRule: both dot products zero give the zero vector."
+              }
+            },
+            {
+              "type": "mc",
+              "skill": "alt-paranteza",
+              "prompt": {
+                "ro": "Care este $(\\bar a\\times\\bar b)\\times\\bar c$?",
+                "en": "What is $(\\bar a\\times\\bar b)\\times\\bar c$?"
+              },
+              "choices": [
+                "$\\bar b(\\bar a\\cdot\\bar c)-\\bar c(\\bar a\\cdot\\bar b)$",
+                "$\\bar a(\\bar b\\cdot\\bar c)-\\bar b(\\bar a\\cdot\\bar c)$",
+                "$\\bar a(\\bar b\\cdot\\bar c)-\\bar c(\\bar a\\cdot\\bar b)$",
+                "$\\bar b(\\bar a\\cdot\\bar c)-\\bar a(\\bar b\\cdot\\bar c)$"
+              ],
+              "answer": 3,
+              "explain": {
+                "ro": "$(\\bar a\\times\\bar b)\\times\\bar c=-\\bar c\\times(\\bar a\\times\\bar b)=-[\\bar a(\\bar c\\cdot\\bar b)-\\bar b(\\bar c\\cdot\\bar a)]=\\bar b(\\bar a\\cdot\\bar c)-\\bar a(\\bar b\\cdot\\bar c)$.\nCapcană: a doua variantă este $\\bar a\\times(\\bar b\\times\\bar c)$; a treia este semnul opus.\nRegula: schimbi ordinea cu semn minus, apoi aplici formula.",
+                "en": "$(\\bar a\\times\\bar b)\\times\\bar c=-\\bar c\\times(\\bar a\\times\\bar b)=-[\\bar a(\\bar c\\cdot\\bar b)-\\bar b(\\bar c\\cdot\\bar a)]=\\bar b(\\bar a\\cdot\\bar c)-\\bar a(\\bar b\\cdot\\bar c)$.\nPitfall: the second option is $\\bar a\\times(\\bar b\\times\\bar c)$; the third is the opposite sign.\nRule: swap the order with a minus sign, then apply the formula."
+              }
+            },
+            {
+              "type": "input",
+              "check": "number",
+              "skill": "coordonata-z",
+              "prompt": {
+                "ro": "Fie $\\bar b(2,1,0)$, $\\bar c(3,4,5)$. Calculează a treia coordonată a lui $\\bar b\\times\\bar c$.",
+                "en": "Let $\\bar b(2,1,0)$, $\\bar c(3,4,5)$. Compute the third coordinate of $\\bar b\\times\\bar c$."
+              },
+              "answer": "5",
+              "explain": {
+                "ro": "Coordonata lui $\\bar k$: $x_by_c-y_bx_c=2\\cdot4-1\\cdot3=8-3=5$.\nCapcană: ordinea scăderii; invers ar da $-5$.\nRegula: $x_1y_2-y_1x_2$ pentru $\\bar k$.",
+                "en": "The coordinate of $\\bar k$: $x_by_c-y_bx_c=2\\cdot4-1\\cdot3=8-3=5$.\nPitfall: the order of subtraction; reversed it would give $-5$.\nRule: $x_1y_2-y_1x_2$ for $\\bar k$."
+              }
+            },
+            {
+              "type": "input",
+              "check": "number",
+              "skill": "dublu-simplu",
+              "prompt": {
+                "ro": "Fie $\\bar a(2,0,0)$, $\\bar b(0,1,0)$, $\\bar c(1,1,1)$. Calculează $\\|\\bar a\\times(\\bar b\\times\\bar c)\\|$.",
+                "en": "Let $\\bar a(2,0,0)$, $\\bar b(0,1,0)$, $\\bar c(1,1,1)$. Compute $\\|\\bar a\\times(\\bar b\\times\\bar c)\\|$."
+              },
+              "answer": "2",
+              "explain": {
+                "ro": "$\\bar a\\cdot\\bar c=2$, $\\bar a\\cdot\\bar b=0$, deci rezultatul este $2\\bar b=(0,2,0)$, cu norma $2$.\nVerificare: $\\bar b\\times\\bar c=(1,0,-1)$, apoi $\\bar a\\times(1,0,-1)=(0,2,0)$.\nRegula: calculezi produsele scalare întâi.",
+                "en": "$\\bar a\\cdot\\bar c=2$, $\\bar a\\cdot\\bar b=0$, so the result is $2\\bar b=(0,2,0)$, with norm $2$.\nCheck: $\\bar b\\times\\bar c=(1,0,-1)$, then $\\bar a\\times(1,0,-1)=(0,2,0)$.\nRule: compute the dot products first."
+              }
+            }
+          ]
+        }
+      ]
     }
   ]
 }
