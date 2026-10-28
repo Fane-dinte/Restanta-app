@@ -19,13 +19,15 @@ export async function onRequest({ request, env }: { request: Request; env: Env }
   if (request.method !== 'PUT') return json({ error: 'method' }, 405)
   const raw = await request.text()
   if (raw.length > 500_000) return json({ error: 'too big' }, 413)
-  let body: { code?: unknown; progress?: Progress }
+  let body: { code?: unknown; progress?: Progress; mode?: 'new' | 'join' }
   try { body = JSON.parse(raw) } catch { return json({ error: 'bad json' }, 400) }
   const code = normalize(body.code)
   const p = body.progress
   if (code.length < MIN || code.length > 40) return json({ error: 'code' }, 400)
   if (!p || typeof p !== 'object' || !p.days || !p.done || !Array.isArray(p.log)) return json({ error: 'progress' }, 400)
   const old = await env.KV.get('u:' + code)
+  if (body.mode === 'new' && old) return json({ error: 'taken' }, 409)
+  if (body.mode === 'join' && !old) return json({ error: 'missing' }, 404)
   const merged = old ? merge(JSON.parse(old).progress, p) : p
   await env.KV.put('u:' + code, JSON.stringify({ progress: merged }), {
     metadata: { xp: merged.xp, lessons: merged.log.length, updated: new Date().toISOString() },

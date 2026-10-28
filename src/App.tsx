@@ -37,6 +37,7 @@ export function App() {
   const [code, setCode] = useState(getCode) // sync code, null = anonymous
   const [pop, setPop] = useState(() => !getCode() && !isAnon())
   const [codeIn, setCodeIn] = useState('')
+  const [mode, setMode] = useState<'new' | 'join'>('new') // create a code or sign in with an existing one
   const [codeErr, setCodeErr] = useState('')
   const [tick, setTick] = useState(0)
   const synced = useRef('') // last progress the server agreed on, so syncing doesn't loop
@@ -65,10 +66,13 @@ export function App() {
     if (c.length < MIN_CODE) return setCodeErr(t.codeShort)
     setCodeErr('')
     try {
-      const m = await push(c, saved)
+      const m = await push(c, saved, mode)
       synced.current = JSON.stringify(m)
       saveCode(c); setCode(c); setSaved(m); setPop(false); setCodeIn('')
-    } catch { setCodeErr(t.codeOffline) }
+    } catch (e) {
+      const s = (e as Error).message
+      setCodeErr(s === '409' ? t.codeTaken : s === '404' ? t.codeMissing : t.codeOffline)
+    }
   }
   const skip = () => { setAnon(); setPop(false) }
   const leave = () => { saveCode(null); setCode(null); setAnon(); synced.current = ''; setPop(false) }
@@ -165,12 +169,17 @@ export function App() {
             <button type="button" className="x" aria-label={t.codeSkip} onClick={code ? () => setPop(false) : skip}><Icon name="close" size={22} /></button>
             <h2>{code ? t.codeIs(code) : t.codeTitle}</h2>
             {code ? <p>{t.codeSynced}</p> : <>
-              <p>{t.codeHelp}</p>
+              <div className="seg" role="group" aria-label={t.codeTitle}>
+                {(['new', 'join'] as const).map(m => (
+                  <button key={m} type="button" aria-pressed={mode === m} onClick={() => { setMode(m); setCodeErr('') }}>{m === 'new' ? t.codeModeNew : t.codeModeJoin}</button>
+                ))}
+              </div>
+              <p>{mode === 'new' ? t.codeHelpNew : t.codeHelpJoin}</p>
               <input className="answer" value={codeIn} onChange={e => setCodeIn(e.target.value)} placeholder={t.codePlaceholder} aria-label={t.codePlaceholder} autoFocus
                 maxLength={40} autoComplete="off" autoCapitalize="off" autoCorrect="off" spellCheck={false} />
               {codeErr && <p className="err" role="alert">{codeErr}</p>}
             </>}
-            <button className="chunky big" type="submit">{code ? t.codeOut : t.codeSave}</button>
+            <button className="chunky big" type="submit">{code ? t.codeOut : mode === 'new' ? t.codeSave : t.codeEnter}</button>
           </form>
         </div>
       )}

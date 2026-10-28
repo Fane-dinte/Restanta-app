@@ -205,3 +205,6 @@ main { padding: 20px 16px 100px; }
 .dev th, .dev td { padding: 8px 6px; border-bottom: 1px solid var(--border); }
 .dev .del { min-height: var(--tap-min); padding: 0 10px; border: 0; background: none; color: var(--wrong-ink); font-weight: 800; }
 .dev a { color: var(--accent-ink); }
+.seg { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; padding: 4px; border-radius: var(--r-md); background: var(--surface-2); }
+.seg button { min-height: var(--tap-min); padding: 6px 8px; border: 0; border-radius: calc(var(--r-md) - 4px); background: none; color: var(--ink-2); font-size: 14px; font-weight: 800; }
+.seg button[aria-pressed="true"] { background: var(--surface); color: var(--accent-ink); box-shadow: var(--shadow-card); }

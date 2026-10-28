@@ -21,8 +21,9 @@ export function setAnon() {
 }
 
 // Sends the local progress and gets back the merge with what the server (other devices) has.
-export async function push(code: string, progress: Progress): Promise<Progress> {
-  const r = await fetch('/api/sync', { method: 'PUT', body: JSON.stringify({ code, progress }) })
+// mode 'new' fails with 409 if the code is taken, 'join' with 404 if it doesn't exist yet; no mode = background sync.
+export async function push(code: string, progress: Progress, mode?: 'new' | 'join'): Promise<Progress> {
+  const r = await fetch('/api/sync', { method: 'PUT', body: JSON.stringify({ code, progress, mode }) })
   if (!r.ok) throw new Error(String(r.status))
   return (await r.json()).progress
 }

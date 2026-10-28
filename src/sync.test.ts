@@ -48,3 +48,13 @@ test('admin: needs the key, lists codes, deletes one', async () => {
   await call('k', 'DELETE', '?code=ana')
   assert.equal(((await (await call('k')).json()) as { users: unknown[] }).users.length, 0)
 })
+
+test('sync: a new code cannot take an existing one, and joining needs one that exists', async () => {
+  const env: Env = { KV: fakeKV(), ADMIN_KEY: 'k' }
+  const go = (code: string, mode?: string) => sync({ request: new Request('http://x/api/sync', { method: 'PUT', body: JSON.stringify({ code, progress: fresh(), mode }) }), env })
+  assert.equal((await go('ana', 'join')).status, 404)
+  assert.equal((await go('ana', 'new')).status, 200)
+  assert.equal((await go('Ana', 'new')).status, 409)
+  assert.equal((await go('ana', 'join')).status, 200)
+  assert.equal((await go('ana')).status, 200)
+})
